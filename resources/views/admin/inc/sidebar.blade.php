@@ -36,7 +36,7 @@
 
         </li>
         <li>
-            <a href="{{route('user-list')}}" >
+            <a href="{{route('deposit-manage')}}" >
                 <div class="parent-icon"><i class='bx bx-cart'></i>
                 </div>
                 <div class="menu-title">Deposit Request</div>

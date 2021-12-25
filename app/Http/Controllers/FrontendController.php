@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Auth;
+
+use App\Models\AddMoney;
 
 class FrontendController extends Controller
 {
@@ -15,7 +18,12 @@ class FrontendController extends Controller
   }
     public function index($id)
     {
-      return view('user.home');
+      $data['user']=User::all();
+      $data['deposit']=AddMoney::where('user_id',Auth::id())->first();
+
+      $data['sum_deposit']=AddMoney::where('user_id',Auth::id())->where('status','approve')->sum('amount');
+      //dd($data);
+      return view('user.home',compact('data'));
     }
     public function index2()
     {

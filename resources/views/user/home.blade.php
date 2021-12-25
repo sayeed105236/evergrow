@@ -14,9 +14,17 @@
 
                     <!-- Medal Card -->
                     <!--/ Medal Card -->
-
+                    @if(Session::has('Money_added'))
+                  <div class="alert alert-success" role="alert">
+                      <h4 class="alert-heading">Success</h4>
+                      <div class="alert-body">
+                          {{Session::get('Money_added')}}
+                      </div>
+                  </div>
+                  @endif
 
                     <div class="row match-height row-cols-1 row-cols-md-2 row-cols-xl-4 ">
+
 
 
 
@@ -26,7 +34,7 @@
                             <div class="d-flex align-items-center">
                               <div>
                                 <p class="mb-0 text-white">Main Wallet</p>
-                                <h4 class="my-1 text-white">$0.00</h4>
+                                <h4 class="my-1 text-white">{{$data['sum_deposit'] ? '$'.number_format((float)$data['sum_deposit'], 2, '.', '') : '$00.00'}}</h4>
                                 <a class="btn btn-success" href="#" data-bs-toggle="modal" data-bs-target="#addmoneyModal"><i class='bx bx-money'></i></a>
                                 <a class="btn btn-danger" href="#"><i class='bx bx-send'></i></a>
                               </div>
@@ -211,7 +219,46 @@
 
 
     <!-- END: Content-->
+    <script type="text/javascript">
 
+      //alert('success');
+      //console.log(this.getAttribute('id'));
+      //console.log(e.target.options[e.target.selectedIndex].getAttribute('id'));
+    //var wallet=  document.getElementById("wallet_id");
+    //wallet.innerHTML= id.value;
+    document.getElementById('DestinationOptions').addEventListener('change', function(e) {
+        var wallet2= e.target.options[e.target.selectedIndex].getAttribute('id');
+        //console.log(wallet2);
+        var wallet=  document.getElementById("wallet_id").value=wallet2;
+        //console.log(wallet);
+        //wallet.innerHTML= wallet2;
+    });
+
+    //  document.getElementById('').value(id.value);
+
+
+
+    </script>
+    <script type="text/javascript">
+
+      //alert('success');
+      //console.log(this.getAttribute('id'));
+      //console.log(e.target.options[e.target.selectedIndex].getAttribute('id'));
+    //var wallet=  document.getElementById("wallet_id");
+    //wallet.innerHTML= id.value;
+    document.getElementById('DestinationOptions2').addEventListener('change', function(e) {
+        var wallet3= e.target.options[e.target.selectedIndex].getAttribute('id');
+        //console.log(wallet2);
+        var wallet4=  document.getElementById("wallet_id").value=wallet3;
+        //console.log(wallet);
+        //wallet.innerHTML= wallet2;
+    });
+
+    //  document.getElementById('').value(id.value);
+
+
+
+    </script>
 
 
 @endsection
