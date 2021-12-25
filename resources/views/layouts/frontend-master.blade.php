@@ -9,7 +9,7 @@
 
     @include('admin.inc.style')
 
-    <title>Rukada - Responsive Bootstrap 5 Admin Template</title>
+    <title>{{ config('app.name', 'Evergrow - Forex and Crypto Asset Management') }}</title>
 </head>
 
 <body>

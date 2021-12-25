@@ -12,14 +12,14 @@
     <!--navigation-->
     <ul class="metismenu" id="menu">
         <li>
-            <a href="javascript:;" >
+            <a href="/home/dashboard/{{Auth::user()->id}}" >
                 <div class="parent-icon"><i class='bx bx-home-circle'></i>
                 </div>
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
         <li>
-            <a href="javascript:;">
+            <a href="{{route('register')}}">
                 <div class="parent-icon"><i class="bx bx-check-circle"></i>
                 </div>
                 <div class="menu-title">Registration</div>

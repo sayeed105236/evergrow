@@ -9,7 +9,7 @@
 
     @include('admin.inc.style')
 
-    <title>Rukada - Responsive Bootstrap 5 Admin Template</title>
+    <title>{{ config('app.name', 'Evergrow - Forex and Crypto Asset Management') }}</title>
 </head>
 
 <body>
@@ -26,9 +26,9 @@
         <!--start page wrapper -->
         <div class="page-wrapper">
             <div class="page-content">
-                <div class="card radius-10">
+
                     @yield('content')
-                </div>
+
             </div>
         </div>
         <!--end page wrapper -->

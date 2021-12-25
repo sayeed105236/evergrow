@@ -33,7 +33,7 @@ class User extends Authenticatable
       'country',
 
 
-      
+
       'sponsor',
       'position',
       'password',
@@ -70,4 +70,8 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+    public function sponsors()
+    {
+        return $this->belongsTo(User::class,'sponsor');
+    }
 }
