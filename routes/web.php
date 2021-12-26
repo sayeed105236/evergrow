@@ -17,8 +17,11 @@ use App\Http\Controllers\AdminShowPaymentController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function () {
+    return view('auth.login');
+});
 
-Route::get('/home', [FrontendController::class,'index2'])->name('home')->middleware('auth');
+//Route::get('/home', [FrontendController::class,'index2'])->name('home')->middleware('auth');
 Route::get('/home/dashboard/{id}', [FrontendController::class,'index'])->name('user-dashboard')->middleware('auth');
 Route::post('/user/dashboard/add-money', [AddMoneyController::class,'Store'])->name('money-store')->middleware('auth');
 

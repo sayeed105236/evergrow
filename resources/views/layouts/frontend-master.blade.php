@@ -26,9 +26,9 @@
         <!--start page wrapper -->
         <div class="page-wrapper">
             <div class="page-content">
-                <div class="card radius-10">
+
                     @yield('content')
-                </div>
+              
             </div>
         </div>
         <!--end page wrapper -->

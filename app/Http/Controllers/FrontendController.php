@@ -25,10 +25,7 @@ class FrontendController extends Controller
       //dd($data);
       return view('user.home',compact('data'));
     }
-    public function index2()
-    {
-      return view('home');
-    }
+    
 
 
 
