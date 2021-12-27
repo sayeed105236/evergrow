@@ -6,6 +6,8 @@ use App\Http\Controllers\UserListController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\AddMoneyController;
 use App\Http\Controllers\AdminShowPaymentController;
+use App\Http\Controllers\ReferralController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +26,8 @@ Route::get('/', function () {
 //Route::get('/home', [FrontendController::class,'index2'])->name('home')->middleware('auth');
 Route::get('/home/dashboard/{id}', [FrontendController::class,'index'])->name('user-dashboard')->middleware('auth');
 Route::post('/user/dashboard/add-money', [AddMoneyController::class,'Store'])->name('money-store')->middleware('auth');
+Route::get('/home/referrals/{id}', [ReferralController::class,'index'])->name('referrals')->middleware('auth');
+Route::get('/home/activation-package/{id}', [HomeController::class,'Activate'])->name('activation')->middleware('auth');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/user/dashboard/', function () {
     return view('user.home');

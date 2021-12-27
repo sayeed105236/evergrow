@@ -19,17 +19,17 @@
             </a>
         </li>
         <li>
-            <a href="{{route('register')}}">
+            <a href="#">
                 <div class="parent-icon"><i class="bx bx-check-circle"></i>
                 </div>
-                <div class="menu-title">Registration</div>
+                <div class="menu-title">Buy Unit</div>
             </a>
         </li>
         <li>
-            <a href="widgets.html">
+            <a href="/home/activation-package/{{Auth::user()->id}}">
                 <div class="parent-icon"><i class='bx bx-category'></i>
                 </div>
-                <div class="menu-title">Upgrade Package</div>
+                <div class="menu-title">Activate Package</div>
             </a>
         </li>
         <li>
@@ -39,7 +39,7 @@
                 <div class="menu-title">Webwork</div>
             </a>
             <ul>
-                <li> <a href="ecommerce-products.html"><i class="bx bx-right-arrow-alt"></i>My Sponsors</a>
+                <li> <a href="/home/referrals/{{Auth::user()->id}}"><i class="bx bx-right-arrow-alt"></i>My Sponsors</a>
                 </li>
                 <li> <a href="ecommerce-products-details.html"><i class="bx bx-right-arrow-alt"></i>My Team</a>
                 </li>
@@ -64,18 +64,12 @@
             </ul>
         </li>
         <li>
-            <a class="has-arrow" href="javascript:;">
+            <a class="" href="javascript:;">
                 <div class="parent-icon"><i class="bx bx-transfer"></i>
                 </div>
                 <div class="menu-title">Transfer History</div>
             </a>
-            <ul>
-                <li> <a href="content-grid-system.html"><i class="bx bx-right-arrow-alt"></i>Register Wallet</a>
-                </li>
-                <li> <a href="content-typography.html"><i class="bx bx-right-arrow-alt"></i>Cash Wallet</a>
-                </li>
 
-            </ul>
         </li>
         <li>
             <a class="has-arrow" href="javascript:;">
@@ -86,12 +80,7 @@
             <ul>
                 <li> <a href="icons-line-icons.html"><i class="bx bx-right-arrow-alt"></i>Sponsor Bonus History</a>
                 </li>
-                <li> <a href="icons-boxicons.html"><i class="bx bx-right-arrow-alt"></i>Daily Revenue History</a>
-                </li>
-                <li> <a href="icons-feather-icons.html"><i class="bx bx-right-arrow-alt"></i>Royalty Bonus History</a>
-                </li>
-                <li> <a href="icons-feather-icons.html"><i class="bx bx-right-arrow-alt"></i>Level Bonus History</a>
-                </li>
+
                 <li> <a href="icons-feather-icons.html"><i class="bx bx-right-arrow-alt"></i>Pair Bonus History</a>
                 </li>
                 <li> <a href="icons-feather-icons.html"><i class="bx bx-right-arrow-alt"></i>Team Bonus History</a>
