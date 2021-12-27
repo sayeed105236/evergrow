@@ -42,7 +42,7 @@
 
         <h5><strong style="height:130px;">You Current Available Balance: {{$data['sum_deposit'] ? '$'.number_format((float)$data['sum_deposit'], 2, '.', '') : '$00.00'}}</strong></h5>
 
-        <?php if ($data['sum_deposit']<0): ?>
+        <?php if ($data['sum_deposit']<=0): ?>
           <h6 style="color:red;">You don't have Enough Balance. Please Deposit funds in your account for activation.</h6>
         <?php endif; ?>
 
@@ -58,8 +58,8 @@
       <div class="col-md-6" >
         <div class="card mb-5 mb-lg-0 bg-success ">
           <div class="card-body">
-            <h5 class="card-title text-white text-uppercase text-center">Activate</h5>
-            <h6 class="card-price text-white text-center">$15<span class="term">/User</span></h6>
+            <h5 class="card-title text-white text-uppercase text-center">Activation Price</h5>
+            <h3 class="card-price text-white text-center">$<span class="term">15</span></h3>
             <hr class="my-4">
             <ul class="list-group list-group-flush">
               <li class="list-group-item bg-transparent text-white"><i class='bx bx-check me-2 font-18'></i>Single User</li>
@@ -72,10 +72,11 @@
               <li class="list-group-item bg-transparent text-white"><i class='bx bx-check me-2 font-18'></i>Monthly Status Reports</li>
             </ul>
              @if ($data['sum_deposit']>0)
-              <div class="d-grid"> <a href="#" class="btn btn-white my-2 radius-30">Activate Now</a>
+              <div class="d-grid"> <a href="#" data-bs-toggle="modal" data-bs-target="#addmoneyModal" class="btn btn-white my-2 radius-30">Activate Now</a>
               </div>
+                @include('user.modals.activation_modal')
             @else
-            <div class="d-grid"> <a disabled href="#" class="btn btn-white my-2 radius-30">Activate Now</a>
+            <div class="d-grid"> <button disabled href="#" class="btn btn-danger my-2 radius-30">Activate Now</button>
             </div>
             @endif
           </div>
