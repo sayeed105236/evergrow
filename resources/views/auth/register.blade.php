@@ -11,6 +11,8 @@
 	<link href="{{asset('assets/plugins/simplebar/css/simplebar.css')}}" rel="stylesheet" />
 	<link href="{{asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet" />
 	<link href="{{asset('assets/plugins/metismenu/css/metisMenu.min.css')}}" rel="stylesheet" />
+	<link href="{{asset('assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet" />
+	<link href="{{asset('assets/plugins/select2/css/select2-bootstrap4.css')}}" rel="stylesheet" />
 	<!-- loader-->
 	<link href="{{asset('assets/css/pace.min.css')}}" rel="stylesheet" />
 	<script src="{{asset('assets/js/pace.min.js')}}"></script>
@@ -100,9 +102,9 @@
                         </div>
                         <div class="form-group">
                             <label for="basicSelect">Select Country</label>
-                            <select class="select2Me form-control" name="country" id="country">
+                            <select class="single-select form-control" name="country" id="country">
                                 <option label="Choose Country"></option>
-
+																<option selected>Choose Country</option>
 
                                 <option value="AF">Afghanistan</option>
                                 <option value="AX">&Aring;land Islands</option>
@@ -366,9 +368,10 @@
 
                         <div class="form-group">
                             <label for="basicSelect">Select Sponsor</label>
-                            <select class="select2Me form-control" name="sponsor" id="sponsor">
+                            <select class="single-select form-control" name="sponsor" id="sponsor">
                                 <option label="Choose Sponsor"></option>
                                 @foreach ($users as $user)
+
 
                                     <option value="{{ $user->id }}">{{ ucwords($user->user_name) }}</option>
                                 @endforeach
@@ -378,8 +381,9 @@
 
                         <div class="form-group">
                             <label for="basicSelect">Select Position</label>
-                            <select class="select2Me form-control" name="position" id="position">
+                            <select class="single-select form-control" name="position" id="position">
                                 <option label="Choose position"></option>
+																<option selected>Select Position</option>
                                 <option value="2">Right</option>
                                 <option value="1">Left</option>
                             </select>
@@ -433,12 +437,32 @@
 	</div>
 	<!--end wrapper-->
 	<!-- Bootstrap JS -->
-	<script src="{{asset('assets/js/bootstrap.b')}}undle.min.js')}}"></script>
+	<script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
 	<!--plugins-->
 	<script src="{{asset('assets/js/jquery.min.js')}}"></script>
 	<script src="{{asset('assets/plugins/simplebar/js/simplebar.min.js')}}"></script>
 	<script src="{{asset('assets/plugins/metismenu/js/metisMenu.min.js')}}"></script>
 	<script src="{{asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}"></script>
+
+
+	<!--plugins-->
+
+	<script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
+	<script>
+		$('.single-select').select2({
+			theme: 'bootstrap4',
+			width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+			placeholder: $(this).data('placeholder'),
+			allowClear: Boolean($(this).data('allow-clear')),
+		});
+		$('.multiple-select').select2({
+			theme: 'bootstrap4',
+			width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+			placeholder: $(this).data('placeholder'),
+			allowClear: Boolean($(this).data('allow-clear')),
+		});
+	</script>
+
 	<!--Password show & hide js -->
 	<script>
 		$(document).ready(function () {

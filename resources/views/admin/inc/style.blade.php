@@ -15,4 +15,3 @@
 	<link rel="{{ asset('backend') }}/stylesheet" href="{{ asset('backend') }}/assets/css/dark-theme.css" />
 	<link rel="{{ asset('backend') }}/stylesheet" href="{{ asset('backend') }}/assets/css/semi-dark.css" />
 	<link rel="{{ asset('backend') }}/stylesheet" href="{{ asset('backend') }}/assets/css/header-colors.css" />
-	

@@ -41,6 +41,7 @@ class HomeController extends Controller
     public function ActivatePackage(Request $request)
     {
       //dd($request);
+      
       $deduct_amount = new AddMoney();
       $deduct_amount->user_id = Auth::id();
       $deduct_amount->amount = -($request['amount']);
