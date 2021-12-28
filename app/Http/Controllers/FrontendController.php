@@ -25,7 +25,12 @@ class FrontendController extends Controller
       //dd($data);
       return view('user.home',compact('data'));
     }
-    
+    public function sponsor_bonus($id)
+    {
+      $incomeData = AddMoney::where('user_id',Auth::id())->where('method','Sponsor Bonus')->get();
+      return view('user.sponsor_bonus',compact('incomeData'));
+    }
+
 
 
 

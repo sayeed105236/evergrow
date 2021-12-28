@@ -41,7 +41,7 @@
             <ul>
                 <li> <a href="/home/referrals/{{Auth::user()->id}}"><i class="bx bx-right-arrow-alt"></i>My Sponsors</a>
                 </li>
-                <li> <a href="ecommerce-products-details.html"><i class="bx bx-right-arrow-alt"></i>My Team</a>
+                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>My Team</a>
                 </li>
 
 
@@ -54,11 +54,11 @@
                 <div class="menu-title">History</div>
             </a>
             <ul>
-                <li> <a href="component-alerts.html"><i class="bx bx-right-arrow-alt"></i>Registration History</a>
+                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Registration History</a>
                 </li>
-                <li> <a href="component-accordions.html"><i class="bx bx-right-arrow-alt"></i>Upgrade History</a>
+                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Upgrade History</a>
                 </li>
-                <li> <a href="component-badges.html"><i class="bx bx-right-arrow-alt"></i>Withdraw History</a>
+                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Withdraw History</a>
                 </li>
 
             </ul>
@@ -78,14 +78,14 @@
                 <div class="menu-title">Income History</div>
             </a>
             <ul>
-                <li> <a href="icons-line-icons.html"><i class="bx bx-right-arrow-alt"></i>Sponsor Bonus History</a>
+                <li> <a href="/home/sponsor_bonus_history/{{Auth::user()->id}}"><i class="bx bx-right-arrow-alt"></i>Sponsor Bonus History</a>
                 </li>
 
-                <li> <a href="icons-feather-icons.html"><i class="bx bx-right-arrow-alt"></i>Pair Bonus History</a>
+                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Pair Bonus History</a>
                 </li>
-                <li> <a href="icons-feather-icons.html"><i class="bx bx-right-arrow-alt"></i>Team Bonus History</a>
+                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Team Bonus History</a>
                 </li>
-                <li> <a href="icons-feather-icons.html"><i class="bx bx-right-arrow-alt"></i>Club Bonus History</a>
+                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Club Bonus History</a>
                 </li>
             </ul>
         </li>

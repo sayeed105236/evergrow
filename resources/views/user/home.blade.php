@@ -100,8 +100,13 @@
                           <div class="card-body">
                             <div class="d-flex align-items-center">
                               <div>
+                                <?php
+                                $refferals = App\Models\User::where('sponsor',Auth::id())->get()->count('id');
+                                //dd($refferals);
+
+                                 ?>
                                 <p class="mb-0 text-white">My Referrals</p>
-                                <h4 class="my-1 text-white">0</h4>
+                                <h4 class="my-1 text-white">{{$refferals}}</h4>
 
                               </div>
                               <div class="widgets-icons bg-white text-dark ms-auto"><i class="bx bxs-group"></i>
@@ -115,8 +120,13 @@
                           <div class="card-body">
                             <div class="d-flex align-items-center">
                               <div>
+                                <?php
+                                $total_sponsor_bonus = App\Models\AddMoney::where('user_id',Auth::id())->where('method','Sponsor Bonus')->get()->sum('amount');
+                                //dd($total_level_bonus);
+
+                                 ?>
                                 <p class="mb-0 text-dark">Refer Bonus</p>
-                                <h4 class="my-1 text-dark">$0.00</h4>
+                                <h4 class="my-1 text-dark">${{$total_sponsor_bonus}}</h4>
 
                               </div>
                               <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>

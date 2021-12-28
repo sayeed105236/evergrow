@@ -40,7 +40,7 @@
 
 
 
-        <h5><strong style="height:130px;">You Current Available Balance: {{$data['sum_deposit'] ? '$'.number_format((float)$data['sum_deposit'], 2, '.', '') : '$00.00'}}</strong></h5>
+        <h5><strong style="height:130px;">Your Current Available Balance: {{$data['sum_deposit'] ? '$'.number_format((float)$data['sum_deposit'], 2, '.', '') : '$00.00'}}</strong></h5>
 
         <?php if ($data['sum_deposit']<=0): ?>
           <h6 style="color:red;">You don't have Enough Balance. Please Deposit funds in your account for activation.</h6>
