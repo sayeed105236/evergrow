@@ -64,7 +64,7 @@
             </ul>
         </li>
         <li>
-            <a class="" href="javascript:;">
+            <a class="" href="/home/transfer-report/{{Auth::user()->id}}">
                 <div class="parent-icon"><i class="bx bx-transfer"></i>
                 </div>
                 <div class="menu-title">Transfer History</div>

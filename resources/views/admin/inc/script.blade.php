@@ -17,6 +17,28 @@
 <script src="{{ asset('backend') }}/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
 <script src="{{ asset('backend') }}/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
 <script src="{{ asset('backend') }}/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+<script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
+
+
+
+
+
+<!--plugins-->
+
+<script>
+  $('.single-select').select2({
+    theme: 'bootstrap4',
+    width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+    placeholder: $(this).data('placeholder'),
+    allowClear: Boolean($(this).data('allow-clear')),
+  });
+  $('.multiple-select').select2({
+    theme: 'bootstrap4',
+    width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+    placeholder: $(this).data('placeholder'),
+    allowClear: Boolean($(this).data('allow-clear')),
+  });
+</script>
 <script>
     $(function() {
 			  $(".knob").knob();

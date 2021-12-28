@@ -29,7 +29,21 @@
                           {{Session::get('Money_added')}}
                       </div>
                   </div>
+                  @elseif(Session::has('Money_Transfered'))
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Success</h4>
+                    <div class="alert-body">
+                        {{Session::get('Money_Transfered')}}
+                    </div>
+                </div>
                   @endif
+                  @if(session()->has('error'))
+
+                   <h3 class="alert alert-danger" style="font-weight: 700;">
+                       {{ session()->get('error') }}
+                   </h3>
+
+               @endif
 
                     <div class="row match-height row-cols-1 row-cols-md-2 row-cols-xl-4 ">
 
@@ -44,9 +58,10 @@
                                 <p class="mb-0 text-white">Main Wallet</p>
                                 <h4 class="my-1 text-white">{{$data['sum_deposit'] ? '$'.number_format((float)$data['sum_deposit'], 2, '.', '') : '$00.00'}}</h4>
                                 <a class="btn btn-success" href="#" data-bs-toggle="modal" data-bs-target="#addmoneyModal"><i class='bx bx-money'></i></a>
-                                <a class="btn btn-danger" href="#"><i class='bx bx-send'></i></a>
+                                <a class="btn btn-danger" href="#" data-bs-toggle="modal" data-bs-target="#transfermoneyModal"><i class='bx bx-send'></i></a>
                               </div>
                                 @include('user.modals.add_moneymodal')
+                                  @include('user.modals.transfer_moneymodal')
                               <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
                               </div>
                             </div>
@@ -58,8 +73,13 @@
                           <div class="card-body">
                             <div class="d-flex align-items-center">
                               <div>
+                                <?php
+                                $earnings = App\Models\AddMoney::where('user_id',Auth::id())->where('method','Sponsor Bonus')->get()->sum('amount');
+                                //dd($transferData);
+
+                                 ?>
                                 <p class="mb-0 text-white">Total Bonus</p>
-                                <h4 class="my-1 text-white">$0.00</h4>
+                                <h4 class="my-1 text-white">{{isset($earnings) ? '$'.number_format((float)$earnings, 2, '.', '') : '$00.00'}}</h4>
                               </div>
                               <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
                               </div>
@@ -86,8 +106,13 @@
                           <div class="card-body">
                             <div class="d-flex align-items-center">
                               <div>
+                                <?php
+                                $transferData = App\Models\AddMoney::where('user_id',Auth::id())->where('type','Debit')->get()->sum('amount');
+                                //dd($transferData);
+
+                                 ?>
                                 <p class="mb-0 text-white">Total Transfer</p>
-                                <h4 class="my-1 text-white">$0.00</h4>
+                                <h4 class="my-1 text-white">${{abs($transferData)}}</h4>
                               </div>
                               <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
                               </div>
@@ -277,6 +302,7 @@
 
 
     </script>
+
 
 
 @endsection

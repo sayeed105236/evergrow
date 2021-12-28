@@ -35,7 +35,47 @@ class AddMoneyController extends Controller
 
     return back()->with('Money_added','Your request is Accepted. Wait for Confirmation!!');
   }
+  public function moneyTransfer(Request $request)
+  {
+      //dd($request);
+      $request->validate([
+
+          'user_id' => 'required',
+          'amount' => 'required',
+
+      ]);
+
+      //$g_set = GeneralSettings::first();
+      $sum_deposit=AddMoney::where('user_id',Auth::id())->where('status','approve')->sum('amount');
+      $calculated_amount= $request->amount;
+      //dd($sum_deposit < $calculated_amount,$sum_deposit,$calculated_amount);
+
+      if ($sum_deposit < $calculated_amount) {
+
+        return back()->with('error', 'Insufficient Balance');
+
+      };
+      $deduct = new AddMoney;
+      $deduct->user_id = Auth::id();
+      $deduct->receiver_id=$request->user_id;
+      $deduct->amount = -($request->amount);
+      $deduct->method ='Transfer';
+      $deduct->type ='Debit';
+      $deduct->status ='approve';
+      $deduct->save();
+
+      $deposit = new AddMoney;
+      $deposit->user_id = $request->user_id;
+    //  $deposit->receiver_id=$request->user_id;
+
+      $deposit->amount =$request->amount;
+      $deposit->method ='Transfer';
+      $deposit->type ='Credit';
+      $deposit->status ='approve';
+      $deposit->save();
+      return back()->with('Money_Transfered','Money Transfer Successfully!!');
+  }
 
 
-    
+
 }

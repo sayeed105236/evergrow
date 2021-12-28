@@ -41,7 +41,7 @@ class HomeController extends Controller
     public function ActivatePackage(Request $request)
     {
       //dd($request);
-      
+
       $deduct_amount = new AddMoney();
       $deduct_amount->user_id = Auth::id();
       $deduct_amount->amount = -($request['amount']);
@@ -56,6 +56,7 @@ class HomeController extends Controller
       $sponsor_bonus = new AddMoney();
       $sponsor_bonus->user_id = $request['sponsor'];
       $sponsor_bonus->amount = '6';
+      $sponsor_bonus->received_from= Auth::id();
       $sponsor_bonus->method = 'Sponsor Bonus';
       $sponsor_bonus->status = 'approve';
       $sponsor_bonus->created_at = Carbon::now();
