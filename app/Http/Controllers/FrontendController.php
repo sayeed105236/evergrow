@@ -35,6 +35,13 @@ class FrontendController extends Controller
         $transferData = AddMoney::where('user_id',Auth::id())->where('method','Transfer')->get();
         return view('user.transfer_history',compact(['transferData']));
     }
+    public function MyTeam(User $query,$id)
+    {
+
+        $user = User::where('id', $id)->first();
+        //$allChildren = User::pluck('name','id')->all();
+        return view('user.my_team',compact(['user']));
+    }
 
 
 

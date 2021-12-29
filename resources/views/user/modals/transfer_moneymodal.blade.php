@@ -18,7 +18,7 @@
                   <label for="select-country">Transfer User</label>
 
                   <select class="single-select form-control" name="user_id" required>
-                      <option label="select a user"></option>
+                      
 
                       @foreach ( $data['user'] as $row)
                           <option value="{{$row->id}}">{{$row->user_name}}</option>

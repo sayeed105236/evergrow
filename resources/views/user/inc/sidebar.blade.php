@@ -41,7 +41,7 @@
             <ul>
                 <li> <a href="/home/referrals/{{Auth::user()->id}}"><i class="bx bx-right-arrow-alt"></i>My Sponsors</a>
                 </li>
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>My Team</a>
+                <li> <a href="/home/my-team/{{Auth::user()->id}}"><i class="bx bx-right-arrow-alt"></i>My Team</a>
                 </li>
 
 
