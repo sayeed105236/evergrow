@@ -103,159 +103,356 @@
                            <table class="border-0 tree-table">
                                <tr>
                                    <td colspan="8">
-                                       <a class="text-center green_tree" href="299" data-toggle="popover" title=""
+                                       <a class="text-center green_tree" href="{{isset($user) ?$user->id : ''}}" data-toggle="popover" title=""
                                           data-content="<span>Name:</span> Company User<br/><span>Sponsor:</span> ><span>Registration Date:</span> 2020-09-07<br/><span>Package:</span> sahilkajle<br/><span>Own Investment:</span> ₹ 36951.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
                                           data-trigger="hover" data-html="true"> <img class="rounded-circle"
                                                                                       src="https://downassam.com/demo/public/images/green_user.png"
-                                                                                      alt="Company User"><br/><strong> john</strong><br/><span
+                                                                                      alt="Company User"><br/><strong> {{isset($user) ?$user->user_name : ''}}</strong><br/><span
                                                class="text-sm-center"></span></a><br/>
                                        <img class="img-fluid line" src="https://downassam.com/demo/public/images/line.png"
                                             alt="">
                                    </td>
                                </tr>
 
-                                                                   <tr>
-                                                                               <td colspan="4">
-                                               <a class="text-center green_tree"
-                                                  href="300"
-                                                  data-toggle="popover" title=""
-                                                  data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
-                                                  data-trigger="hover" data-html="true"> <img class="rounded-circle"
-                                                                                              src="https://downassam.com/demo/public/images/red_user.png"
-                                                                                              alt="Mohammed Saleem"><br/><strong>
-                                                       User 1
-                                                   </strong><br/><span class="text-sm-center"> </span></a><br/>
-                                               <img class="img-fluid line"
-                                                    src="https://downassam.com/demo/public/images/line.png" alt="">
-                                           </td>
+                                   @php
+                                       $child_left = $user->placements->where('position',1)->first();
 
-                                                                               <td colspan="4">
+                                       $child_right = $user->placements->where('position',2)->first();
+                                       $lev_two_left_l=$lev_two_left_r=$lev_two_right_l=$lev_two_right_r=null;
+                                       if ($child_left){
+                                           $lev_two_left_l = $child_left->placements->where('position',1)->first();
+                                       $lev_two_left_r = $child_left->placements->where('position',2)->first();
+                                       }
+                                       if ($child_right){
+                                           $lev_two_right_l = $child_right->placements->where('position',1)->first();
+                                       $lev_two_right_r = $child_right->placements->where('position',2)->first();
+                                       }
+                                       //dd($lev_three_left_l,$lev_three_left_r,$lev_three_right_l,$lev_three_right_r);
+                                   $lev_three_left_l_l=$lev_three_left_l_r=$lev_three_left_r_l=$lev_three_left_r_r = null;
+                                   $lev_three_right_l_l=$lev_three_right_l_r=$lev_three_right_r_l=$lev_three_right_r_r = null;
+                                   if ($lev_two_left_l){
+                                   $lev_three_left_l_l = $lev_two_left_l->placements->where('position',1)->first();
+                                   $lev_three_left_l_r = $lev_two_left_l->placements->where('position',2)->first();
+                                   }
+                                   if ($lev_two_left_r){
+                                   $lev_three_left_r_l = $lev_two_left_r->placements->where('position',1)->first();
+                                   $lev_three_left_r_r = $lev_two_left_r->placements->where('position',2)->first();
+                                   }
+                                   if ($lev_two_right_l){
+                                       $lev_three_right_l_l = $lev_two_right_l->placements->where('position',1)->first();
+                                       $lev_three_right_l_r = $lev_two_right_l->placements->where('position',2)->first();
+                                   }
+                                   if ($lev_two_right_r){
+                                       $lev_three_right_r_l = $lev_two_right_r->placements->where('position',1)->first();
+                                   $lev_three_right_r_r = $lev_two_right_r->placements->where('position',2)->first();
+                                   }
+
+                                   @endphp
+                                   <tr>
+                                       @if($child_left)
+                                           <td colspan="4">
                                                <a class="text-center green_tree"
-                                                  href="301"
+                                                  href="{{$child_left->id}}"
                                                   data-toggle="popover" title=""
                                                   data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
                                                   data-trigger="hover" data-html="true"> <img class="rounded-circle"
                                                                                               src="https://downassam.com/demo/public/images/red_user.png"
                                                                                               alt="Mohammed Saleem"><br/><strong>
-                                                       User 2
+                                                       {{$child_left->user_name}}
                                                    </strong><br/><span class="text-sm-center"> </span></a><br/>
                                                <img class="img-fluid line"
                                                     src="https://downassam.com/demo/public/images/line.png" alt="">
                                            </td>
+                                       @else
+                                           <td colspan="4">
+                                               <a class="text-center"
+                                                  href="#"
+                                                  data-toggle="popover" title=""
+                                                  data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
+                                                  data-trigger="hover" data-html="true"> <img class="rounded-circle"
+                                                                                              src="https://downassam.com/demo/public/images/red_user.png"
+                                                                                              alt="Mohammed Saleem"><br/><strong>
+
+                                                   </strong><br/><span class="text-sm-center"></span></a><br/>
+                                               <img class="img-fluid line"
+                                                    src="https://downassam.com/demo/public/images/line.png" alt="">
+                                           </td>
+                                       @endif
+
+                                       @if($child_right)
+                                           <td colspan="4">
+                                               <a class="text-center green_tree"
+                                                  href="{{$child_right->id}}"
+                                                  data-toggle="popover" title=""
+                                                  data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
+                                                  data-trigger="hover" data-html="true"> <img class="rounded-circle"
+                                                                                              src="https://downassam.com/demo/public/images/red_user.png"
+                                                                                              alt="Mohammed Saleem"><br/><strong>
+                                                       {{$child_right->user_name}}
+                                                   </strong><br/><span class="text-sm-center"> </span></a><br/>
+                                               <img class="img-fluid line"
+                                                    src="https://downassam.com/demo/public/images/line.png" alt="">
+                                           </td>
+                                       @else
+                                           <td colspan="4">
+                                               <a class="text-center"
+                                                  href="#"
+                                                  data-toggle="popover" title=""
+                                                  data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
+                                                  data-trigger="hover" data-html="true"> <img class="rounded-circle"
+                                                                                              src="https://downassam.com/demo/public/images/red_user.png"
+                                                                                              alt="Mohammed Saleem"><br/><strong>
+
+                                                   </strong><br/><span class="text-sm-center"></span></a><br/>
+                                               <img class="img-fluid line"
+                                                    src="https://downassam.com/demo/public/images/line.png" alt="">
+                                           </td>
+                                       @endif
 
                                    </tr>
                                    <tr>
-                                                                               <td colspan="2">
+                                       @if($lev_two_left_l)
+                                           <td colspan="2">
                                                <a class="text-center green_tree"
-                                                  href="302"
+                                                  href="{{$lev_two_left_l->id}}"
                                                   data-toggle="popover" title=""
                                                   data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
                                                   data-trigger="hover" data-html="true"> <img class="rounded-circle"
                                                                                               src="https://downassam.com/demo/public/images/red_user.png"
                                                                                               alt="Mohammed Saleem"><br/><strong>
-                                                       User 3
+                                                       {{$lev_two_left_l->user_name}}
                                                    </strong><br/><span class="text-sm-center"> </span></a><br/>
                                                <img class="img-fluid line"
                                                     src="https://downassam.com/demo/public/images/line.png" alt="">
                                            </td>
+                                       @else
+                                           <td colspan="2">
+                                               <a class="text-center"
+                                                  href="#"
+                                                  data-toggle="popover" title=""
+                                                  data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
+                                                  data-trigger="hover" data-html="true"> <img class="rounded-circle"
+                                                                                              src="https://downassam.com/demo/public/images/red_user.png"
+                                                                                              alt="Mohammed Saleem"><br/><strong>
 
+                                                   </strong><br/><span class="text-sm-center"></span></a><br/>
+                                               <img class="img-fluid line"
+                                                    src="https://downassam.com/demo/public/images/line.png" alt="">
+                                           </td>
+                                       @endif
+
+                                       @if($lev_two_left_r)
 
                                            <td colspan="2">
                                                <a class="text-center green_tree"
-                                                  href="304"
+                                                  href="{{$lev_two_left_r->id}}"
                                                   data-toggle="popover" title=""
                                                   data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
                                                   data-trigger="hover" data-html="true"> <img class="rounded-circle"
                                                                                               src="https://downassam.com/demo/public/images/red_user.png"
                                                                                               alt="Mohammed Saleem"><br/><strong>
-                                                       User 4
+                                                       {{$lev_two_left_r->user_name}}
                                                    </strong><br/><span class="text-sm-center"> </span></a><br/>
                                                <img class="img-fluid line"
                                                     src="https://downassam.com/demo/public/images/line.png" alt="">
                                            </td>
+                                       @else
+                                           <td colspan="2">
+                                               <a class="text-center"
+                                                  href="#"
+                                                  data-toggle="popover" title=""
+                                                  data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
+                                                  data-trigger="hover" data-html="true"> <img class="rounded-circle"
+                                                                                              src="https://downassam.com/demo/public/images/red_user.png"
+                                                                                              alt="Mohammed Saleem"><br/><strong>
+
+                                                   </strong><br/><span class="text-sm-center"></span></a><br/>
+                                               <img class="img-fluid line"
+                                                    src="https://downassam.com/demo/public/images/line.png" alt="">
+                                           </td>
+                                       @endif
 
                                        <!--- Lev two Right -->
-                                                                                       <td colspan="2">
+                                           @if($lev_two_right_l)
+                                               <td colspan="2">
                                                    <a class="text-center green_tree"
-                                                      href="305"
+                                                      href="{{$lev_two_right_l->id }}"
                                                       data-toggle="popover" title=""
                                                       data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
                                                       data-trigger="hover" data-html="true"> <img class="rounded-circle"
                                                                                                   src="https://downassam.com/demo/public/images/red_user.png"
                                                                                                   alt="Mohammed Saleem"><br/><strong>
-                                                           User 5
+                                                           {{$lev_two_right_l->user_name }}
                                                        </strong><br/><span class="text-sm-center"> </span></a><br/>
                                                    <img class="img-fluid line"
                                                         src="https://downassam.com/demo/public/images/line.png" alt="">
                                                </td>
+                                           @else
+                                               <td colspan="2">
+                                                   <a class="text-center"
+                                                      href="#"
+                                                      data-toggle="popover" title=""
+                                                      data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
+                                                      data-trigger="hover" data-html="true"> <img class="rounded-circle"
+                                                                                                  src="https://downassam.com/demo/public/images/red_user.png"
+                                                                                                  alt="Mohammed Saleem"><br/><strong>
 
-                                                                                       <td colspan="4">
+                                                       </strong><br/><span class="text-sm-center"></span></a><br/>
+                                                   <img class="img-fluid line"
+                                                        src="https://downassam.com/demo/public/images/line.png" alt="">
+                                               </td>
+                                           @endif
+
+                                           @if($lev_two_right_r)
+                                               <td colspan="4">
                                                    <a class="text-center green_tree"
-                                                      href="303"
+                                                      href="{{$lev_two_right_r->id}}"
                                                       data-toggle="popover" title=""
                                                       data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
                                                       data-trigger="hover" data-html="true"> <img class="rounded-circle"
                                                                                                   src="https://downassam.com/demo/public/images/red_user.png"
                                                                                                   alt="Mohammed Saleem"><br/><strong>
-                                                           User 6
+                                                           {{$lev_two_right_r->user_name}}
                                                        </strong><br/><span class="text-sm-center"> </span></a><br/>
                                                    <img class="img-fluid line"
                                                         src="https://downassam.com/demo/public/images/line.png" alt="">
                                                </td>
+                                           @else
+                                               <td colspan="2">
+                                                   <a class="text-center"
+                                                      href="#"
+                                                      data-toggle="popover" title=""
+                                                      data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
+                                                      data-trigger="hover" data-html="true"> <img class="rounded-circle"
+                                                                                                  src="https://downassam.com/demo/public/images/red_user.png"
+                                                                                                  alt="Mohammed Saleem"><br/><strong>
+
+                                                       </strong><br/><span class="text-sm-center"></span></a><br/>
+                                                   <img class="img-fluid line"
+                                                        src="https://downassam.com/demo/public/images/line.png" alt="">
+                                               </td>
+                                           @endif
 
                                    </tr>
 
                                    <tr>
                                        <!--left-->
-                                                                               <td>
+                                       @if($lev_three_left_l_l)
+                                           <td>
                                                <a class="text-center green_tree"
-                                                  href="307" data-toggle="popover" title="" data-content="<span>Name:</span> YUSUFF<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-11-26<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00" data-trigger="hover" data-html="true"> <img class="rounded-circle" src="https://downassam.com/demo/public/images/red_user.png" alt="YUSUFF"><br />
-                                                   <strong>  User 7</strong><br /><span class="text-sm-center"> </span ></a> </td>
-
-                                                                               <td>
+                                                  href="{{$lev_three_left_l_l->id}}" data-toggle="popover" title="" data-content="<span>Name:</span> YUSUFF<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-11-26<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00" data-trigger="hover" data-html="true"> <img class="rounded-circle" src="https://downassam.com/demo/public/images/red_user.png" alt="YUSUFF"><br />
+                                                   <strong>  {{$lev_three_left_l_l->user_name}}</strong><br /><span class="text-sm-center"> </span ></a> </td>
+                                       @else
+                                           <td>
                                                <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 9"><img src="https://downassam.com/demo/public/images/new_user.png" alt="New User"></a>
                                            </td>
+                                       @endif
 
-                                                                               <td>
+                                       @if($lev_three_left_l_r)
+
+                                           <td>
+                                               <a class="text-center green_tree" href="{{$lev_three_left_l_r->id}}" data-toggle="popover" title="" data-content="<span>Name:</span> YUSUFF<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-11-26<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00" data-trigger="hover" data-html="true"> <img class="rounded-circle" src="https://downassam.com/demo/public/images/red_user.png" alt="YUSUFF"><br />
+                                                   <strong>  {{$lev_three_left_l_r->user_name}}</strong><br /><span class="text-sm-center"> </span ></a>
+                                           </td>
+                                       @else
+                                           <td>
                                                <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 9"><img src="https://downassam.com/demo/public/images/new_user.png" alt="New User"></a>
                                            </td>
-                                                                                                                   <td>
-                                               <a class="text-center green_tree" href="308" data-toggle="popover" title="" data-content="<span>Name:</span> YUSUFF<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-11-26<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00" data-trigger="hover" data-html="true"> <img class="rounded-circle" src="https://downassam.com/demo/public/images/red_user.png" alt="YUSUFF"><br />
-                                                   <strong> User 11</strong><br /><span class="text-sm-center"> </span ></a>
+                                       @endif
+
+                                       @if($lev_three_left_r_l)
+                                           <td>
+                                               <a class="text-center green_tree" href="{{$lev_three_left_r_l->id}}" data-toggle="popover" title="" data-content="<span>Name:</span> YUSUFF<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-11-26<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00" data-trigger="hover" data-html="true"> <img class="rounded-circle" src="https://downassam.com/demo/public/images/red_user.png" alt="YUSUFF"><br />
+                                                   <strong> {{$lev_three_left_r_l->user_name}}</strong><br /><span class="text-sm-center"> </span ></a>
                                            </td>
+                                       @else
+                                           <td>
+                                               <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 9"><img src="https://downassam.com/demo/public/images/new_user.png" alt="New User"></a>
+                                           </td>
+                                       @endif
+                                       @if($lev_three_left_r_r)
+                                           <td>
+                                               <a class="text-center green_tree" href="{{$lev_three_left_r_r->id}}" data-toggle="popover" title="" data-content="<span>Name:</span> YUSUFF<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-11-26<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00" data-trigger="hover" data-html="true"> <img class="rounded-circle" src="https://downassam.com/demo/public/images/red_user.png" alt="YUSUFF"><br />
+                                                   <strong> {{$lev_three_left_r_r->user_name}}</strong><br /><span class="text-sm-center"> </span ></a>
+                                           </td>
+                                       @else
+                                           <td>
+                                               <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 9"><img src="https://downassam.com/demo/public/images/new_user.png" alt="New User"></a>
+                                           </td>
+                                       @endif
 
                                    <!--right-->
-                                                                               <td>
+                                       @if($lev_three_right_l_l)
+                                           <td>
                                                <a class="text-center green_tree"
-                                                  href="316"
+                                                  href="{{$lev_three_right_l_l->id}}"
                                                   data-toggle="popover" title=""
                                                   data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
                                                   data-trigger="hover" data-html="true"> <img class="rounded-circle"
                                                                                               src="https://downassam.com/demo/public/images/red_user.png"
                                                                                               alt="Mohammed Saleem"><br/><strong>
-                                                       User 8
+                                                       {{$lev_three_right_l_l->user_name}}
                                                    </strong><br/><span class="text-sm-center"> </span></a><br/>
                                            </td>
-
-                                                                               <td>
+                                       @else
+                                           <td>
                                                <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 5"><img src="https://downassam.com/demo/public/images/new_user.png" alt="New User"></a>
                                            </td>
+                                       @endif
 
-                                                                               <td>
-                                               <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 5"><img src="https://downassam.com/demo/public/images/new_user.png" alt="New User"></a>
-                                           </td>
-                                                                                                                   <td>
+                                       @if($lev_three_right_l_r)
+                                           <td>
                                                <a class="text-center green_tree"
-                                                  href=" 306"
+                                                  href="{{$lev_three_right_l_r->id}}"
                                                   data-toggle="popover" title=""
                                                   data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
                                                   data-trigger="hover" data-html="true"> <img class="rounded-circle"
                                                                                               src="https://downassam.com/demo/public/images/red_user.png"
                                                                                               alt="Mohammed Saleem"><br/><strong>
-                                                       User 9
+                                                       {{$lev_three_right_l_r->user_name}}
+                                                   </strong><br/><span class="text-sm-center"></span></a><br/>
+                                           </td>
+                                       @else
+                                           <td>
+                                               <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 5"><img src="https://downassam.com/demo/public/images/new_user.png" alt="New User"></a>
+                                           </td>
+                                       @endif
+
+                                       @if($lev_three_right_r_l)
+                                           <td>
+                                               <a class="text-center green_tree"
+                                                  href="{{$lev_three_right_r_l->id}}"
+                                                  data-toggle="popover" title=""
+                                                  data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
+                                                  data-trigger="hover" data-html="true"> <img class="rounded-circle"
+                                                                                              src="https://downassam.com/demo/public/images/red_user.png"
+                                                                                              alt="Mohammed Saleem"><br/><strong>
+                                                       {{$lev_three_right_r_l->user_name}}
+                                                   </strong><br/><span class="text-sm-center"></span></a><br/>
+                                           </td>
+                                       @else
+                                           <td>
+                                               <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 5"><img src="https://downassam.com/demo/public/images/new_user.png" alt="New User"></a>
+                                           </td>
+                                       @endif
+                                       @if($lev_three_right_r_r)
+                                           <td>
+                                               <a class="text-center green_tree"
+                                                  href=" {{$lev_three_right_r_r->id}}"
+                                                  data-toggle="popover" title=""
+                                                  data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
+                                                  data-trigger="hover" data-html="true"> <img class="rounded-circle"
+                                                                                              src="https://downassam.com/demo/public/images/red_user.png"
+                                                                                              alt="Mohammed Saleem"><br/><strong>
+                                                       {{$lev_three_right_r_r->user_name}}
                                                    </strong><br/><span class="text-sm-center"> </span></a><br/>
                                            </td>
-                                                                       </tr>
+                                       @else
+                                           <td>
+                                               <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 5"><img src="https://downassam.com/demo/public/images/new_user.png" alt="New User"></a>
+                                           </td>
+                                       @endif
+                                   </tr>
                            </table>
                        </div>
 

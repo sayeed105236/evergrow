@@ -390,7 +390,7 @@
                         </div>
                         <div class="form-group">
 
-                            <input type="hidden" id="placement_id" name="placement_id" class="form-control"
+                            <input type="text" id="placement_id" name="placement_id" class="form-control"
                                   required readonly />
 
                         </div>
@@ -435,6 +435,51 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+	    $(document).ready(function () {
+	        select2Me('');
+	    });
+	    $("#successMessage").delay(10000).slideUp(300);
+	    $('#sponsor').on('change', function (e) {
+	        $('#placement_id').val('');
+	        $("#position").select2("val", "");
+	    });
+
+	    $('#position').on('change', function (e) {
+	        var position = $(this).val();
+	        if (position == '') {
+	            return false;
+	        }
+	        var sponsor = $('#sponsor').val();
+	        if (sponsor == '') {
+	            $(this).val('');
+	            return alert('select a sponsor');
+	        }
+	        //var position=  $('#position').val();
+	        $.ajaxSetup({
+	            headers: {
+	                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	            }
+	        });
+	        $.ajax({
+	            //url: $(this).attr('action'),
+	            url: '{{route("referrals-checkposition")}}',
+	            type: 'POST',
+	            data: {sponsor: sponsor, position: position},
+	            //dataType: 'json',
+	            success: function (data) {
+	                $('#placement_id').val(data);
+	                //location.reload();
+	            },
+	            error: function (data) {
+	                console.log(data);
+	            }
+	        });
+
+	    });
+
+
+	</script>
 	<!--end wrapper-->
 	<!-- Bootstrap JS -->
 	<script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>

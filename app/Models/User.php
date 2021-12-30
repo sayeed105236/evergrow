@@ -31,12 +31,15 @@ class User extends Authenticatable
       'number',
       'gender',
       'country',
-
-
-
       'sponsor',
       'position',
       'password',
+      'placement_id',
+      'left_count',
+      'right_count',
+      'left_side',
+      'right_side',
+      'status',
 
 
     ];
@@ -73,5 +76,22 @@ class User extends Authenticatable
     public function sponsors()
     {
         return $this->belongsTo(User::class,'sponsor');
+    }
+    public function placements()
+    {
+        return $this->hasMany(User::class,'placement_id','user_name');
+    }
+    public function childs()
+    {
+        return $this->hasMany(User::class,'parent_id');
+    }
+    // recursive, loads all descendants
+    public function position()
+    {
+        return $this->hasMany(User::class,'placement_id','user_name');
+    }
+    public function childrenRecursive()
+    {
+        return $this->position()->with('childrenRecursive');
     }
 }
