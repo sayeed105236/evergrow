@@ -1,11 +1,9 @@
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
-        <div>
-            <img src="{{ asset('backend') }}/assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
-        </div>
-        <div>
-            <h4 class="logo-text">Evergrow</h4>
-        </div>
+      <div>
+            <img src="{{asset('assets/images/logo-img2.jpg')}}" height="40"
+            width="150" alt="" />
+      </div>
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
         </div>
     </div>
