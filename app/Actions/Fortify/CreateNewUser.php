@@ -101,6 +101,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
 
         ]);
+
         if ($position_id == 1){
             User::where('user_name', $placement_id)
                 ->update(['left_side' => $data->user_name]);
@@ -113,7 +114,8 @@ class CreateNewUser implements CreatesNewUsers
         //pair bonus
         $this->binary_count($placement_id,$position_id);
 
-
+//return true;
+        return $data;
         }
         public function binary_count($placement_id,$pos)
         {
@@ -174,6 +176,7 @@ class CreateNewUser implements CreatesNewUsers
             }
 
         }
+
         //level distribution
       //  $this->levelBonus($placement_id);
         //pair bonus
