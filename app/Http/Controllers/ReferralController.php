@@ -26,13 +26,13 @@ use Illuminate\Support\Facades\Storage;
 
 class ReferralController extends Controller
 {
-  
+
 
   public function __construct(StatefulGuard $guard)
   {
 
       //session()->put('checkout', true);
-      $this->middleware('auth');
+      //$this->middleware('auth');
       $this->guard = $guard;
   }
     public function index($id)
@@ -48,6 +48,54 @@ class ReferralController extends Controller
 
 
       return view('user.referrals',compact('users'));
+    }
+
+    public function checkPosition(Request $request){
+
+        $userName = User::where('id',$request['sponsor'])->pluck('user_name')->first();
+
+        $check_position = User::where('placement_id',$userName)->where('position',$request['position'])->orderBy('id','desc')->first();
+
+        if(is_null($check_position)){
+            $first = User::where('user_name',$userName)->orderBy('id','desc')->first();
+            return  $first->user_name;
+        }else{
+            $all = $check_position->childrenRecursive;
+        }
+
+
+        // loop through category ids and find all child categories until there are no more
+
+        if(count($all)>0)
+        {
+            foreach($all as $subcat){
+                if(count($subcat->childrenRecursive) > 0){
+                    //dd($subcat->childrenRecursive());
+                    foreach ($subcat->childrenRecursive as $item){
+                        return $this->check($item);
+                    }
+                }else{
+                    return $subcat->user_name;
+                }
+            }
+            //dd($all);
+        }
+        else
+        {
+            return $check_position->user_name;
+        }
+
+    }
+    public function check($subcat){
+        if(count($subcat->childrenRecursive) > 0){
+            foreach ($subcat->childrenRecursive as $item){
+                return  $this->check($item);
+                //return $item->user_name;
+            }
+        }else{
+            return $subcat->user_name;
+        }
+
     }
 
 }

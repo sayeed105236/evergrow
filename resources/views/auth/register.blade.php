@@ -5,6 +5,7 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 	<!--favicon-->
 	<link rel="icon" href="{{asset('assets/images/favicon-32x32.png')}}" type="image/png" />
 	<!--plugins-->
@@ -435,51 +436,7 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
-	    $(document).ready(function () {
-	        select2Me('');
-	    });
-	    $("#successMessage").delay(10000).slideUp(300);
-	    $('#sponsor').on('change', function (e) {
-	        $('#placement_id').val('');
-	        $("#position").select2("val", "");
-	    });
 
-	    $('#position').on('change', function (e) {
-	        var position = $(this).val();
-	        if (position == '') {
-	            return false;
-	        }
-	        var sponsor = $('#sponsor').val();
-	        if (sponsor == '') {
-	            $(this).val('');
-	            return alert('select a sponsor');
-	        }
-	        //var position=  $('#position').val();
-	        $.ajaxSetup({
-	            headers: {
-	                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-	            }
-	        });
-	        $.ajax({
-	            //url: $(this).attr('action'),
-	            url: '{{route("referrals-checkposition")}}',
-	            type: 'POST',
-	            data: {sponsor: sponsor, position: position},
-	            //dataType: 'json',
-	            success: function (data) {
-	                $('#placement_id').val(data);
-	                //location.reload();
-	            },
-	            error: function (data) {
-	                console.log(data);
-	            }
-	        });
-
-	    });
-
-
-	</script>
 	<!--end wrapper-->
 	<!-- Bootstrap JS -->
 	<script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
@@ -527,6 +484,52 @@
 	</script>
 	<!--app JS-->
 	<script src="{{asset('assets/js/app.js')}}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //select2Me('');
+        });
+        $("#successMessage").delay(10000).slideUp(300);
+        $('#sponsor').on('change', function (e) {
+            $('#placement_id').val('');
+            $("#position").select2("val", "");
+        });
+
+        $('#position').on('change', function (e) {
+            var position = $(this).val();
+            if (position == '') {
+                return false;
+            }
+            var sponsor = $('#sponsor').val();
+            if (sponsor == '') {
+                $(this).val('');
+                return alert('select a sponsor');
+            }
+            //var position=  $('#position').val();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                //url: $(this).attr('action'),
+                url: '{{route("referrals-checkposition")}}',
+                type: 'POST',
+                data: {sponsor: sponsor, position: position},
+                //dataType: 'json',
+                success: function (data) {
+                    $('#placement_id').val(data);
+                    //location.reload();
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+
+        });
+
+
+    </script>
 </body>
 
 </html>
