@@ -75,11 +75,13 @@
                               <div>
                                 <?php
                                 $earnings = App\Models\AddMoney::where('user_id',Auth::id())->where('method','Sponsor Bonus')->get()->sum('amount');
+                                $total_pair_bonus = App\Models\AddMoney::where('user_id',Auth::id())->where('method','Pair Bonus')->get()->sum('amount');
                                 //dd($transferData);
+                                $bonus= $earnings+$total_pair_bonus;
 
                                  ?>
                                 <p class="mb-0 text-white">Total Bonus</p>
-                                <h4 class="my-1 text-white">{{isset($earnings) ? '$'.number_format((float)$earnings, 2, '.', '') : '$00.00'}}</h4>
+                                <h4 class="my-1 text-white">{{isset($bonus) ? '$'.number_format((float)$bonus, 2, '.', '') : '$00.00'}}</h4>
                               </div>
                               <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
                               </div>
