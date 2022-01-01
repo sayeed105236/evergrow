@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use App\Models\PairCount;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -84,7 +86,7 @@ class CreateNewUser implements CreatesNewUsers
         ])->validate();
         $placement_id = $input['placement_id'];
         $position_id = $input['position'];
-        return $data= User::create([
+        $data= User::create([
             'name' => $input['name'],
             'user_name' => $input['user_name'],
               'number' => $input['number'],
