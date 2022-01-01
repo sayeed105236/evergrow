@@ -45,7 +45,7 @@ class AddMoneyController extends Controller
 
       ]);
 
-      //$g_set = GeneralSettings::first();
+      
       $sum_deposit=AddMoney::where('user_id',Auth::id())->where('status','approve')->sum('amount');
       $calculated_amount= $request->amount;
       //dd($sum_deposit < $calculated_amount,$sum_deposit,$calculated_amount);
