@@ -80,7 +80,7 @@
                 <li> <a href="/home/sponsor_bonus_history/{{Auth::user()->id}}"><i class="bx bx-right-arrow-alt"></i>Sponsor Bonus History</a>
                 </li>
 
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Pair Bonus History</a>
+                <li> <a href="/home/binary_bonus_history/{{Auth::user()->id}}"><i class="bx bx-right-arrow-alt"></i>Binary Bonus History</a>
                 </li>
                 <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Team Bonus History</a>
                 </li>

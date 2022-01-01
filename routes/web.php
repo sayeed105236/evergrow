@@ -30,6 +30,7 @@ Route::get('/home/referrals/{id}', [ReferralController::class,'index'])->name('r
 Route::get('/home/activation-package/{id}', [HomeController::class,'Activate'])->name('activation')->middleware('auth');
 Route::post('/home/activate-package/', [HomeController::class,'ActivatePackage'])->name('activate-package')->middleware('auth');
 Route::get('/home/sponsor_bonus_history/{id}', [FrontendController::class,'sponsor_bonus'])->name('sponsor-bonus-history')->middleware('auth');
+Route::get('/home/binary_bonus_history/{id}', [FrontendController::class,'pair_bonus'])->name('pair-bonus-history')->middleware('auth');
 Route::post('/user/dashboard/transfer-money', [AddMoneyController::class,'moneyTransfer'])->name('money-transfer')->middleware('auth');
 Route::get('/home/transfer-report/{id}', [FrontendController::class,'transferReport'])->name('transfer-report')->middleware('auth');
 Route::get('/home/my-team/{id}', [FrontendController::class,'MyTeam'])->name('my-team')->middleware('auth');

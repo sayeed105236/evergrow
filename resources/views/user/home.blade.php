@@ -164,9 +164,14 @@
                         <div class="card radius-10 bg-danger">
                           <div class="card-body">
                             <div class="d-flex align-items-center">
+                              <?php
+                              $total_pair_bonus = App\Models\AddMoney::where('user_id',Auth::id())->where('method','Pair Bonus')->get()->sum('amount');
+                              //dd($total_level_bonus);
+
+                               ?>
                               <div>
                                 <p class="mb-0 text-white">Binary Bonus</p>
-                                <h4 class="my-1 text-white">$0.00</h4>
+                                <h4 class="my-1 text-white">${{$total_pair_bonus}}</h4>
 
                               </div>
                               <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
