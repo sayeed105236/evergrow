@@ -45,7 +45,7 @@ class AddMoneyController extends Controller
 
       ]);
 
-      
+
       $sum_deposit=AddMoney::where('user_id',Auth::id())->where('status','approve')->sum('amount');
       $calculated_amount= $request->amount;
       //dd($sum_deposit < $calculated_amount,$sum_deposit,$calculated_amount);
@@ -62,6 +62,9 @@ class AddMoneyController extends Controller
       $deduct->method ='Transfer';
       $deduct->type ='Debit';
       $deduct->status ='approve';
+
+    
+
       $deduct->save();
 
       $deposit = new AddMoney;

@@ -377,7 +377,7 @@
                             <input type="text" id="sponsor" name="sponsor" class="form-control"
                                    placeholder="Enter User Name" required/>
 
-<div id="suggestUser"></div>
+																	 <div id="suggestUser"></div>
                         </div>
 
                         <div class="form-group">

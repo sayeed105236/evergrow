@@ -71,6 +71,16 @@
 
               <li class="list-group-item bg-transparent text-white"><i class='bx bx-check me-2 font-18'></i>Monthly Status Reports</li>
             </ul>
+            <?php
+            $activation= App\Models\User::where('id',Auth::id())->first();
+            //dd($activation->activation_status);
+
+             ?>
+             @if($activation->activation_status>0)
+             <div class="d-grid"> <button disabled href="#" class="btn btn-success my-2 radius-30">Already Activated</button>
+             </div>
+
+             @else
              @if ($data['sum_deposit']>0)
               <div class="d-grid"> <a href="#" data-bs-toggle="modal" data-bs-target="#addmoneyModal" class="btn btn-white my-2 radius-30">Activate Now</a>
               </div>
@@ -78,6 +88,8 @@
             @else
             <div class="d-grid"> <button disabled href="#" class="btn btn-danger my-2 radius-30">Activate Now</button>
             </div>
+            @endif
+
             @endif
           </div>
         </div>

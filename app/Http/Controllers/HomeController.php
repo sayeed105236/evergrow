@@ -48,7 +48,12 @@ class HomeController extends Controller
       $deduct_amount->method = 'Activation Charge';
       $deduct_amount->status = 'approve';
       $deduct_amount->created_at = Carbon::now();
+
       $deduct_amount->save();
+
+      $deduct = User::find(Auth::user()->id);
+      $deduct->activation_status= '1';
+      $deduct->save();
 
 
 
