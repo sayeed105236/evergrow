@@ -22,55 +22,10 @@ class CreateNewUser implements CreatesNewUsers
      * @return \App\Models\User
      */
 
-     public function checkPosition(Request $request){
-         $userName = User::where('id',$request['sponsor'])->pluck('user_name')->first();
-
-         $check_position = User::where('placement_id',$userName)->where('position',$request['position'])->orderBy('id','desc')->first();
-
-         if(is_null($check_position)){
-             $first = User::where('user_name',$userName)->orderBy('id','desc')->first();
-             return  $first->user_name;
-         }else{
-             $all = $check_position->childrenRecursive;
-         }
-
-
-         // loop through category ids and find all child categories until there are no more
-
-         if(count($all)>0)
-         {
-             foreach($all as $subcat){
-                 if(count($subcat->childrenRecursive) > 0){
-                     //dd($subcat->childrenRecursive());
-                     foreach ($subcat->childrenRecursive as $item){
-                        return $this->check($item);
-                     }
-                 }else{
-                     return $subcat->user_name;
-                 }
-             }
-             //dd($all);
-         }
-         else
-         {
-             return $check_position->user_name;
-         }
-
-     }
-    public function check($subcat){
-        if(count($subcat->childrenRecursive) > 0){
-            foreach ($subcat->childrenRecursive as $item){
-            return  $this->check($item);
-                //return $item->user_name;
-            }
-        }else{
-            return $subcat->user_name;
-        }
-
-    }
 
     public function create(array $input)
     {
+
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'user_name'=> ['required','unique:users'],
@@ -86,13 +41,14 @@ class CreateNewUser implements CreatesNewUsers
         ])->validate();
         $placement_id = $input['placement_id'];
         $position_id = $input['position'];
+        $sponsor =  User::where('user_name','like',$input['sponsor'])->select('id','user_name')->first();
         $data= User::create([
             'name' => $input['name'],
             'user_name' => $input['user_name'],
               'number' => $input['number'],
                 'gender' => $input['gender'],
                   'country' => $input['country'],
-                    'sponsor' => $input['sponsor'],
+                    'sponsor' => $sponsor->id,
 
                       'placement_id' =>$placement_id,
                       'position' => $position_id,
@@ -115,6 +71,7 @@ class CreateNewUser implements CreatesNewUsers
         $this->binary_count($placement_id,$position_id);
 
 //return true;
+        //dd($data);
         return $data;
         }
         public function binary_count($placement_id,$pos)

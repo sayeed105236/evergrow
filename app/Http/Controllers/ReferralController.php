@@ -9,6 +9,7 @@ use App\Models\AddMoney;
 
 
 use Carbon\Carbon;
+use Facade\FlareClient\Http\Response;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Http\RedirectResponse;
@@ -52,7 +53,7 @@ class ReferralController extends Controller
 
     public function checkPosition(Request $request){
 
-        $userName = User::where('id',$request['sponsor'])->pluck('user_name')->first();
+        $userName = User::where('user_name','like',$request['sponsor'])->pluck('user_name')->first();
 
         $check_position = User::where('placement_id',$userName)->where('position',$request['position'])->orderBy('id','desc')->first();
 
@@ -94,6 +95,18 @@ class ReferralController extends Controller
             }
         }else{
             return $subcat->user_name;
+        }
+
+    }
+
+    public function getSponsor(Request $request)
+    {
+
+        $userName = User::where('user_name','like',$request->search)->select('id','user_name')->first();
+        if ($userName){
+            return response()->json(['success'=>'<span style="color: green;">User found!!</span>','data'=>$userName],200);
+        }else{
+            return response()->json(['success'=>'<span style="color: red;">User not found!!</span>'],200);
         }
 
     }

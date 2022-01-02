@@ -357,15 +357,9 @@
                             </select>
                         </div>
 
-                        <?php
-
-                        //dd($packages);
+                        {{--@php
                         $users = App\Models\User::all();
-
-                        ?>
-
-
-
+                        @endphp
 
                         <div class="form-group">
                             <label for="basicSelect">Select Sponsor</label>
@@ -377,12 +371,18 @@
                                     <option value="{{ $user->id }}">{{ ucwords($user->user_name) }}</option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div>--}}
+                        <div class="form-group">
+                            <label class="form-label" for="basic-default-email">Sponsor</label>
+                            <input type="text" id="sponsor" name="sponsor" class="form-control"
+                                   placeholder="Enter User Name" required/>
 
+<div id="suggestUser"></div>
+                        </div>
 
                         <div class="form-group">
                             <label for="basicSelect">Select Position</label>
-                            <select class="single-select form-control" name="position" id="position">
+                            <select disabled class="single-select form-control" name="position" id="position">
                                 <option label="Choose position"></option>
 																<option selected>Select Position</option>
                                 <option value="2">Right</option>
@@ -528,6 +528,31 @@
 
         });
 
+        $("body").on("keyup","#sponsor",function(){
+            let searchData = $("#sponsor").val();
+            if(searchData.length>0){
+                $.ajax({
+                    type:'POST',
+                    url: '{{route("get-sponsor")}}',
+                    data:{search:searchData},
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    success:function(result){
+                        $('#suggestUser').html(result.success)
+                        console.log(result.data)
+                        if (result.data){
+                            $("#position").val("");
+                            $("#placement_id").val("");
+                            $("#position").removeAttr('disabled');
+                        }else{
+                            $("#position").val("");
+                            $("#placement_id").val("");
+                            $('#position').prop('disabled', true);
+                        }
+                    }
+                });
+            }
+            if(searchData.length<1) $('#suggestUser').html("")
+        })
 
     </script>
 </body>

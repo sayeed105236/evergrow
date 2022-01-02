@@ -35,6 +35,7 @@ Route::get('/home/transfer-report/{id}', [FrontendController::class,'transferRep
 Route::get('/home/my-team/{id}', [FrontendController::class,'MyTeam'])->name('my-team')->middleware('auth');
 //Route::post('/home/check-position', [RegistrationController::class,'checkPosition'])->name('referrals-checkposition');
 Route::post('/home/check-position', [ReferralController::class,'checkPosition'])->name('referrals-checkposition');
+Route::post('/home/get-sponsor', [ReferralController::class,'getSponsor'])->name('get-sponsor');
 Route::middleware(['auth:sanctum', 'verified'])->get('/user/dashboard/', function () {
     return view('user.home');
 })->name('dashboard');
