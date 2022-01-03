@@ -18,6 +18,17 @@
 </div>
 <!--end breadcrumb-->
 <h6 class="mb-0 text-uppercase" style="color:#08157A;"><strong>"Welcome Mr. {{Auth::user()->name}} to Evergrow"</strong></h6>
+<br>
+<?php
+$activation= App\Models\User::where('id',Auth::id())->first();
+//dd($activation->activation_status);
+
+ ?>
+  @if($activation->activation_status>0)
+<h5 class="mb-0 text-uppercase" style="color:green;"><strong>User Status: Activated</strong></h5>
+@else
+<h5 class="mb-0 text-uppercase" style="color:red;"><strong>User Status: Inactive</strong></h5>
+@endif
 <hr/>
 
                     <!-- Medal Card -->
@@ -253,7 +264,47 @@
                           </div>
                         </div>
                       </div>
+                      <div class="col">
+                        <div class="card radius-10 bg-info">
+                          <div class="card-body">
+                            <div class="d-flex align-items-center">
+                              <div>
+                                <?php
+                              $left_count= App\Models\User::where('id',Auth::id())->first();
+                                //dd($total_level_bonus);
+
+                                 ?>
+                                <p class="mb-0 text-dark">Left Count</p>
+                                <h4 class="my-1 text-dark">{{$left_count->left_count}}</h4>
+
+                              </div>
+                              <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
+                              </div>
+                            </div>
+                          </div>
                         </div>
+                      </div>
+                      <div class="col">
+                        <div class="card radius-10 bg-warning">
+                          <div class="card-body">
+                            <div class="d-flex align-items-center">
+                              <div>
+                                <?php
+                              $right_count= App\Models\User::where('id',Auth::id())->first();
+                                //dd($total_level_bonus);
+
+                                 ?>
+                                <p class="mb-0 text-dark">Right Count</p>
+                                <h4 class="my-1 text-dark">{{$right_count->right_count}}</h4>
+
+                              </div>
+                              <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
 
 
 
