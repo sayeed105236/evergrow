@@ -120,16 +120,21 @@ class CreateNewUser implements CreatesNewUsers
             if ($user->left_count == $user->right_count){
                 $data = PairCount::where('user_id',$user->id)->where('date',Carbon::today())->get()->toArray();
                 $date= date('Y-m-d');
-                if(count($data) > 0){
-                   DB::statement("UPDATE pair_counts SET no_of_pair = `no_of_pair`+1 WHERE date = '$date' and user_id = '$user->id'");
-                //    DB::statement("UPDATE pair_counts SET no_of_pair = '$user->right_count' WHERE date = '$date' and user_id = '$user->id'");
-                }else{
-                    $insert= new PairCount();
-                    $insert->user_id = $user->id;
-                    $insert->date = Carbon::today();
-                    $insert->no_of_pair = 1;
-                    $insert->save();
+                if($user->left_count == 1 || $user->left_count == 3 || $user->left_count == 7 || $user->left_count == 15 || $user->left_count == 30){
+                    if(count($data) > 0){
+
+                        DB::statement("UPDATE pair_counts SET no_of_pair = `no_of_pair`+1 WHERE date = '$date' and user_id = '$user->id'");
+                        //    DB::statement("UPDATE pair_counts SET no_of_pair = '$user->right_count' WHERE date = '$date' and user_id = '$user->id'");
+                    }
+                    else{
+                        $insert= new PairCount();
+                        $insert->user_id = $user->id;
+                        $insert->date = Carbon::today();
+                        $insert->no_of_pair = 1;
+                        $insert->save();
+                    }
                 }
+
             }
 
         }
