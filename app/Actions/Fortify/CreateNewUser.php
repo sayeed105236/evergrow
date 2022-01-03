@@ -86,7 +86,7 @@ class CreateNewUser implements CreatesNewUsers
 
                 DB::statement("UPDATE users SET $pos = `$pos`+1 WHERE user_name = '$placement_id'");
 
-                $this->is_pair_generate($placement_id);
+                //$this->is_pair_generate($placement_id);
                 $pos= $this->find_position_id($placement_id);
                 $placement_id= $this->find_placement_id($placement_id);
 

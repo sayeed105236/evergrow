@@ -67,7 +67,7 @@ class HomeController extends Controller
       $sponsor_bonus->created_at = Carbon::now();
       $sponsor_bonus->save();
 
-      return back()->with('package_activated','Congratulations!! Your Pacakge is Now Activated');
+      return back()->with('package_activated','Congratulations!! Your Package is Now Activated');
     }
 
 }
