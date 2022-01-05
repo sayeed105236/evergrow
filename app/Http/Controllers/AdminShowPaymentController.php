@@ -40,18 +40,22 @@ class AdminShowPaymentController extends Controller
     {
       $withdraw= Withdraw::all();
 
-      return view('admin.pages.deposit_request.withdraw',compact('withdraw'));
+      return view('admin.withdraw_request',compact('withdraw'));
 
     }
     public function Withdrawapprove($id)
     {
         Withdraw::findOrFail($id)->update([
             'status'=>'approve'
+
         ]);
+      
         $notification=array(
             'message'=>'Approved!!!',
             'alert-type'=>'success'
         );
+
+
         return Redirect()->back()->with($notification);
     }
     public function Withdrawdestroy($id)
