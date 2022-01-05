@@ -8,6 +8,7 @@ use App\Http\Controllers\AddMoneyController;
 use App\Http\Controllers\AdminShowPaymentController;
 use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserPaymentMethodController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,12 @@ Route::get('/home/binary_bonus_history/{id}', [FrontendController::class,'pair_b
 Route::post('/user/dashboard/transfer-money', [AddMoneyController::class,'moneyTransfer'])->name('money-transfer')->middleware('auth');
 Route::get('/home/transfer-report/{id}', [FrontendController::class,'transferReport'])->name('transfer-report')->middleware('auth');
 Route::get('/home/my-team/{id}', [FrontendController::class,'MyTeam'])->name('my-team')->middleware('auth');
+// User Payment Method
+Route::get('/home/payment-method/{id}', [UserPaymentMethodController::class,'index'])->name('user-payment-method')->middleware('auth');
+Route::post('/home/payment-method/store', [UserPaymentMethodController::class,'Store'])->name('user-payment-method-store')->middleware('auth');
+Route::get('/home/payment-method/delete/{id}', [UserPaymentMethodController::class,'Delete'])->middleware('auth');
+Route::post('/home/payment-method/update', [UserPaymentMethodController::class,'Update'])->name('user-payment-method-update')->middleware('auth');
+Route::post('/user/dashboard/wallet-withdraw', [AddMoneyController::class,'walletWithdraw'])->name('wallet-withdraw')->middleware('auth');
 //Route::post('/home/check-position', [RegistrationController::class,'checkPosition'])->name('referrals-checkposition');
 Route::post('/home/check-position', [ReferralController::class,'checkPosition'])->name('referrals-checkposition');
 Route::post('/home/get-sponsor', [ReferralController::class,'getSponsor'])->name('get-sponsor');
@@ -53,3 +60,7 @@ Route::post('/admin/payment-method/update', [PaymentMethodController::class,'Upd
 Route::get('/admin/add-money/requests', [AdminShowPaymentController::class,'Manage'])->name('deposit-manage')->middleware('authadmin');
 Route::get('/admin/add-money-approve/{id}', [AdminShowPaymentController::class,'approve'])->middleware('authadmin');
 Route::get('/admin/add-money-delete/{id}', [AdminShowPaymentController::class,'destroy'])->middleware('authadmin');
+//admin withdraw request
+Route::get('/admin/withdraw-money/requests', [AdminShowPaymentController::class,'WithdrawManage'])->name('withdraw-manage')->middleware('authadmin');
+Route::get('/admin/withdraw-money-approve/{id}', [AdminShowPaymentController::class,'Withdrawapprove'])->middleware('authadmin');
+Route::get('/admin/withdraw-money-delete/{id}', [AdminShowPaymentController::class,'Withdrawdestroy'])->middleware('authadmin');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AddMoney;
+use App\Models\Withdraw;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -63,7 +64,7 @@ class AddMoneyController extends Controller
       $deduct->type ='Debit';
       $deduct->status ='approve';
 
-    
+
 
       $deduct->save();
 
@@ -77,6 +78,47 @@ class AddMoneyController extends Controller
       $deposit->status ='approve';
       $deposit->save();
       return back()->with('Money_Transfered','Money Transfer Successfully!!');
+  }
+  public function walletWithdraw(Request $request)
+  {
+      $request->validate([
+
+          'user_id' => 'required',
+          'amount' => 'required',
+
+      ]);
+
+
+      $sum_deposit=AddMoney::where('user_id',Auth::id())->sum('amount');
+      $calculated_amount= $request->amount;
+      //dd($sum_deposit < $calculated_amount,$sum_deposit,$calculated_amount);
+
+      if ($sum_deposit < $calculated_amount) {
+        return back()->with('error', 'Insufficient Balance');
+        //  throw new \Exception("Insufficient Balance", 200);
+      };
+
+      $user_id = $request->user_id;
+      $amount = $request->amount;
+      $payment_method_id=$request->payment_method_id;
+
+      $withdraw = new Withdraw();
+      $withdraw-> user_id = $user_id;
+      $withdraw-> amount =$amount;
+      $withdraw->payment_method_id=$payment_method_id;
+
+
+      $withdraw->save();
+
+      $deduct = new AddMoney;
+      $deduct->user_id = Auth::id();
+      $deduct->amount = -($request->amount);
+      $deduct->method ='Withdraw';
+
+      $deduct->status ='pending';
+      $deduct->save();
+
+      return back()->with('Money_added','Your request is Accepted. Wait for Confirmation!!');
   }
 
 

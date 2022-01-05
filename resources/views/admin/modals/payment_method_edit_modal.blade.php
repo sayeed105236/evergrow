@@ -15,6 +15,7 @@
 
                                   <form action="{{route('payment-method-update')}}" method="post">
                                     @csrf
+
                                     <input type="hidden" name="id" value="{{$row->id}}">
                                       <div class="form-group">
                                           <label class="form-label" for="basic-default-name">Payment Method Name</label>

@@ -98,12 +98,12 @@
             <ul>
                 <li> <a href="form-elements.html"><i class="bx bx-right-arrow-alt"></i>Profile</a>
                 </li>
-                <li> <a href="form-input-group.html"><i class="bx bx-right-arrow-alt"></i>Payment Method</a>
+                <li> <a href="/home/payment-method/{{Auth::user()->id}}"><i class="bx bx-right-arrow-alt"></i>Payment Method</a>
                 </li>
             </ul>
         </li>
         <li>
-            <a href="https://themeforest.net/user/codervent" target="_blank">
+            <a href="#" target="_blank">
                 <div class="parent-icon"><i class="bx bx-support"></i>
                 </div>
                 <div class="menu-title">Support</div>

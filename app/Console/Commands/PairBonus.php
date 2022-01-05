@@ -62,12 +62,15 @@ class PairBonus extends Command
             if (count($result) == 2) {
 
                 $min_pair = min($result[0]['active_sponsor'], $result[1]['active_sponsor']);
+                  //dd($min_pair);
 
                 if ($min_pair == 1 || $min_pair == 3 || $min_pair == 7 || $min_pair == 15 || $min_pair == 30){
                     $pair_bonus = $min_pair * 2;
                     $pair_check = PairLog::where('sponsor_id',$result[0]['sponsor'])->pluck('pair')->toArray();
                     if (count($pair_check) > 0){
-                        $pair_given = array_intersect($pair_check, [1,2,3,15,30]);
+                        $pair_given = array_intersect($pair_check, [1,3,7,15,30]);
+                        //dd($pair_given);
+
 
                         if (!in_array($min_pair,$pair_given)) {
                             $bonus_amount = new AddMoney();
@@ -82,6 +85,7 @@ class PairBonus extends Command
                             $pair_log->sponsor_id = $result[0]['sponsor'];
                             $pair_log->pair = $min_pair;
                             $pair_log->status = 1;
+
 
                             $pair_log->save();
                         }
