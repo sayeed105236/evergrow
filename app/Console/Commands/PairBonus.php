@@ -49,7 +49,7 @@ class PairBonus extends Command
             //->join('packages', 'users.package_id', '=', 'packages.id')
             ->groupBy('users.sponsor','users.position')
             ->where('users.position','!=',null)
-            ->where('users.activation_status',0)
+            ->where('users.activation_status',1)
             ->get()->toArray();
 
         $results = array();
