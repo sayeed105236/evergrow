@@ -24,6 +24,7 @@ $activation= App\Models\User::where('id',Auth::id())->first();
 //dd($activation->activation_status);
 
  ?>
+
   @if($activation->activation_status>0)
 <h5 class="mb-0 text-uppercase" style="color:green;"><strong>User Status: Activated</strong></h5>
 @else
@@ -47,6 +48,13 @@ $activation= App\Models\User::where('id',Auth::id())->first();
                         {{Session::get('Money_Transfered')}}
                     </div>
                 </div>
+                @elseif(Session::has('withdraw_added'))
+              <div class="alert alert-success" role="alert">
+                  <h4 class="alert-heading">Success</h4>
+                  <div class="alert-body">
+                      {{Session::get('withdraw_added')}}
+                  </div>
+              </div>
                   @endif
                   @if(session()->has('error'))
 
@@ -69,10 +77,14 @@ $activation= App\Models\User::where('id',Auth::id())->first();
                                 <p class="mb-0 text-white">Main Wallet</p>
                                 <h4 class="my-1 text-white">{{$data['sum_deposit'] ? '$'.number_format((float)$data['sum_deposit'], 2, '.', '') : '$00.00'}}</h4>
                                 <a class="btn btn-success" href="#" data-bs-toggle="modal" data-bs-target="#addmoneyModal"><i class='bx bx-money'></i></a>
+                                @if($activation->activation_status>0)
                                 <a class="btn btn-danger" href="#" data-bs-toggle="modal" data-bs-target="#transfermoneyModal"><i class='bx bx-send'></i></a>
+                                  <a class="btn btn-info" href="#" data-bs-toggle="modal" data-bs-target="#walletwithdrawModal"><i class='bx bx-download'></i></a>
+                                  @endif
                               </div>
                                 @include('user.modals.add_moneymodal')
                                   @include('user.modals.transfer_moneymodal')
+                                    @include('user.modals.withdraw_modal')
                               <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
                               </div>
                             </div>
@@ -105,8 +117,13 @@ $activation= App\Models\User::where('id',Auth::id())->first();
                           <div class="card-body">
                             <div class="d-flex align-items-center">
                               <div>
+                                <?php
+                                $withdraw = App\Models\AddMoney::where('user_id',Auth::id())->where('method','Withdraw')->get()->sum('amount');
+                                //dd($transferData);
+
+                                 ?>
                                 <p class="mb-0 text-dark">Total Withdraw</p>
-                                <h4 class="text-dark my-1">$0.00</h4>
+                                <h4 class="text-dark my-1">${{abs($withdraw)}}</h4>
                               </div>
                               <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
                               </div>

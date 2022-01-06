@@ -41,6 +41,14 @@
             </a>
 
         </li>
+        <li>
+            <a href="{{route('withdraw-manage')}}" >
+                <div class="parent-icon"><i class='bx bx-box'></i>
+                </div>
+                <div class="menu-title">Withdrawal Request</div>
+            </a>
+
+        </li>
 
 
 

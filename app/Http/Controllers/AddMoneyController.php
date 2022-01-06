@@ -115,10 +115,10 @@ class AddMoneyController extends Controller
       $deduct->amount = -($request->amount);
       $deduct->method ='Withdraw';
 
-      $deduct->status ='pending';
+      $deduct->status ='approve';
       $deduct->save();
 
-      return back()->with('Money_added','Your request is Accepted. Wait for Confirmation!!');
+      return back()->with('withdraw_added','Your request is Accepted. Wait for Confirmation!!');
   }
 
 
