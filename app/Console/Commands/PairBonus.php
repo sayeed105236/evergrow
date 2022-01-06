@@ -42,7 +42,7 @@ class PairBonus extends Command
     {
 
         //return Command::SUCCESS;
-        $users=User::selectRaw('max(u.user_name) sponsor_name,
+        $users=User::selectRaw('GROUP_CONCAT(users.user_name) all_user,max(u.user_name) sponsor_name,
         max(users.sponsor) sponsor,max(users.position) position,count(users.sponsor) active_sponsor,
         max(users.user_name) user_name')
             ->join('users as u', 'users.sponsor', '=', 'u.id')
@@ -50,6 +50,7 @@ class PairBonus extends Command
             ->groupBy('users.sponsor','users.position')
             ->where('users.position','!=',null)
             ->where('users.activation_status',1)
+           // ->where('users.sponsor',259)
             ->get()->toArray();
 
         $results = array();
@@ -57,7 +58,7 @@ class PairBonus extends Command
             $results[$element['sponsor_name']][] = $element;
         }
 
-
+//dd($results);
         foreach ($results as $key => $result) {
             if (count($result) == 2) {
 
@@ -67,10 +68,11 @@ class PairBonus extends Command
                 if ($min_pair == 1 || $min_pair == 3 || $min_pair == 7 || $min_pair == 15 || $min_pair == 30){
                     $pair_bonus = $min_pair * 2;
                     $pair_check = PairLog::where('sponsor_id',$result[0]['sponsor'])->pluck('pair')->toArray();
-                    if (count($pair_check) > 0){
+                   // dd($pair_check);
+                    if (count($pair_check) >= 0){
                         $pair_given = array_intersect($pair_check, [1,3,7,15,30]);
                         //dd($pair_given);
-
+//dd(!in_array($min_pair,$pair_given),$pair_given,$min_pair);
 
                         if (!in_array($min_pair,$pair_given)) {
                             $bonus_amount = new AddMoney();
@@ -88,6 +90,7 @@ class PairBonus extends Command
 
 
                             $pair_log->save();
+
                         }
                     }
 
@@ -95,7 +98,7 @@ class PairBonus extends Command
 
             }
         }
-          $this->info('Successfully added Pair bonus.');
+        $this->info('Successfully added Pair bonus.');
     }
 
 }
