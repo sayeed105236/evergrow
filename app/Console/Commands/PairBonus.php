@@ -79,6 +79,7 @@ class PairBonus extends Command
                             $bonus_amount->user_id = $result[0]['sponsor'];
                             $bonus_amount->amount = $pair_bonus;
                             $bonus_amount->method = 'Pair Bonus';
+                            $bonus_amount->status = 'approve';
                             $bonus_amount->save();
 
                             //store pair log
