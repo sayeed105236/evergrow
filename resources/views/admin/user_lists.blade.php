@@ -31,6 +31,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Sponsor User Name</th>
+                <th>Status</th>
                 <th>Position</th>
                 <th>Created</th>
 
@@ -44,6 +45,11 @@
                 <td>{{$row->name}}</td>
                 <td>{{$row->email}}</td>
                 <td>{{$row->sponsors->user_name}}</td>
+                <td>@if($row->activation_status==1)
+                    <span class="badge bg-success">Active</span>
+                @else
+                <span class="badge bg-danger">Inactive</span>
+                @endif</td>
                 <td>
                   @if($row->position==1)
                   Left

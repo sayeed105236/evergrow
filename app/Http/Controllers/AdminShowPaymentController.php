@@ -11,7 +11,7 @@ class AdminShowPaymentController extends Controller
 {
     public function Manage()
     {
-      $deposit= AddMoney::all();
+      $deposit= AddMoney::where('method','Deposit')->get();
 
       return view('admin.deposit_request_manage',compact('deposit'));
 
@@ -49,7 +49,7 @@ class AdminShowPaymentController extends Controller
             'status'=>'approve'
 
         ]);
-      
+
         $notification=array(
             'message'=>'Approved!!!',
             'alert-type'=>'success'

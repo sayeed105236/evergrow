@@ -44,6 +44,7 @@
                 <th>SL</th>
                 <th>Name</th>
                 <th>User Name</th>
+                <th>Status</th>
                 <th>Sponsor User Name</th>
                 <th>Created At</th>
 
@@ -57,6 +58,12 @@
                 <td>{{$loop->index+1}}</td>
                 <td>{{$row->name}}</td>
                 <td>{{$row->user_name}}</td>
+
+                <td>@if($row->activation_status==1)
+                    <span class="badge bg-success">Active</span>
+                @else
+                <span class="badge bg-danger">Inactive</span>
+                @endif</td>
                 <td>{{$row->sponsors->user_name}}</td>
                 <td>
                   {{$row->created_at}}
