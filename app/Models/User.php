@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\UserPayment;
 
 class User extends Authenticatable
 {
@@ -94,4 +95,9 @@ class User extends Authenticatable
     {
         return $this->position()->with('childrenRecursive');
     }
+    public function UserPayment()
+    {
+        return $this->belongsTo(UserPayment::class,'user_id');
+    }
+
 }

@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\UserPayment;
+use Auth;
 
 class UserPaymentMethodController extends Controller
 {
     public function index($id)
     {
-      $payment=UserPayment::where('id','Auth::id()');
+
+      $payment=UserPayment::where('user_id',Auth::id())->get();
+      //dd($payment->payment_method_id);
       return view('user.user_payment_method',compact('payment'));
     }
     public function Store(Request $request)

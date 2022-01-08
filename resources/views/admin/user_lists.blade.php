@@ -30,6 +30,7 @@
                 <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>User Name</th>
                 <th>Sponsor User Name</th>
                 <th>Status</th>
                 <th>Position</th>
@@ -44,6 +45,7 @@
                 <td>{{$loop->index+1}}</td>
                 <td>{{$row->name}}</td>
                 <td>{{$row->email}}</td>
+                <td>{{$row->user_name}}</td>
                 <td>{{$row->sponsors->user_name}}</td>
                 <td>@if($row->activation_status==1)
                     <span class="badge bg-success">Active</span>

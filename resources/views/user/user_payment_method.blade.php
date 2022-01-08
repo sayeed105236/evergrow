@@ -79,6 +79,7 @@
               </tr>
             </thead>
             <tbody>
+
                 @foreach($payment as $row)
               <tr>
 

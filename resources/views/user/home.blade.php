@@ -118,7 +118,7 @@ $activation= App\Models\User::where('id',Auth::id())->first();
                             <div class="d-flex align-items-center">
                               <div>
                                 <?php
-                                $withdraw = App\Models\AddMoney::where('user_id',Auth::id())->where('method','Withdraw')->get()->sum('amount');
+                                $withdraw = App\Models\AddMoney::where('user_id',Auth::id())->where('method','Withdraw')->where('status','approve')->get()->sum('amount');
                                 //dd($transferData);
 
                                  ?>

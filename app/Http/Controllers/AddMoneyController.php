@@ -99,7 +99,7 @@ class AddMoneyController extends Controller
       };
 
       $user_id = $request->user_id;
-      $amount = $request->amount;
+      $amount = ($request->amount);
       $payment_method_id=$request->payment_method_id;
 
       $withdraw = new Withdraw();
@@ -112,7 +112,7 @@ class AddMoneyController extends Controller
 
       $deduct = new AddMoney;
       $deduct->user_id = Auth::id();
-      $deduct->amount = -($request->amount);
+      $deduct->amount = -(($request->amount)+($request->amount*10/100));
       $deduct->method ='Withdraw';
 
       $deduct->status ='approve';
