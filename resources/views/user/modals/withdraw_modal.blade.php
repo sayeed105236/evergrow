@@ -36,7 +36,7 @@
 
                 <div class="form-group">
                     <label class="form-label" for="basic-default-email">Enter Amount</label>
-                    <input type="number" min="15" id="basic-default-email" name="amount" class="form-control" placeholder="Enter Amount ($)" required/>
+                    <input type="number" min="6" id="basic-default-email" name="amount" class="form-control" placeholder="Enter Amount ($)" required/>
                 </div>
 
 

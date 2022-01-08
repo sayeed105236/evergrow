@@ -14,6 +14,7 @@
 
             <form id="jquery-val-form" action="{{route('user-payment-method-store')}}" method="post">
               @csrf
+              <input type="hidden" name="user_id" value="{{Auth::id()}}">
               <?php
               $payment_method= App\Models\PaymentMethod::all();
                ?>
