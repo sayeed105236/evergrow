@@ -42,7 +42,7 @@
               <tr>
 
                 <td>{{$loop->index+1}}</td>
-                <td>{{$row->user->name}}</td>
+                <td>{{$row->user->user_name}}</td>
                 <td>{{$row->amount}}$</td>
                 <td>{{$row->method}}</td>
                 <td>{{$row->txn_id}}</td>

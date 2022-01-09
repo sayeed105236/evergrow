@@ -16,7 +16,7 @@
               @csrf
               <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
               <?php
-              $payment= App\Models\UserPayment::where('status','Active')->get();
+              $payment= App\Models\UserPayment::where('user_id',Auth::id())->where('status','Active')->get();
 
                ?>
                <div class="form-group">

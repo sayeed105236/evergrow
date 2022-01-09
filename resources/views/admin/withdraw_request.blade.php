@@ -31,6 +31,7 @@
                   <th>User Name</th>
                   <th>Requested Amount</th>
                   <th>Payment Method</th>
+                  <th>User Account Name</th>
                   <th>Wallet Id</th>
                   <th>Status</th>
 
@@ -39,6 +40,7 @@
               </tr>
             </thead>
             <tbody>
+
               @foreach($withdraw as $row)
               <tr>
 
@@ -49,7 +51,8 @@
                  </td>
                 <td>{{$row->amount}}$</td>
                 <td>{{$row->payment_method->payment->name}}</td>
-                <td>{{$row->payment_method->payment->wallet_id}}</td>
+                <td>{{$row->payment_method->acc_name}}</td>
+                <td>{{$row->payment_method->wallet_id}}</td>
 
                 <td>
                   <span class="badge bg-success">{{ $row->status }}</span>
