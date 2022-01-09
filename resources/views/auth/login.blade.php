@@ -32,6 +32,14 @@
 							<img src="{{asset('assets/images/logo-img2.jpg')}}" width="180" alt="" />
 						</div>
 						<div class="card">
+							@if(Session::has('password_updated'))
+					  <div class="alert alert-success" role="alert">
+					      <h4 class="alert-heading">Success</h4>
+					      <div class="alert-body">
+					          {{Session::get('password_updated')}}
+					      </div>
+					  </div>
+					  @endif
 							<div class="card-body">
 								<div class="border p-4 rounded">
 									<div class="text-center">

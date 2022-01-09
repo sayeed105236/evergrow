@@ -110,5 +110,81 @@ class ReferralController extends Controller
         }
 
     }
+    public function UpdateUser(Request $request)
+    {
+      //dd($request);
+      $address = $request->address;
+      $name=$request->name;
+      $number=$request->number;
+      $national_id=$request->national_id;
+      $birth=$request->birth;
+      $gender=$request->gender;
+      $nominee = $request->nominee;
+      $nominee_email = $request->nominee_email;
+      $image=$request->file('file');
+      $filename=null;
+      if ($image) {
+          $filename = time() . $image->getClientOriginalName();
+
+          Storage::disk('public')->putFileAs(
+              '/User',
+              $image,
+              $filename
+          );
+      }
+
+
+      $user = User::find(Auth::user()->id);
+      $user->address = $address;
+      $user->name =$name;
+      $user->number =$number;
+      $user->birth =$birth;
+      $user->gender =$gender;
+      $user->nominee =$nominee;
+      $user->national_id=$national_id;
+      $user->nominee_email =$nominee_email;
+      $user->image=$filename;
+
+      $user->save();
+
+        return back()->with('profile_updated','Profile has been updated successfully!');
+    }
+    public function changePassStore(Request $request){
+      $request->validate([
+          'old_password' => 'required',
+          'new_password' => 'required|min:5',
+          'password_confirmation' => 'required|min:5',
+      ]);
+      $db_pass = Auth::user()->password;
+      $current_password = $request->old_password;
+      $newpass = $request->new_password;
+      $confirmpass = $request->password_confirmation;
+
+     if (Hash::check($current_password,$db_pass)) {
+      if ($newpass === $confirmpass) {
+          User::findOrFail(Auth::id())->update([
+            'password' => Hash::make($newpass)
+          ]);
+
+          Auth::logout();
+
+        return Redirect()->route('login')->with('password_updated','Password has been updated successfully!');
+
+      }else {
+
+        $notification=array(
+            'message'=>'New Password And Confirm Password Not Same',
+            'alert-type'=>'error'
+        );
+        return Redirect()->back()->with($notification);
+      }
+   }else {
+    $notification=array(
+        'message'=>'Old Password Not Match',
+        'alert-type'=>'error'
+    );
+    return Redirect()->back()->with($notification);
+   }
+  }
 
 }

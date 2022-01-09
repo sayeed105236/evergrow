@@ -120,12 +120,21 @@
 
 
         <li>
-            <a href="pricing-table.html">
-                <div class="parent-icon"><i class="bx
-                    bx-up-arrow-circle"></i>
-                </div>
-                <div class="menu-title">Log out</div>
-            </a>
+
+
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+
+                    <a class="d-flex align-items-center"  href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                    this.closest('form').submit();"><div class="parent-icon"><i class="bx
+                                        bx-up-arrow-circle"></i>
+                                    </div>
+                        Logout
+                    </a>
+                </form>
+
         </li>
 
 
