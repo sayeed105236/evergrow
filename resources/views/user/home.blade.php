@@ -237,7 +237,7 @@ $activation= App\Models\User::where('id',Auth::id())->first();
 
                               <div>
                                 <p class="mb-0 text-white">Profit Share</p>
-                                <h4 class="my-1 text-white">${{$total_pair_bonus}}</h4>
+                                <h4 class="my-1 text-white">${{$total_profit_bonus}}</h4>
                               </div>
                               <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
                               </div>
