@@ -32,9 +32,11 @@ Route::get('/home/activation-package/{id}', [HomeController::class,'Activate'])-
 Route::post('/home/activate-package/', [HomeController::class,'ActivatePackage'])->name('activate-package')->middleware('auth');
 Route::get('/home/sponsor_bonus_history/{id}', [FrontendController::class,'sponsor_bonus'])->name('sponsor-bonus-history')->middleware('auth');
 Route::get('/home/binary_bonus_history/{id}', [FrontendController::class,'pair_bonus'])->name('pair-bonus-history')->middleware('auth');
+Route::get('/home/profit_bonus_history/{id}', [FrontendController::class,'profit_bonus'])->name('profit-bonus-history')->middleware('auth');
 Route::post('/user/dashboard/transfer-money', [AddMoneyController::class,'moneyTransfer'])->name('money-transfer')->middleware('auth');
 Route::get('/home/transfer-report/{id}', [FrontendController::class,'transferReport'])->name('transfer-report')->middleware('auth');
 Route::get('/home/my-team/{id}', [FrontendController::class,'MyTeam'])->name('my-team')->middleware('auth');
+Route::get('/home/user-profile/{id}', [FrontendController::class,'Profile'])->name('my-profile')->middleware('auth');
 // User Payment Method
 Route::get('/home/payment-method/{id}', [UserPaymentMethodController::class,'index'])->name('user-payment-method')->middleware('auth');
 Route::post('/home/payment-method/store', [UserPaymentMethodController::class,'Store'])->name('user-payment-method-store')->middleware('auth');

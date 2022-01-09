@@ -35,6 +35,11 @@ class FrontendController extends Controller
       $incomeData = AddMoney::where('user_id',Auth::id())->where('method','Pair Bonus')->get();
       return view('user.pair_bonus',compact('incomeData'));
     }
+    public function profit_bonus($id)
+    {
+      $incomeData = AddMoney::where('user_id',Auth::id())->where('method','Profit Bonus')->get();
+      return view('user.pair_bonus',compact('incomeData'));
+    }
     public function transferReport()
     {
         $transferData = AddMoney::where('user_id',Auth::id())->where('method','Transfer')->get();
@@ -46,6 +51,13 @@ class FrontendController extends Controller
         $user = User::where('id', $id)->first();
         //$allChildren = User::pluck('name','id')->all();
         return view('user.my_team',compact(['user']));
+    }
+    public function Profile($id)
+    {
+
+        $user = User::where('id', $id)->first();
+        //$allChildren = User::pluck('name','id')->all();
+        return view('user.user_profile',compact(['user']));
     }
 
 

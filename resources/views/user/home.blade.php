@@ -99,8 +99,9 @@ $activation= App\Models\User::where('id',Auth::id())->first();
                                 <?php
                                 $earnings = App\Models\AddMoney::where('user_id',Auth::id())->where('method','Sponsor Bonus')->get()->sum('amount');
                                 $total_pair_bonus = App\Models\AddMoney::where('user_id',Auth::id())->where('method','Pair Bonus')->get()->sum('amount');
+                                  $total_profit_bonus = App\Models\AddMoney::where('user_id',Auth::id())->where('method','Profit Bonus')->get()->sum('amount');
                                 //dd($transferData);
-                                $bonus= $earnings+$total_pair_bonus;
+                                $bonus= $earnings+$total_pair_bonus+$total_profit_bonus;
 
                                  ?>
                                 <p class="mb-0 text-white">Total Bonus</p>
@@ -229,9 +230,14 @@ $activation= App\Models\User::where('id',Auth::id())->first();
                         <div class="card radius-10 bg-primary bg-gradient">
                           <div class="card-body">
                             <div class="d-flex align-items-center">
+                              <?php
+
+  $total_profit_bonus = App\Models\AddMoney::where('user_id',Auth::id())->where('method','Profit Bonus')->get()->sum('amount');
+                              ?>
+
                               <div>
                                 <p class="mb-0 text-white">Profit Share</p>
-                                <h4 class="my-1 text-white">$0.00</h4>
+                                <h4 class="my-1 text-white">${{$total_pair_bonus}}</h4>
                               </div>
                               <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
                               </div>
@@ -377,6 +383,38 @@ $activation= App\Models\User::where('id',Auth::id())->first();
 
 
     </script>
+    <script src="{{asset('assets/js/app.js')}}"></script>
+
+      <script type="text/javascript">
+
+
+          $("body").on("keyup","#sponsor",function(){
+              let searchData = $("#sponsor").val();
+              if(searchData.length>0){
+                  $.ajax({
+                      type:'POST',
+                      url: '{{route("get-sponsor")}}',
+                      data:{search:searchData},
+                      headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                      success:function(result){
+                          $('#suggestUser').html(result.success)
+                          console.log(result.data)
+                          if (result.data){
+                              $("#position").val("");
+                              $("#placement_id").val("");
+                              $("#position").removeAttr('disabled');
+                          }else{
+                              $("#position").val("");
+                              $("#placement_id").val("");
+                              $('#position').prop('disabled', true);
+                          }
+                      }
+                  });
+              }
+              if(searchData.length<1) $('#suggestUser').html("")
+          })
+
+      </script>
 
 
 

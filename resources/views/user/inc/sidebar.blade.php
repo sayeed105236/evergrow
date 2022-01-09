@@ -82,6 +82,8 @@
 
                 <li> <a href="/home/binary_bonus_history/{{Auth::user()->id}}"><i class="bx bx-right-arrow-alt"></i>Binary Bonus History</a>
                 </li>
+                <li> <a href="/home/profit_bonus_history/{{Auth::user()->id}}"><i class="bx bx-right-arrow-alt"></i>Profit Bonus History</a>
+                </li>
                 <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Team Bonus History</a>
                 </li>
                 <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Club Bonus History</a>
@@ -96,7 +98,7 @@
                 <div class="menu-title">Settings</div>
             </a>
             <ul>
-                <li> <a href="form-elements.html"><i class="bx bx-right-arrow-alt"></i>Profile</a>
+                <li> <a href="/home/user-profile/{{Auth::user()->id}}"><i class="bx bx-right-arrow-alt"></i>Profile</a>
                 </li>
                 <li> <a href="/home/payment-method/{{Auth::user()->id}}"><i class="bx bx-right-arrow-alt"></i>Payment Method</a>
                 </li>
