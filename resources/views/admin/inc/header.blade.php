@@ -289,7 +289,7 @@
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="{{route('profile.show')}}"><i class="bx bx-user"></i><span>Profile</span></a>
+                    <li><a class="dropdown-item" href="/home/user-profile/{{Auth::id()}}"><i class="bx bx-user"></i><span>Profile</span></a>
                     </li>
 
                     <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
