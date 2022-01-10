@@ -9,6 +9,7 @@ use App\Models\Withdraw;
 
 class AdminShowPaymentController extends Controller
 {
+  
     public function Manage()
     {
       $deposit= AddMoney::where('method','Deposit')->get();

@@ -49,6 +49,14 @@
             </a>
 
         </li>
+        <li>
+            <a href="{{route('settings-manage')}}" >
+                <div class="parent-icon"><i class='bx bx-cog'></i>
+                </div>
+                <div class="menu-title">System Settings</div>
+            </a>
+
+        </li>
 
 
 
