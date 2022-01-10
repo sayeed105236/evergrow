@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\AddMoney;
 use Auth;
 use Carbon\Carbon;
+use App\Models\Settings;
 
 class HomeController extends Controller
 {
@@ -31,6 +32,7 @@ class HomeController extends Controller
     }
     public function Activate($id)
     {
+
       $data['user']=User::all();
       $data['deposit']=AddMoney::where('user_id',Auth::id())->first();
 
@@ -56,11 +58,12 @@ class HomeController extends Controller
       $deduct->save();
 
 
-
+      $settings= Settings::first();
+      //dd($settings->sponsor_bonus);
 
       $sponsor_bonus = new AddMoney();
       $sponsor_bonus->user_id = $request['sponsor'];
-      $sponsor_bonus->amount = '6';
+      $sponsor_bonus->amount = $settings->sponsor_bonus;
       $sponsor_bonus->received_from= Auth::id();
       $sponsor_bonus->method = 'Sponsor Bonus';
       $sponsor_bonus->status = 'approve';

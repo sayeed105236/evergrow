@@ -22,6 +22,8 @@
 <?php
 $activation= App\Models\User::where('id',Auth::id())->first();
 //dd($activation->activation_status);
+$settings= App\Models\Settings::first();
+//dd($settings);
 
  ?>
 
