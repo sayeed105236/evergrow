@@ -70,6 +70,8 @@ Route::get('/admin/add-money-delete/{id}', [AdminShowPaymentController::class,'d
 Route::get('/admin/withdraw-money/requests', [AdminShowPaymentController::class,'WithdrawManage'])->name('withdraw-manage')->middleware('authadmin');
 Route::get('/admin/withdraw-money-approve/{id}', [AdminShowPaymentController::class,'Withdrawapprove'])->middleware('authadmin');
 Route::get('/admin/withdraw-money-delete/{id}', [AdminShowPaymentController::class,'Withdrawdestroy'])->middleware('authadmin');
+
+
 Route::get('/admin/manage-settings', [SettingsController::class,'Manage'])->name('settings-manage')->middleware('authadmin');
 Route::post('/admin/manage-settings/store', [SettingsController::class,'StoreSettings'])->name('store-system-settings')->middleware('authadmin');
 Route::post('/admin/manage-settings/update', [SettingsController::class,'UpdateSettings'])->name('system-update')->middleware('authadmin');

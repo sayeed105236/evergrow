@@ -15,15 +15,11 @@ class SettingsController extends Controller
     public function StoreSettings(Request $request)
     {
 
-      $request->validate([
-      'name' => 'required',
-      'wallet_id' => 'required',
 
-  ]);
-    dd($request);
+    //dd($request->all());
     $min_deposit = $request->min_deposit;
     $min_transfer = $request->min_transfer;
-    $min_withdraw=$request->min_wthdraw;
+    $min_withdraw=$request->min_withdraw;
     $sponsor_bonus= $request->sponsor_bonus;
     $pair_bonus= $request->pair_bonus;
     $profit_bonus= $request->profit_bonus;
@@ -50,7 +46,7 @@ class SettingsController extends Controller
 
       $min_deposit = $request->min_deposit;
       $min_transfer = $request->min_transfer;
-      $min_withdraw=$request->min_wthdraw;
+      $min_withdraw=$request->min_withdraw;
       $sponsor_bonus= $request->sponsor_bonus;
       $pair_bonus= $request->pair_bonus;
       $profit_bonus= $request->profit_bonus;

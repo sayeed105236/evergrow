@@ -33,11 +33,33 @@
       <div class="row">
         <div class="col-xl-7 mx-auto">
           <h6 class="mb-0 text-uppercase">System Settings</h6>
+          <hr>
+          <div class="col-12">
+            <?php
+            $data=App\Models\Settings::count();
+
+
+             ?>
+
+             @if($data< 1)
+
+                <a class="btn btn-primary px-5"  data-bs-toggle="modal" data-bs-target="#settingsaddModal">Add</a>
+                @include('admin.modals.settingsaddmodal')
+
+              @endif
+              <a class="btn btn-primary px-5 flex-right"  data-bs-toggle="modal" data-bs-target="#settingseditModal">Edit</a>
+            </div>
+
+
+
+            @include('admin.modals.settingseditmodal')
+
           <hr/>
           <div class="card border-top border-0 border-4 border-primary">
             <div class="card-body p-5">
               <?php
-              $settings=App\Models\Settings::all();
+              $settings=App\Models\Settings::first();
+              //dd($settings);
 
                ?>
 
@@ -45,42 +67,38 @@
               <form class="row g-3">
                 <div class="col-md-6">
                   <label for="inputFirstName" class="form-label">Minimum Deposit</label>
-                  <input type="text" value="{{isset($settings->min_deposit)}}" disabled name="min_deposit" class="form-control" id="inputFirstName">
+                  <input type="text" value="{{($settings->min_deposit)}}" disabled name="min_deposit" class="form-control" id="inputFirstName">
                 </div>
                 <div class="col-md-6">
                   <label for="inputLastName" class="form-label">Minimum Transfer</label>
-                  <input type="text"  value="{{isset($settings->min_deposit)}}" disabled class="form-control" id="inputLastName">
+                  <input type="text"  value="{{($settings->min_deposit)}}" disabled class="form-control" id="inputLastName">
                 </div>
                 <div class="col-md-6">
                   <label for="inputFirstName" class="form-label">Minimum Withdraw</label>
-                  <input type="text"  value="{{isset($settings->min_withdraw)}}" disabled class="form-control" id="inputFirstName">
+                  <input type="text"  value="{{($settings->min_withdraw)}}" disabled class="form-control" id="inputFirstName">
                 </div>
                 <div class="col-md-6">
                   <label for="inputLastName" class="form-label">Sponsor Bonus</label>
-                  <input type="text"  value="{{isset($settings->sponsor_bonus)}}" disabled class="form-control" id="inputLastName">
+                  <input type="text"  value="{{($settings->sponsor_bonus)}}" disabled class="form-control" id="inputLastName">
                 </div>
                 <div class="col-md-6">
                   <label for="inputFirstName" class="form-label">Pair Bonus</label>
-                  <input type="text"  value="{{isset($settings->pair_bonus)}}" disabled class="form-control" id="inputFirstName">
+                  <input type="text"  value="{{($settings->pair_bonus)}}" disabled class="form-control" id="inputFirstName">
                 </div>
                 <div class="col-md-6">
                   <label for="inputLastName" class="form-label">Profit Bonus</label>
-                  <input type="text"  value="{{isset($settings->profit_bonus)}}" disabled class="form-control" id="inputLastName">
+                  <input type="text"  value="{{($settings->profit_bonus)}}" disabled class="form-control" id="inputLastName">
                 </div>
                 <div class="col-md-6">
                   <label for="inputFirstName" class="form-label">Club Bonus</label>
-                  <input type="text"  value="{{isset($settings->club_bonus)}}" disabled class="form-control" id="inputFirstName">
+                  <input type="text"  value="{{($settings->club_bonus)}}" disabled class="form-control" id="inputFirstName">
                 </div>
                 <div class="col-md-6">
                   <label for="inputLastName" class="form-label">Unit Bonus</label>
-                  <input type="text"  value="{{isset($settings->unit_bonus)}}" disabled class="form-control" id="inputLastName">
+                  <input type="text"  value="{{($settings->unit_bonus)}}" disabled class="form-control" id="inputLastName">
                 </div>
 
-                <div class="col-12">
-                  <a class="btn btn-primary px-5"  data-bs-toggle="modal" data-bs-target="#settingsaddModal">Add</a>
-                  @include('admin.modals.settingsaddmodal')
-                  <a  class="btn btn-primary px-5"  data-bs-toggle="modal" data-bs-target="#seetingseditModal">Edit</a>
-                </div>
+
               </form>
             </div>
           </div>
@@ -89,7 +107,7 @@
         </div>
       </div>
 
-    </div>
+
 
 
     <hr/>

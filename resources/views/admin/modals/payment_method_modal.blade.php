@@ -46,7 +46,7 @@
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
           <button type="Submit" class="btn btn-primary">Save</button>
       </div>
-        </form>  
+        </form>
       </div>
     </div>
   </div>
