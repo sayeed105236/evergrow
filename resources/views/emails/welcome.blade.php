@@ -78,7 +78,7 @@
   </head>
 
   <body style="margin: 0; padding: 0; width: 100%; word-break: break-word; -webkit-font-smoothing: antialiased; --bg-opacity: 1; background-color: #eceff1; background-color: rgba(236, 239, 241, var(--bg-opacity));">
-  
+
     <div role="article" aria-roledescription="email" aria-label="Default email title" lang="en">
       <table style="font-family: Montserrat, -apple-system, 'Segoe UI', sans-serif; width: 100%;" width="100%" cellpadding="0" cellspacing="0" role="presentation">
         <tr>
@@ -87,7 +87,7 @@
               <tr>
                 <td class="sm-py-32 sm-px-24" style="font-family: Montserrat, -apple-system, 'Segoe UI', sans-serif; padding: 48px; text-align: center;" align="center">
                   <a href="https://evergrowusa.com">
-                    <img src="https://my.evergrowusa.com/assets/images/logo-img2.jpg" width="155" alt="Vuexy Admin" style="border: 0; max-width: 100%; line-height: 100%; vertical-align: middle;">
+                    <img src="https://my.evergrowusa.com/assets/images/logo-img2.jpg" width="155" alt="" style="border: 0; max-width: 100%; line-height: 100%; vertical-align: middle;">
                   </a>
                 </td>
               </tr>
@@ -116,7 +116,7 @@
                         </p>
                         <a href="https://evergrowusa.com">
 
-                          <img src="https://my.evergrowusa.com/assets/images/logo-img2.jpg" width="500" alt="Vuexy Admin" style="border: 0; max-width: 100%; line-height: 100%; vertical-align: middle;">
+                          <img src="https://my.evergrowusa.com/assets/images/logo-img2.jpg" width="500" alt="" style="border: 0; max-width: 100%; line-height: 100%; vertical-align: middle;">
                         </a>
                         <p style="margin: 24px 0;">
                           <span style="font-weight: 600;"></span>
