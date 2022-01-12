@@ -10,6 +10,8 @@ use Laravel\Jetstream\Jetstream;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Models\PairCount;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WelcomeMail;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -58,6 +60,7 @@ class CreateNewUser implements CreatesNewUsers
 
         ]);
 
+
         if ($position_id == 1){
             User::where('user_name', $placement_id)
                 ->update(['left_side' => $data->user_name]);
@@ -72,6 +75,8 @@ class CreateNewUser implements CreatesNewUsers
 
 //return true;
         //dd($data);
+        $email = $input['email'];
+        Mail::to($email)->send(new WelcomeMail($data));
         return $data;
         }
         public function binary_count($placement_id,$pos)

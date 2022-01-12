@@ -27,6 +27,13 @@
                   </select>
 
               </div>
+              <!-- <div class="form-group">
+                  <label class="form-label" for="basic-default-email">Transfer User</label>
+                  <input type="text" id="sponsor" name="user_id" class="form-control"
+                         placeholder="Enter User Name" required/>
+
+                         <div id="suggestUser"></div>
+              </div> -->
 
                 <div class="form-group">
                     <label class="form-label" for="basic-default-email">Enter Amount</label>

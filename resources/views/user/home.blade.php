@@ -385,38 +385,7 @@ $settings= App\Models\Settings::first();
 
 
     </script>
-    <script src="{{asset('assets/js/app.js')}}"></script>
-
-      <script type="text/javascript">
-
-
-          $("body").on("keyup","#sponsor",function(){
-              let searchData = $("#sponsor").val();
-              if(searchData.length>0){
-                  $.ajax({
-                      type:'POST',
-                      url: '{{route("get-sponsor")}}',
-                      data:{search:searchData},
-                      headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                      success:function(result){
-                          $('#suggestUser').html(result.success)
-                          console.log(result.data)
-                          if (result.data){
-                              $("#position").val("");
-                              $("#placement_id").val("");
-                              $("#position").removeAttr('disabled');
-                          }else{
-                              $("#position").val("");
-                              $("#placement_id").val("");
-                              $('#position').prop('disabled', true);
-                          }
-                      }
-                  });
-              }
-              if(searchData.length<1) $('#suggestUser').html("")
-          })
-
-      </script>
+    
 
 
 

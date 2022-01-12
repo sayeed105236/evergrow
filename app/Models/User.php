@@ -11,6 +11,8 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\UserPayment;
 
+
+
 class User extends Authenticatable
 {
     use HasApiTokens;

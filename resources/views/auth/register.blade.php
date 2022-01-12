@@ -357,7 +357,7 @@
                             </select>
                         </div>
 
-                        {{--@php
+                        <!-- {{--@php
                         $users = App\Models\User::all();
                         @endphp
 
@@ -371,7 +371,7 @@
                                     <option value="{{ $user->id }}">{{ ucwords($user->user_name) }}</option>
                                 @endforeach
                             </select>
-                        </div>--}}
+                        </div>--}} -->
                         <div class="form-group">
                             <label class="form-label" for="basic-default-email">Sponsor</label>
                             <input type="text" id="sponsor" name="sponsor" class="form-control"
@@ -553,6 +553,7 @@
             }
             if(searchData.length<1) $('#suggestUser').html("")
         })
+
 
     </script>
 </body>
