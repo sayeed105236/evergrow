@@ -96,6 +96,7 @@
                 </td>
                 <td>  <a href="#" data-bs-toggle="modal" data-bs-target="#userpaymentmethodeditModal{{$row->id}}"><i class='bx bx-edit'></i></a>
                   <a href="/home/payment-method/delete/{{$row->id}}"><i class='bx bx-trash'></i></a></td>
+
                   @include('user.modals.user_payment_method_edit_modal')
 
               </tr>

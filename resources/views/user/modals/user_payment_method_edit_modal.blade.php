@@ -19,6 +19,7 @@
               <?php
               $payment_method= App\Models\PaymentMethod::all();
                ?>
+
                <div class="form-group">
                    <label for="select-country">Select Payment Method</label>
                    <select class="form-control select2" name="payment_method_id" required>
