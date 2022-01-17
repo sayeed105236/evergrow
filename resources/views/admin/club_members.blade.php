@@ -43,10 +43,36 @@
     <hr/>
     <?php
       $users=App\Models\User::where('membership_status','1')->get();
+      $n=App\Models\User::where('membership_status','1')->count();
+       //var_dump($users);
+      //dd($users[0]->id,$users[1]->id,$users[2]->id,$users[3]->id,$users[4]->id);
+    //  $items = array();
+    //  foreach($users as $row) {
+    //    $items[$row['id']] = $row;
+    //  }
 
-    //dd($users);
+
+    //    foreach ($items as $key => $item) {
+    //      dd($item);
+    //    }
+//$results = array();
+      //  foreach ($users as $key => $element) {
+      //      $results[$element['sponsor_name']][] = $element;
+      //  }
+
+
+
+
 
      ?>
+     @if(Session::has('club_added'))
+   <div class="alert alert-success" role="alert">
+       <h4 class="alert-heading">Success</h4>
+       <div class="alert-body">
+           {{Session::get('club_added')}}
+       </div>
+   </div>
+   @endif
 
 
     <div class="card">
