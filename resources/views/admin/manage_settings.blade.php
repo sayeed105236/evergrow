@@ -85,14 +85,7 @@
                   <label for="inputFirstName" class="form-label">Pair Bonus</label>
                   <input type="text"  value="{{($settings->pair_bonus)}}" disabled class="form-control" id="inputFirstName">
                 </div>
-                <div class="col-md-6">
-                  <label for="inputLastName" class="form-label">Profit Bonus</label>
-                  <input type="text"  value="{{($settings->profit_bonus)}}" disabled class="form-control" id="inputLastName">
-                </div>
-                <div class="col-md-6">
-                  <label for="inputFirstName" class="form-label">Club Bonus</label>
-                  <input type="text"  value="{{($settings->club_bonus)}}" disabled class="form-control" id="inputFirstName">
-                </div>
+                
                 <div class="col-md-6">
                   <label for="inputLastName" class="form-label">Unit Bonus</label>
                   <input type="text"  value="{{($settings->unit_bonus)}}" disabled class="form-control" id="inputLastName">

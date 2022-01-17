@@ -65,6 +65,14 @@
             </a>
 
         </li>
+        <li>
+            <a href="{{route('profit-share-manage')}}" >
+                <div class="parent-icon"><i class='bx bx-wallet'></i>
+                </div>
+                <div class="menu-title">Profit Share</div>
+            </a>
+
+        </li>
 
 
 

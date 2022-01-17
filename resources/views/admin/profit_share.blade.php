@@ -6,14 +6,14 @@
 
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-      <div class="breadcrumb-title pe-3">Club Members</div>
+      <div class="breadcrumb-title pe-3">Profit Share</div>
       <div class="ps-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb mb-0 p-0">
             <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
             </li>
 
-              <li class="breadcrumb-item active" aria-current="page">Club Members</li>
+              <li class="breadcrumb-item active" aria-current="page">Profit Share</li>
 
 
 
@@ -28,48 +28,26 @@
     <!--end breadcrumb-->
     <div class="row">
       <div class="col">
-      <h6 class="mb-0 text-uppercase">Club Members</h6>
+      <h6 class="mb-0 text-uppercase">Profit Share</h6>
       <hr>
-        <a class="flex-right btn btn-success" href="#"  data-bs-toggle="modal" data-bs-target="#clubbonusModal">Give Club Bonus</a>
+        <a class="flex-right btn btn-success" href="#"  data-bs-toggle="modal" data-bs-target="#profitshareModal">Give Profit Share</a>
+          @include('admin.modals.profitsharemodal')
       </div>
 
 
 
-      @include('admin.modals.clubbonusmodal')
+
 
     </div>
 
 
     <hr/>
-    <?php
-      $users=App\Models\User::where('membership_status','1')->get();
-      $n=App\Models\User::where('membership_status','1')->count();
-       //var_dump($users);
-      //dd($users[0]->id,$users[1]->id,$users[2]->id,$users[3]->id,$users[4]->id);
-    //  $items = array();
-    //  foreach($users as $row) {
-    //    $items[$row['id']] = $row;
-    //  }
 
-
-    //    foreach ($items as $key => $item) {
-    //      dd($item);
-    //    }
-//$results = array();
-      //  foreach ($users as $key => $element) {
-      //      $results[$element['sponsor_name']][] = $element;
-      //  }
-
-
-
-
-
-     ?>
-     @if(Session::has('club_added'))
+     @if(Session::has('profit_added'))
    <div class="alert alert-success" role="alert">
        <h4 class="alert-heading">Success</h4>
        <div class="alert-body">
-           {{Session::get('club_added')}}
+           {{Session::get('profit_added')}}
        </div>
    </div>
    @endif

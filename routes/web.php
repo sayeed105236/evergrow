@@ -74,6 +74,7 @@ Route::get('/admin/withdraw-money-approve/{id}', [AdminShowPaymentController::cl
 Route::get('/admin/withdraw-money-delete/{id}', [AdminShowPaymentController::class,'Withdrawdestroy'])->middleware('authadmin');
 
 Route::get('/admin/club_member/manage', [ClubController::class,'index'])->name('club-member-manage')->middleware('authadmin');
+Route::get('/admin/profit_share/manage', [ClubController::class,'Profit'])->name('profit-share-manage')->middleware('authadmin');
 
 
 Route::get('/admin/manage-settings', [SettingsController::class,'Manage'])->name('settings-manage')->middleware('authadmin');
@@ -81,3 +82,4 @@ Route::post('/admin/manage-settings/store', [SettingsController::class,'StoreSet
 Route::post('/admin/manage-settings/update', [SettingsController::class,'UpdateSettings'])->name('system-update')->middleware('authadmin');
 
 Route::post('/admin/club-bonus/store', [ClubController::class,'ClubBonus'])->name('club-bonus-store')->middleware('authadmin');
+Route::post('/admin/profit-share/store', [ClubController::class,'ProfitShare'])->name('profit-share-store')->middleware('authadmin');

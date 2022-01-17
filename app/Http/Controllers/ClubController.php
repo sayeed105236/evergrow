@@ -17,9 +17,37 @@ class ClubController extends Controller
     $users=User::where('membership_status','1')->get();
     return view('admin.club_members',compact('users'));
   }
-  public function ClubBonus(Request $request)
+  public function Profit()
+  {
+    $users=User::where('activation_status','1')->get();
+    return view('admin.profit_share',compact('users'));
+  }
+  public function ProfitShare(Request $request)
   {
 
+    $bonus = $request->bonus;
+    $users=User::where('activation_status','1')->get();
+
+    //$method=$request->method;
+    //$txn_id=$request->txn_id;
+    foreach ($users as $key => $user) {
+      $profit_share = new AddMoney();
+
+      $profit_share-> user_id = $user->id;
+      $profit_share-> amount =$bonus;
+      $profit_share-> type ='Credit';
+      //$club_bonus-> amount =$amount;
+      //$club_bonus->method=$method;
+      $profit_share->method='Profit Bonus';
+      $profit_share->status ='approve';
+      //$club_bonus->txn_id=$txn_id;
+      $profit_share->save();
+    }
+
+    return back()->with('profit_added','Profit Share Has been successfully credited to the Users!!');
+  }
+  public function  ClubBonus(Request $request)
+  {
 
     $bonus = $request->bonus;
     $users=User::where('membership_status','1')->get();
@@ -40,10 +68,6 @@ class ClubController extends Controller
       //$club_bonus->txn_id=$txn_id;
       $club_bonus->save();
     }
-
-
-
-
 
     return back()->with('club_added','Club Bonus Has been successfully credited among the Users!!');
   }

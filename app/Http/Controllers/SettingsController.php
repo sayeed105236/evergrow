@@ -22,8 +22,7 @@ class SettingsController extends Controller
     $min_withdraw=$request->min_withdraw;
     $sponsor_bonus= $request->sponsor_bonus;
     $pair_bonus= $request->pair_bonus;
-    $profit_bonus= $request->profit_bonus;
-    $club_bonus= $request->club_bonus;
+
     $unit_bonus= $request->unit_bonus;
     $setting = new Settings();
     $setting->min_deposit =$min_deposit;
@@ -31,8 +30,7 @@ class SettingsController extends Controller
     $setting->min_withdraw =$min_withdraw;
     $setting->sponsor_bonus =$sponsor_bonus;
     $setting->pair_bonus =$pair_bonus;
-    $setting->profit_bonus =$profit_bonus;
-    $setting->club_bonus=$club_bonus;
+
 
     $setting->unit_bonus=$unit_bonus;
 
@@ -49,8 +47,7 @@ class SettingsController extends Controller
       $min_withdraw=$request->min_withdraw;
       $sponsor_bonus= $request->sponsor_bonus;
       $pair_bonus= $request->pair_bonus;
-      $profit_bonus= $request->profit_bonus;
-      $club_bonus= $request->club_bonus;
+
       $unit_bonus= $request->unit_bonus;
 
       $setting = Settings::find($request->id);
@@ -58,8 +55,7 @@ class SettingsController extends Controller
       $setting->min_transfer=$min_transfer;
       $setting->min_withdraw =$min_withdraw;
       $setting->sponsor_bonus =$sponsor_bonus;
-      $setting->pair_bonus =$pair_bonus;
-      $setting->profit_bonus =$profit_bonus;
+      
       $setting->club_bonus=$club_bonus;
 
       $setting->unit_bonus=$unit_bonus;

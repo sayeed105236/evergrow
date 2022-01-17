@@ -52,18 +52,7 @@
                 <input type="text" value="{{($settings->pair_bonus)}}" name="pair_bonus" class="form-control">
               </div>
             </div>
-              <div class="col-md-12">
-                <div class="form-group">
-                <label for="inputLastName" class="form-label">Profit Bonus</label>
-                <input type="text" value="{{($settings->profit_bonus)}}" name="profit_bonus" class="form-control">
-              </div>
-              </div>
-              <div class="col-md-12">
-                  <div class="form-group">
-                <label for="inputFirstName" class="form-label">Club Bonus</label>
-                <input type="text" value="{{($settings->club_bonus)}}" name="club_bonus" class="form-control">
-              </div>
-              </div>
+
               <div class="col-md-12">
                 <div class="form-group">
                 <label for="inputLastName" class="form-label">Unit Bonus</label>
