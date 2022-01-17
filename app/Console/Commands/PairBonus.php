@@ -65,19 +65,20 @@ class PairBonus extends Command
                 $min_pair = min($result[0]['active_sponsor'], $result[1]['active_sponsor']);
                   //dd($min_pair);
 
-                if ($min_pair == 1 || $min_pair == 3 || $min_pair == 7 || $min_pair == 15 || $min_pair == 30){
+                if ($min_pair == 1 || $min_pair == 3 || $min_pair == 7 || $min_pair == 15 || $min_pair == 30 || $min_pair == 50 || $min_pair == 100){
                     $pair_bonus = $min_pair * 2;
                     $pair_check = PairLog::where('sponsor_id',$result[0]['sponsor'])->pluck('pair')->toArray();
-                   // dd($pair_check);
+                  //  dd($pair_check);
                     if (count($pair_check) >= 0){
-                        $pair_given = array_intersect($pair_check, [1,3,7,15,30]);
-                        //dd($pair_given);
-//dd(!in_array($min_pair,$pair_given),$pair_given,$min_pair);
+                        $pair_given = array_intersect($pair_check, [1,3,7,15,30,50,100]);
+                      //  dd($pair_given);
+                      //    dd(!in_array($min_pair,$pair_given),$pair_given,$min_pair);
 
                         if (!in_array($min_pair,$pair_given)) {
                             $bonus_amount = new AddMoney();
                             $bonus_amount->user_id = $result[0]['sponsor'];
                             $bonus_amount->amount = $pair_bonus;
+                            $bonus_amount->type = 'Credit';
                             $bonus_amount->method = 'Pair Bonus';
                             $bonus_amount->status = 'approve';
                             $bonus_amount->save();

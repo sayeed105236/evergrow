@@ -57,6 +57,14 @@
             </a>
 
         </li>
+        <li>
+            <a href="{{route('club-member-manage')}}" >
+                <div class="parent-icon"><i class='bx bx-user'></i>
+                </div>
+                <div class="menu-title">Club Members</div>
+            </a>
+
+        </li>
 
 
 

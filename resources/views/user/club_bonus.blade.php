@@ -6,14 +6,14 @@
 
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-      <div class="breadcrumb-title pe-3">My Sponsors</div>
+      <div class="breadcrumb-title pe-3">Club Bonus</div>
       <div class="ps-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb mb-0 p-0">
             <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
             </li>
 
-              <li class="breadcrumb-item active" aria-current="page">My Sponosors</li>
+              <li class="breadcrumb-item active" aria-current="page">Club Bonus</li>
 
 
 
@@ -28,14 +28,13 @@
     <!--end breadcrumb-->
     <div class="row">
       <div class="col">
-      <h6 class="mb-0 text-uppercase">Sponsor List</h6>
+      <h6 class="mb-0 text-uppercase">Club Bonus Lists</h6>
       </div>
 
     </div>
 
 
     <hr/>
-    
     <div class="card">
       <div class="card-body">
         <div class="table-responsive">
@@ -43,36 +42,27 @@
             <thead>
               <tr>
                 <th>SL</th>
-                <th>Name</th>
-                <th>User Name</th>
-                <th>Status</th>
-                <th>Sponsor User Name</th>
-                <th>Created At</th>
+                <th>Date</th>
+
+                <th>Amount</th>
+
 
 
               </tr>
             </thead>
             <tbody>
-                @foreach($users as $row)
+                @foreach($incomeData as $row)
               <tr>
 
                 <td>{{$loop->index+1}}</td>
-                <td>{{$row->name}}</td>
-                <td>{{$row->user_name}}</td>
+                <td>{{$row->created_at}}</td>
 
-                <td>@if($row->activation_status==1)
-                    <span class="badge bg-success">Active</span>
-                @else
-                <span class="badge bg-danger">Inactive</span>
-                @endif</td>
-                <td>{{$row->sponsors->user_name}}</td>
-                <td>
-                  {{$row->created_at}}
-                </td>
+                <td>{{$row->amount}}</td>
+
 
               </tr>
 
-  @endforeach
+              @endforeach
 
 
 

@@ -38,7 +38,12 @@ class FrontendController extends Controller
     public function profit_bonus($id)
     {
       $incomeData = AddMoney::where('user_id',Auth::id())->where('method','Profit Bonus')->get();
-      return view('user.pair_bonus',compact('incomeData'));
+      return view('user.profit_bonus',compact('incomeData'));
+    }
+    public function club_bonus($id)
+    {
+      $incomeData = AddMoney::where('user_id',Auth::id())->where('method','Club Bonus')->get();
+      return view('user.club_bonus',compact('incomeData'));
     }
     public function transferReport()
     {

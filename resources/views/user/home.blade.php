@@ -102,8 +102,10 @@ $settings= App\Models\Settings::first();
                                 $earnings = App\Models\AddMoney::where('user_id',Auth::id())->where('method','Sponsor Bonus')->get()->sum('amount');
                                 $total_pair_bonus = App\Models\AddMoney::where('user_id',Auth::id())->where('method','Pair Bonus')->get()->sum('amount');
                                   $total_profit_bonus = App\Models\AddMoney::where('user_id',Auth::id())->where('method','Profit Bonus')->get()->sum('amount');
+                                  $total_club_bonus = App\Models\AddMoney::where('user_id',Auth::id())->where('method','Club Bonus')->get()->sum('amount');
                                 //dd($transferData);
-                                $bonus= $earnings+$total_pair_bonus+$total_profit_bonus;
+                                //dd($transferData);
+                                $bonus= $earnings+$total_pair_bonus+$total_profit_bonus+$total_club_bonus;
 
                                  ?>
                                 <p class="mb-0 text-white">Total Bonus</p>
@@ -218,8 +220,12 @@ $settings= App\Models\Settings::first();
                           <div class="card-body">
                             <div class="d-flex align-items-center">
                               <div>
+                                <?php
+                                $total_club_bonus = App\Models\AddMoney::where('user_id',Auth::id())->where('method','Club Bonus')->get()->sum('amount');
+
+                                 ?>
                                 <p class="mb-0 text-dark">Club Bonus</p>
-                                <h4 class="my-1 text-dark">$0.00</h4>
+                                <h4 class="my-1 text-dark">${{$total_club_bonus}}</h4>
 
                               </div>
                               <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
@@ -234,7 +240,7 @@ $settings= App\Models\Settings::first();
                             <div class="d-flex align-items-center">
                               <?php
 
-  $total_profit_bonus = App\Models\AddMoney::where('user_id',Auth::id())->where('method','Profit Bonus')->get()->sum('amount');
+                              $total_profit_bonus = App\Models\AddMoney::where('user_id',Auth::id())->where('method','Profit Bonus')->get()->sum('amount');
                               ?>
 
                               <div>
@@ -385,7 +391,7 @@ $settings= App\Models\Settings::first();
 
 
     </script>
-    
+
 
 
 

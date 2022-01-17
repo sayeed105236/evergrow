@@ -10,6 +10,7 @@ use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserPaymentMethodController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\ClubController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,7 @@ Route::post('/home/activate-package/', [HomeController::class,'ActivatePackage']
 Route::get('/home/sponsor_bonus_history/{id}', [FrontendController::class,'sponsor_bonus'])->name('sponsor-bonus-history')->middleware('auth');
 Route::get('/home/binary_bonus_history/{id}', [FrontendController::class,'pair_bonus'])->name('pair-bonus-history')->middleware('auth');
 Route::get('/home/profit_bonus_history/{id}', [FrontendController::class,'profit_bonus'])->name('profit-bonus-history')->middleware('auth');
+Route::get('/home/club_bonus_history/{id}', [FrontendController::class,'club_bonus'])->name('club-bonus-history')->middleware('auth');
 Route::post('/user/dashboard/transfer-money', [AddMoneyController::class,'moneyTransfer'])->name('money-transfer')->middleware('auth');
 Route::get('/home/transfer-report/{id}', [FrontendController::class,'transferReport'])->name('transfer-report')->middleware('auth');
 Route::get('/home/my-team/{id}', [FrontendController::class,'MyTeam'])->name('my-team')->middleware('auth');
@@ -71,7 +73,11 @@ Route::get('/admin/withdraw-money/requests', [AdminShowPaymentController::class,
 Route::get('/admin/withdraw-money-approve/{id}', [AdminShowPaymentController::class,'Withdrawapprove'])->middleware('authadmin');
 Route::get('/admin/withdraw-money-delete/{id}', [AdminShowPaymentController::class,'Withdrawdestroy'])->middleware('authadmin');
 
+Route::get('/admin/club_member/manage', [ClubController::class,'index'])->name('club-member-manage')->middleware('authadmin');
+
 
 Route::get('/admin/manage-settings', [SettingsController::class,'Manage'])->name('settings-manage')->middleware('authadmin');
 Route::post('/admin/manage-settings/store', [SettingsController::class,'StoreSettings'])->name('store-system-settings')->middleware('authadmin');
 Route::post('/admin/manage-settings/update', [SettingsController::class,'UpdateSettings'])->name('system-update')->middleware('authadmin');
+
+Route::post('/admin/club-bonus/store', [ClubController::class,'ClubBonus'])->name('club-bonus-store')->middleware('authadmin');

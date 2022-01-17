@@ -86,7 +86,7 @@
                 </li>
                 <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Team Bonus History</a>
                 </li>
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Club Bonus History</a>
+                <li> <a href="/home/club_bonus_history/{{Auth::user()->id}}"><i class="bx bx-right-arrow-alt"></i>Club Bonus History</a>
                 </li>
             </ul>
         </li>

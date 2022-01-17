@@ -8,6 +8,7 @@ use App\Models\AddMoney;
 use Auth;
 use Carbon\Carbon;
 use App\Models\Settings;
+//use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -42,7 +43,19 @@ class HomeController extends Controller
     }
     public function ActivatePackage(Request $request)
     {
-      //dd($request);
+      //dd($request['sponsor']);
+      $membership=User::where('sponsor',$request['sponsor'])->count();
+      //dd($membership);
+      if($membership > 4)
+      {
+        $membership_bonus = User::find($request['sponsor']);
+        //$member=$request['sponsor'];
+        //$date= date('Y-m-d');
+        $membership_bonus->membership_status= '1';
+        //DB::statement("UPDATE users SET membership_status = `0`+1 WHERE id = '$member'");
+        $membership_bonus->save();
+
+      }
 
       $deduct_amount = new AddMoney();
       $deduct_amount->user_id = Auth::id();
@@ -55,6 +68,7 @@ class HomeController extends Controller
 
       $deduct = User::find(Auth::user()->id);
       $deduct->activation_status= '1';
+
       $deduct->save();
 
 
@@ -68,6 +82,7 @@ class HomeController extends Controller
       $sponsor_bonus->method = 'Sponsor Bonus';
       $sponsor_bonus->status = 'approve';
       $sponsor_bonus->created_at = Carbon::now();
+
       $sponsor_bonus->save();
 
       return back()->with('package_activated','Congratulations!! Your Package is Now Activated');
