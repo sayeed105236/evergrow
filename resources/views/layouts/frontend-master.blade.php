@@ -5,6 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!--favicon-->
 
     @include('admin.inc.style')
@@ -28,7 +29,7 @@
             <div class="page-content">
 
                     @yield('content')
-              
+
             </div>
         </div>
         <!--end page wrapper -->
@@ -46,6 +47,7 @@
     <!--end switcher-->
     <!-- Bootstrap JS -->
     @include('admin.inc.script')
+    @stack('scripts')
 </body>
 
 </html>
