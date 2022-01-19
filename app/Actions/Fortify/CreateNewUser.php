@@ -79,52 +79,11 @@ class CreateNewUser implements CreatesNewUsers
         Mail::to($email)->send(new WelcomeMail($data));
         return $data;
         }
-        
-        public function find_position_id($placement_id){
 
-                $user_id = User::where('user_name',$placement_id)->first();
-                $pos= $user_id->position;
-                if ($pos == 1){
-                    $pos = 'left_count';
-                }elseif($pos == 2){
-                    $pos = 'right_count';
-                }
 
-                return $pos;
 
-        }
-        public function find_placement_id($placement_id){
 
-                $user_id = User::where('user_name',$placement_id)->first();
-                return $user_id->placement_id;
-        }
-
-        public function is_pair_generate($placement_id)
-        {
-
-            $user = User::where('user_name',$placement_id)->first();
-
-            if ($user->left_count == $user->right_count){
-                $data = PairCount::where('user_id',$user->id)->where('date',Carbon::today())->get()->toArray();
-                $date= date('Y-m-d');
-                if($user->left_count == 1 || $user->left_count == 3 || $user->left_count == 7 || $user->left_count == 15 || $user->left_count == 30){
-                    if(count($data) > 0){
-
-                        DB::statement("UPDATE pair_counts SET no_of_pair = `no_of_pair`+1 WHERE date = '$date' and user_id = '$user->id'");
-                        //    DB::statement("UPDATE pair_counts SET no_of_pair = '$user->right_count' WHERE date = '$date' and user_id = '$user->id'");
-                    }
-                    else{
-                        $insert= new PairCount();
-                        $insert->user_id = $user->id;
-                        $insert->date = Carbon::today();
-                        $insert->no_of_pair = 1;
-                        $insert->save();
-                    }
-                }
-
-            }
-
-        }
+      
 
         //level distribution
       //  $this->levelBonus($placement_id);

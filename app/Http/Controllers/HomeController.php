@@ -34,6 +34,7 @@ class HomeController extends Controller
     }
     public function binary_count($placement_id,$pos)
     {
+      //dd($placement_id,$pos);
        if ($pos == 1){
             $pos = 'left_count';
        }else{
@@ -83,7 +84,7 @@ class HomeController extends Controller
     {
         $user_data=User::where('id',Auth::id())->get()->first();
         //dd($user_data->placement_id);
-        $this->binary_count($user_data->placement_id,$user_data->position_id);
+        $this->binary_count($user_data->placement_id,$user_data->position);
       $membership=User::where('sponsor',$request['sponsor'])->count();
       //dd($membership);
       if($membership > 4)
