@@ -71,7 +71,7 @@ class CreateNewUser implements CreatesNewUsers
         //level distribution
       //  $this->levelBonus($placement_id);
         //pair bonus
-        $this->binary_count($placement_id,$position_id);
+
 
 //return true;
         //dd($data);
@@ -79,25 +79,7 @@ class CreateNewUser implements CreatesNewUsers
         Mail::to($email)->send(new WelcomeMail($data));
         return $data;
         }
-        public function binary_count($placement_id,$pos)
-        {
-           if ($pos == 1){
-                $pos = 'left_count';
-           }else{
-               $pos = 'right_count';
-           }
-
-            while($placement_id != '' && $pos != ''){
-
-                DB::statement("UPDATE users SET $pos = `$pos`+1 WHERE user_name = '$placement_id'");
-
-                //$this->is_pair_generate($placement_id);
-                $pos= $this->find_position_id($placement_id);
-                $placement_id= $this->find_placement_id($placement_id);
-
-            }
-
-        }
+        
         public function find_position_id($placement_id){
 
                 $user_id = User::where('user_name',$placement_id)->first();
