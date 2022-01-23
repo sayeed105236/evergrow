@@ -42,7 +42,7 @@ class PairBonus extends Command
     {
 
         //return Command::SUCCESS;
-        $results= User::where('id',615)->get();
+        $results= User::all();
 
 
 
