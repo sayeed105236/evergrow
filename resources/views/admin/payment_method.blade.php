@@ -74,7 +74,7 @@
                   @include('admin.modals.payment_method_edit_modal')
               </tr>
 
-  @endforeach
+                @endforeach
 
 
 

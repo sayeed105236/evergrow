@@ -42,54 +42,93 @@ class PairBonus extends Command
     {
 
         //return Command::SUCCESS;
-        $results= User::all();
+        $results= User::where('id',615)->get();
 
 
 
 //dd($results);
         foreach ($results as $key => $result) {
-          $left_count= $result->left_count;
-          $right_count= $result->right_count;
+          $left_count= $result->left_active;
+          $right_count= $result->right_active;
 
             if ($left_count != 0 && $right_count !=0 ) {
                 //dd($left_count,$right_count);
 
 
                 $min_pair = min($left_count,$right_count );
-                  //dd($min_pair);
+                switch($min_pair) {
+                  case $min_pair == 1 || $min_pair < 3:
+                            //$answer = (stripos($array[$i]['word'], 'Button') !== FALSE) ? 'Yes' : 'No';
+                            $left = $left_count - 1;
+                            $right = $right_count - 1;
+                            $pair_bonus = 1*2;
+                            break;
+                        case $min_pair == 3 || $min_pair < 7:
+                        $left = $left_count - 3;
+                        $right = $right_count - 3;
+                        $pair_bonus = 3*2;
+                            //$answer = (stripos($array[$i]['word'], 'Input') !== FALSE) ? 'Yes' : 'No';
+                            break;
+                            case $min_pair == 7 || $min_pair < 15:
+                            $left = $left_count - 7;
+                            $right = $right_count - 7;
+                            $pair_bonus = 7*2;
+                                //$answer = (stripos($array[$i]['word'], 'Input') !== FALSE) ? 'Yes' : 'No';
+                                break;
+                                case $min_pair == 15 || $min_pair < 30:
+                                $left = $left_count - 15;
+                                $right = $right_count - 15;
+                                $pair_bonus = 15 * 2;
+                                    //$answer = (stripos($array[$i]['word'], 'Input') !== FALSE) ? 'Yes' : 'No';
+                                    break;
+                                    case $min_pair == 30 || $min_pair < 50:
+                                    $left = $left_count - 30;
+                                    $right = $right_count - 30;
+                                    $pair_bonus = 30 * 2;
+                                        //$answer = (stripos($array[$i]['word'], 'Input') !== FALSE) ? 'Yes' : 'No';
+                                        break;
 
-                if ($min_pair == 1 || $min_pair == 3 || $min_pair == 7 || $min_pair == 15 || $min_pair == 30 || $min_pair == 50 || $min_pair == 100){
-                    $pair_bonus = $min_pair * 2;
-                    $pair_check = PairLog::where('sponsor_id',$result->id)->pluck('pair')->toArray();
-                  //  dd($pair_check);
-                    if (count($pair_check) >= 0){
-                        $pair_given = array_intersect($pair_check, [1,3,7,15,30,50,100]);
-                      //  dd($pair_given);
-                      //    dd(!in_array($min_pair,$pair_given),$pair_given,$min_pair);
-
-                        if (!in_array($min_pair,$pair_given)) {
-                            $bonus_amount = new AddMoney();
-                            $bonus_amount->user_id = $result->id;
-                            $bonus_amount->amount = $pair_bonus;
-                            $bonus_amount->type = 'Credit';
-                            $bonus_amount->method = 'Pair Bonus';
-                            $bonus_amount->status = 'approve';
-                            $bonus_amount->save();
-
-                            //store pair log
-
-                            $pair_log = new PairLog();
-                            $pair_log->sponsor_id = $result->id;
-                            $pair_log->pair = $min_pair;
-                            $pair_log->status = 1;
+                                        case $min_pair == 50|| $min_pair < 100:
+                                        $left = $left_count - 50;
+                                        $right = $right_count - 50;
+                                        $pair_bonus = 50 * 2;
+                                            //$answer = (stripos($array[$i]['word'], 'Input') !== FALSE) ? 'Yes' : 'No';
+                                            break;
+                                            case $min_pair >= 100:
+                                            $left = $left_count - 100;
+                                            $right = $right_count - 100;
+                                            $pair_bonus = 100 * 2;
+                                                //$answer = (stripos($array[$i]['word'], 'Input') !== FALSE) ? 'Yes' : 'No';
+                                                break;
 
 
-                            $pair_log->save();
+                              }
+                  //dd($left,$right);
 
-                        }
-                    }
+                  $bonus_amount = new AddMoney();
+                  $bonus_amount->user_id = $result->id;
+                  $bonus_amount->amount = $pair_bonus;
+                  $bonus_amount->type = 'Credit';
+                  $bonus_amount->method = 'Pair Bonus';
+                  $bonus_amount->status = 'approve';
+                  $bonus_amount->save();
 
-                }
+                  //store pair log
+
+                  $pair_log = new PairLog();
+                  $pair_log->sponsor_id = $result->id;
+                  $pair_log->pair = $min_pair;
+                  $pair_log->status = 1;
+
+
+                  $pair_log->save();
+
+                  $update = User::find($result->id);
+                  $update->left_active= $left;
+                  $update->right_active= $right;
+
+                  $update->save();
+
 
             }
         }
