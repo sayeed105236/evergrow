@@ -56,35 +56,41 @@ class PairBonus extends Command
 
 
                 $min_pair = min($left_count,$right_count );
+
                 switch($min_pair) {
                   case $min_pair == 1 || $min_pair < 3:
                             //$answer = (stripos($array[$i]['word'], 'Button') !== FALSE) ? 'Yes' : 'No';
                             $left = $left_count - 1;
                             $right = $right_count - 1;
-                            $pair_bonus = 1*2;
+                            $pair_bonus = 1*2
+                            $pair= 1;
                             break;
                         case $min_pair == 3 || $min_pair < 7:
                         $left = $left_count - 3;
                         $right = $right_count - 3;
                         $pair_bonus = 3*2;
+                        $pair= 3;
                             //$answer = (stripos($array[$i]['word'], 'Input') !== FALSE) ? 'Yes' : 'No';
                             break;
                             case $min_pair == 7 || $min_pair < 15:
                             $left = $left_count - 7;
                             $right = $right_count - 7;
                             $pair_bonus = 7*2;
+                            $pair=7;
                                 //$answer = (stripos($array[$i]['word'], 'Input') !== FALSE) ? 'Yes' : 'No';
                                 break;
                                 case $min_pair == 15 || $min_pair < 30:
                                 $left = $left_count - 15;
                                 $right = $right_count - 15;
                                 $pair_bonus = 15 * 2;
+                                $pair=15;
                                     //$answer = (stripos($array[$i]['word'], 'Input') !== FALSE) ? 'Yes' : 'No';
                                     break;
                                     case $min_pair == 30 || $min_pair < 50:
                                     $left = $left_count - 30;
                                     $right = $right_count - 30;
                                     $pair_bonus = 30 * 2;
+                                    $pair = 30;
                                         //$answer = (stripos($array[$i]['word'], 'Input') !== FALSE) ? 'Yes' : 'No';
                                         break;
 
@@ -92,12 +98,14 @@ class PairBonus extends Command
                                         $left = $left_count - 50;
                                         $right = $right_count - 50;
                                         $pair_bonus = 50 * 2;
+                                        $pair= 50;
                                             //$answer = (stripos($array[$i]['word'], 'Input') !== FALSE) ? 'Yes' : 'No';
                                             break;
                                             case $min_pair >= 100:
                                             $left = $left_count - 100;
                                             $right = $right_count - 100;
                                             $pair_bonus = 100 * 2;
+                                            $pair = 100;
                                                 //$answer = (stripos($array[$i]['word'], 'Input') !== FALSE) ? 'Yes' : 'No';
                                                 break;
 
@@ -117,7 +125,7 @@ class PairBonus extends Command
 
                   $pair_log = new PairLog();
                   $pair_log->sponsor_id = $result->id;
-                  $pair_log->pair = $min_pair;
+                  $pair_log->pair = $pair;
                   $pair_log->status = 1;
 
 
