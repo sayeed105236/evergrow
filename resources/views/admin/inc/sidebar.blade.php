@@ -73,6 +73,19 @@
             </a>
 
         </li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class='bx bx-history'></i>
+                </div>
+                <div class="menu-title">Transaction History</div>
+            </a>
+            <ul>
+                <li> <a href="{{route('manage-pair-history')}}"><i class="bx bx-right-arrow-alt"></i>Pair Bonus History</a>
+                </li>
+                
+
+            </ul>
+        </li>
 
 
 

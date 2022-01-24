@@ -11,6 +11,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserPaymentMethodController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ClubController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,3 +84,5 @@ Route::post('/admin/manage-settings/update', [SettingsController::class,'UpdateS
 
 Route::post('/admin/club-bonus/store', [ClubController::class,'ClubBonus'])->name('club-bonus-store')->middleware('authadmin');
 Route::post('/admin/profit-share/store', [ClubController::class,'ProfitShare'])->name('profit-share-store')->middleware('authadmin');
+
+Route::get('/admin/manage/pair-bonus-history', [ReportController::class,'Manage'])->name('manage-pair-history')->middleware('authadmin');

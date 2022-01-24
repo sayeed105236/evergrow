@@ -62,7 +62,7 @@ class PairBonus extends Command
                             //$answer = (stripos($array[$i]['word'], 'Button') !== FALSE) ? 'Yes' : 'No';
                             $left = $left_count - 1;
                             $right = $right_count - 1;
-                            $pair_bonus = 1*2
+                            $pair_bonus = 1*2;
                             $pair= 1;
                             break;
                         case $min_pair == 3 || $min_pair < 7:
