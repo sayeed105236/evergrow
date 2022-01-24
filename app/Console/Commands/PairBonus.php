@@ -132,10 +132,16 @@ class PairBonus extends Command
                   $pair_log->save();
 
                   $update = User::find($result->id);
-                  $update->left_active= $left;
-                  $update->right_active= $right;
+                  if ($left<$right ) {
+                      $update->left_active= '0';
+                      $update->right_active= $right;
+                      $update->save();
+                  }elseif ($left>=$right) {
+                    $update->left_active= $left;
+                    $update->right_active= '0';
+                    $update->save();
+                  }
 
-                  $update->save();
 
 
             }

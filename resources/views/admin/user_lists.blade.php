@@ -34,6 +34,10 @@
                 <th>Sponsor User Name</th>
                 <th>Status</th>
                 <th>Position</th>
+                <th>Total L Active User</th>
+                <th>Total R Active User</th>
+                <th>Total Left Carry</th>
+                <th>Total Right Carry</th>
                 <th>Created</th>
 
               </tr>
@@ -59,6 +63,10 @@
                     Right
 
                     @endif</td>
+                    <td>{{$row->left_count}}</td>
+                    <td>{{$row->right_count}}</td>
+                    <td>{{$row->left_active}}</td>
+                    <td>{{$row->right_active}}</td>
                 <td>{{$row->created_at}}</td>
 
               </tr>
