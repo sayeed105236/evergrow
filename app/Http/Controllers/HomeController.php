@@ -110,6 +110,7 @@ class HomeController extends Controller
 
             //$this->is_pair_generate($placement_id);
             $pos= $this->find_position_id($placement_id);
+            $pos_ac= $this->find_active_position_id($placement_id);
             $placement_id= $this->find_placement_id($placement_id);
 
         }
@@ -126,6 +127,19 @@ class HomeController extends Controller
         }
 
         return $pos;
+
+    }
+    public function find_active_position_id($placement_id){
+
+        $user_id = User::where('user_name',$placement_id)->first();
+        $pos_ac= $user_id->position;
+        if ($pos_ac == 1){
+            $pos_ac = 'left_active';
+        }elseif($pos_ac == 2){
+            $pos_ac = 'right_active';
+        }
+
+        return $pos_ac;
 
     }
     public function find_placement_id($placement_id){
