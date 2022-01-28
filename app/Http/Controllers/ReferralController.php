@@ -67,6 +67,7 @@ class ReferralController extends Controller
 
         // loop through category ids and find all child categories until there are no more
 
+
         if(count($all)>0)
         {
             foreach($all as $subcat){
@@ -186,5 +187,6 @@ class ReferralController extends Controller
     return Redirect()->back()->with($notification);
    }
   }
+  
 
 }

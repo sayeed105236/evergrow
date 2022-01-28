@@ -337,6 +337,44 @@
                 </div>
             </div>
         </div>
+        <div class="col">
+            <div class="card radius-10 bg-primary bg-gradient">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <?php
+
+                        $total_left_carry = App\Models\User::where('id', Auth::id())->first();
+                        ?>
+
+                        <div>
+                            <p class="mb-0 text-white">Left Carry</p>
+                            <h4 class="my-1 text-white">{{$total_left_carry->left_active}}</h4>
+                        </div>
+                        <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card radius-10 bg-danger bg-gradient">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <?php
+
+                        $total_right_carry = App\Models\User::where('id', Auth::id())->first();
+                        ?>
+
+                        <div>
+                            <p class="mb-0 text-white">Left Carry</p>
+                            <h4 class="my-1 text-white">{{$total_right_carry->right_active}}</h4>
+                        </div>
+                        <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
         <!-- Statistics Card -->
