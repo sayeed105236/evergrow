@@ -366,7 +366,7 @@
                         ?>
 
                         <div>
-                            <p class="mb-0 text-white">Left Carry</p>
+                            <p class="mb-0 text-white">Right Carry</p>
                             <h4 class="my-1 text-white">{{$total_right_carry->right_active}}</h4>
                         </div>
                         <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
