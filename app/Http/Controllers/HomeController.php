@@ -48,9 +48,10 @@ class HomeController extends Controller
         $user_data=User::where('id',Auth::id())->get()->first();
         //dd($user_data->placement_id);
         $this->binary_count($user_data->placement_id,$user_data->position);
-      $membership=User::where('sponsor',$request['sponsor'])->count();
+      $membership=User::where('sponsor',$request['sponsor'])->where('activation_status','1')->count();
+      $activation_check = User::find($request['sponsor']);
       //dd($membership);
-      if($membership > 4)
+      if($membership > 4 && $activation_check->activation_status == 1)
       {
         $membership_bonus = User::find($request['sponsor']);
         //$member=$request['sponsor'];
