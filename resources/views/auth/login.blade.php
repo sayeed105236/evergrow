@@ -55,8 +55,8 @@
 										<form class="row g-3" method="POST" action="{{ route('login') }}">
                       @csrf
 											<div class="col-12">
-												<label for="inputEmailAddress" class="form-label">Email Address</label>
-												<input type="email" class="form-control" id="email" name="email" placeholder="Email Address">
+												<label for="inputEmailAddress" class="form-label">User Name</label>
+												<input type="text" class="form-control" id="user_name" name="user_name" placeholder="User Name">
 											</div>
 											<div class="col-12">
 												<label for="inputChoosePassword" class="form-label">Enter Password</label>

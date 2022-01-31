@@ -37,7 +37,7 @@ class CreateNewUser implements CreatesNewUsers
             'sponsor'=>['required'],
             'position'=> ['required'],
 
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            //'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
@@ -83,7 +83,7 @@ class CreateNewUser implements CreatesNewUsers
 
 
 
-      
+
 
         //level distribution
       //  $this->levelBonus($placement_id);

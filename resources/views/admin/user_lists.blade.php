@@ -38,12 +38,18 @@
                 <th>Total R Active User</th>
                 <th>Total Left Carry</th>
                 <th>Total Right Carry</th>
-                <th>Total Sponsor</th>
+                
                 <th>Created</th>
 
               </tr>
             </thead>
             <tbody>
+              <?php
+              $refferals = App\Models\User::where('sponsor','$users->id')->get()->count();
+              //dd($refferals);
+
+
+              ?>
                 @foreach($users as $row)
               <tr>
 
@@ -68,17 +74,7 @@
                     <td>{{$row->right_count}}</td>
                     <td>{{$row->left_active}}</td>
                     <td>{{$row->right_active}}</td>
-                    <td>
-                      <?php
-                      $refferals = App\Models\User::where('sponsor','$row->id')->get()->count('id');
-                      //dd($refferals);
 
-
-                      ?>
-                      {{$refferals}}
-
-
-                    </td>
                 <td>{{$row->created_at}}</td>
 
               </tr>
