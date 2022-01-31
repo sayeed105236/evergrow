@@ -12,7 +12,7 @@
         <div class="modal-body">
           <div class="card-body">
 
-          <form id="jquery-val-form" action="{{route('store-system-settings')}}" method="post">
+          <form id="jquery-val-form" action="{{route('system-update')}}" method="post">
             @csrf
             <?php
             $settings=App\Models\Settings::first();

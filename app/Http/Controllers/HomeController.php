@@ -45,13 +45,15 @@ class HomeController extends Controller
     }
     public function ActivatePackage(Request $request)
     {
+      //  $activation_check = User::find($request['sponsor'])->activation_status;
+      //  dd($activation_check);
         $user_data=User::where('id',Auth::id())->get()->first();
         //dd($user_data->placement_id);
         $this->binary_count($user_data->placement_id,$user_data->position);
       $membership=User::where('sponsor',$request['sponsor'])->where('activation_status','1')->count();
-      $activation_check = User::find($request['sponsor']);
+      $activation_check = User::find($request['sponsor'])->activation_status;
       //dd($membership);
-      if($membership > 4 && $activation_check->activation_status == 1)
+      if($membership >= 7 && $activation_check == 1)
       {
         $membership_bonus = User::find($request['sponsor']);
         //$member=$request['sponsor'];

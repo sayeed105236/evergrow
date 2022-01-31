@@ -55,8 +55,8 @@ class SettingsController extends Controller
       $setting->min_transfer=$min_transfer;
       $setting->min_withdraw =$min_withdraw;
       $setting->sponsor_bonus =$sponsor_bonus;
-      
-      $setting->club_bonus=$club_bonus;
+
+      //$setting->club_bonus=$club_bonus;
 
       $setting->unit_bonus=$unit_bonus;
 
