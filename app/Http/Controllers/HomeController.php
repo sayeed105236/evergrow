@@ -53,14 +53,18 @@ class HomeController extends Controller
       $membership=User::where('sponsor',$request['sponsor'])->where('activation_status','1')->count();
       $activation_check = User::find($request['sponsor'])->activation_status;
       //dd($membership);
-      if($membership >= 7 && $activation_check == 1)
+      if($membership > 6)
+
       {
-        $membership_bonus = User::find($request['sponsor']);
-        //$member=$request['sponsor'];
-        //$date= date('Y-m-d');
-        $membership_bonus->membership_status= '1';
-        //DB::statement("UPDATE users SET membership_status = `0`+1 WHERE id = '$member'");
-        $membership_bonus->save();
+        if ($activation_check == 1) {
+          $membership_bonus = User::find($request['sponsor']);
+          //$member=$request['sponsor'];
+          //$date= date('Y-m-d');
+          $membership_bonus->membership_status= '1';
+          //DB::statement("UPDATE users SET membership_status = `0`+1 WHERE id = '$member'");
+          $membership_bonus->save();
+
+        }
 
       }
 
