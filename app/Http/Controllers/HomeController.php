@@ -54,7 +54,7 @@ class HomeController extends Controller
       $membership=User::where('sponsor',$request['sponsor'])->where('activation_status','1')->count();
 
       //dd($membership);
-      if($membership > 6)
+      if($membership == 7)
       {
         $membership_bonus = User::find($request['sponsor']);
         //$member=$request['sponsor'];
