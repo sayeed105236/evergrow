@@ -50,7 +50,7 @@ class ClubController extends Controller
   {
 
     $bonus = $request->bonus;
-    $users=User::where('membership_status','1')->get();
+    $users=User::where('membership_status','1')->where('activation_status','1')->get();
     $user_count=User::where('membership_status','1')->count();
     $bonus_amount=($request->bonus)/$user_count;
     //$method=$request->method;
