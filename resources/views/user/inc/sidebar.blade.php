@@ -17,11 +17,19 @@
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
+
         <li>
             <a href="#">
                 <div class="parent-icon"><i class="bx bx-check-circle"></i>
                 </div>
                 <div class="menu-title">Buy Unit</div>
+            </a>
+        </li>
+        <li>
+            <a href="/home/user-rank/{{Auth::user()->id}}">
+                <div class="parent-icon"><i class="bx bx-diamond"></i>
+                </div>
+                <div class="menu-title">Rank</div>
             </a>
         </li>
         <li>

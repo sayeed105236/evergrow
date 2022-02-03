@@ -64,6 +64,15 @@ class FrontendController extends Controller
         //$allChildren = User::pluck('name','id')->all();
         return view('user.user_profile',compact(['user']));
     }
+    public function UserRank($id)
+    {
+
+
+        $users = User::where('id',Auth::id())->get();
+      //  dd($users);
+        //$allChildren = User::pluck('name','id')->all();
+        return view('user.user_rank',compact('users'));
+    }
 
 
 

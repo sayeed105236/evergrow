@@ -43,7 +43,7 @@ Route::get('/home/my-team/{id}', [FrontendController::class,'MyTeam'])->name('my
 Route::get('/home/user-profile/{id}', [FrontendController::class,'Profile'])->name('my-profile')->middleware('auth');
 Route::post('/home/user_profile_update/update', [ReferralController::class,'UpdateUser'])->name('user-profile-update')->middleware('auth');
 Route::post('/home/user-password/change-password-store',[ReferralController::class,'changePassStore'])->name('change-password-store')->middleware('auth');
-
+Route::get('/home/user-rank/{id}', [FrontendController::class,'UserRank'])->name('user-rank')->middleware('auth');
 // User Payment Method
 Route::get('/home/payment-method/{id}', [UserPaymentMethodController::class,'index'])->name('user-payment-method')->middleware('auth');
 Route::post('/home/payment-method/store', [UserPaymentMethodController::class,'Store'])->name('user-payment-method-store')->middleware('auth');
