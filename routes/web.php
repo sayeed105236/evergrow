@@ -36,6 +36,7 @@ Route::post('/home/activate-package/', [HomeController::class,'ActivatePackage']
 Route::get('/home/sponsor_bonus_history/{id}', [FrontendController::class,'sponsor_bonus'])->name('sponsor-bonus-history')->middleware('auth');
 Route::get('/home/binary_bonus_history/{id}', [FrontendController::class,'pair_bonus'])->name('pair-bonus-history')->middleware('auth');
 Route::get('/home/profit_bonus_history/{id}', [FrontendController::class,'profit_bonus'])->name('profit-bonus-history')->middleware('auth');
+Route::get('/home/rank_bonus_history/{id}', [FrontendController::class,'rank_bonus'])->name('rank-bonus-history')->middleware('auth');
 Route::get('/home/club_bonus_history/{id}', [FrontendController::class,'club_bonus'])->name('club-bonus-history')->middleware('auth');
 Route::post('/user/dashboard/transfer-money', [AddMoneyController::class,'moneyTransfer'])->name('money-transfer')->middleware('auth');
 Route::get('/home/transfer-report/{id}', [FrontendController::class,'transferReport'])->name('transfer-report')->middleware('auth');
@@ -44,6 +45,11 @@ Route::get('/home/user-profile/{id}', [FrontendController::class,'Profile'])->na
 Route::post('/home/user_profile_update/update', [ReferralController::class,'UpdateUser'])->name('user-profile-update')->middleware('auth');
 Route::post('/home/user-password/change-password-store',[ReferralController::class,'changePassStore'])->name('change-password-store')->middleware('auth');
 Route::get('/home/user-rank/{id}', [FrontendController::class,'UserRank'])->name('user-rank')->middleware('auth');
+
+//rank
+Route::post('/home/activate-package/silver', [HomeController::class,'SilverRank'])->name('claim-silver')->middleware('auth');
+Route::post('/home/activate-package/bronze', [HomeController::class,'BronzeRank'])->name('claim-bronze')->middleware('auth');
+Route::post('/home/activate-package/gold', [HomeController::class,'GoldRank'])->name('claim-gold')->middleware('auth');
 // User Payment Method
 Route::get('/home/payment-method/{id}', [UserPaymentMethodController::class,'index'])->name('user-payment-method')->middleware('auth');
 Route::post('/home/payment-method/store', [UserPaymentMethodController::class,'Store'])->name('user-payment-method-store')->middleware('auth');
@@ -86,3 +92,4 @@ Route::post('/admin/club-bonus/store', [ClubController::class,'ClubBonus'])->nam
 Route::post('/admin/profit-share/store', [ClubController::class,'ProfitShare'])->name('profit-share-store')->middleware('authadmin');
 
 Route::get('/admin/manage/pair-bonus-history', [ReportController::class,'Manage'])->name('manage-pair-history')->middleware('authadmin');
+Route::get('/admin/manage/rank-bonus-history', [ReportController::class,'ManageRank'])->name('manage-rank-history')->middleware('authadmin');

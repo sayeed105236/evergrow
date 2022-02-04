@@ -13,4 +13,10 @@ class ReportController extends Controller
 
     return view('admin.reports.pair_bonus_history',compact('pair_bonus'));
   }
+  public function ManageRank()
+  {
+    $rank_bonus= AddMoney::where('method','Rank Bonus')->get();
+
+    return view('admin.reports.rank_bonus_history',compact('rank_bonus'));
+  }
 }

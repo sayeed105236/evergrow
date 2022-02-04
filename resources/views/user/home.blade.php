@@ -259,9 +259,14 @@
             <div class="card radius-10 bg-danger bg-gradient">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
+                      <?php
+                      $rank_bonus = App\Models\AddMoney::where('user_id', Auth::id())->where('method', 'Rank Bonus')->get()->sum('amount');
+                      //dd($total_level_bonus);
+
+                      ?>
                         <div>
                             <p class="mb-0 text-white">Rank Bonus</p>
-                            <h4 class="my-1 text-white">$0.00</h4>
+                            <h4 class="my-1 text-white">${{$rank_bonus }}</h4>
                         </div>
                         <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
                         </div>

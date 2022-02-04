@@ -151,5 +151,68 @@ class HomeController extends Controller
         $user_id = User::where('user_name',$placement_id)->first();
         return $user_id->placement_id;
     }
+    public function SilverRank(Request $request)
+    {
+      //dd($request);
+      $rank_amount = new AddMoney();
+      $rank_amount->user_id = Auth::id();
+      $rank_amount->amount = $request['amount'];
+      $rank_amount->method = 'Rank Bonus';
+      $rank_amount->status = 'approve';
+      $rank_amount->created_at = Carbon::now();
+
+      $rank_amount->save();
+
+      $rank = User::find(Auth::user()->id);
+      $rank->rank= '1';
+
+      $rank->save();
+
+
+
+    return back()->with('silver_claimed','Congratulations!! Your Rank Bonus has been Claimed');
+    }
+    public function BronzeRank(Request $request)
+    {
+      //dd($request);
+      $rank_amount = new AddMoney();
+      $rank_amount->user_id = Auth::id();
+      $rank_amount->amount = $request['amount'];
+      $rank_amount->method = 'Rank Bonus';
+      $rank_amount->status = 'approve';
+      $rank_amount->created_at = Carbon::now();
+
+      $rank_amount->save();
+
+      $rank = User::find(Auth::user()->id);
+      $rank->rank= '2';
+
+      $rank->save();
+
+
+
+    return back()->with('silver_claimed','Congratulations!! Your Rank Bonus has been Claimed');
+    }
+    public function GoldRank(Request $request)
+    {
+      //dd($request);
+      $rank_amount = new AddMoney();
+      $rank_amount->user_id = Auth::id();
+      $rank_amount->amount = $request['amount'];
+      $rank_amount->method = 'Rank Bonus';
+      $rank_amount->status = 'approve';
+      $rank_amount->created_at = Carbon::now();
+
+      $rank_amount->save();
+
+      $rank = User::find(Auth::user()->id);
+      $rank->rank= '3';
+
+      $rank->save();
+
+
+
+    return back()->with('silver_claimed','Congratulations!! Your Rank Bonus has been Claimed');
+    }
 
 }

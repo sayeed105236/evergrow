@@ -92,6 +92,8 @@
                 </li>
                 <li> <a href="/home/profit_bonus_history/{{Auth::user()->id}}"><i class="bx bx-right-arrow-alt"></i>Profit Bonus History</a>
                 </li>
+                <li> <a href="/home/rank_bonus_history/{{Auth::user()->id}}"><i class="bx bx-right-arrow-alt"></i>Rank Bonus History</a>
+                </li>
                 <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Team Bonus History</a>
                 </li>
                 <li> <a href="/home/club_bonus_history/{{Auth::user()->id}}"><i class="bx bx-right-arrow-alt"></i>Club Bonus History</a>

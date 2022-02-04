@@ -82,7 +82,9 @@
             <ul>
                 <li> <a href="{{route('manage-pair-history')}}"><i class="bx bx-right-arrow-alt"></i>Pair Bonus History</a>
                 </li>
-                
+                <li> <a href="{{route('manage-rank-history')}}"><i class="bx bx-right-arrow-alt"></i>Rank Bonus History</a>
+                </li>
+
 
             </ul>
         </li>

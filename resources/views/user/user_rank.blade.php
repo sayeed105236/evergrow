@@ -35,6 +35,14 @@
 
 
     <hr/>
+    @if(Session::has('silver_claimed'))
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Success</h4>
+            <div class="alert-body">
+                {{Session::get('silver_claimed')}}
+            </div>
+        </div>
+        @endif
 
     <div class="card">
       <div class="card-body">
@@ -65,9 +73,36 @@
                    <td><span class="badge bg-primary">Silver</span></td>
                    <td>$50</td>
 
-                <td><span class="badge bg-danger">Not Eligible</span></td>
+                <td>  <?php
+                    $left_count = App\Models\User::where('id',Auth::id())->first();
+                    $right_count = App\Models\User::where('id',Auth::id())->first();
+                  //  dd($left_count->left_count);
+
+                   ?>
+                   @if($left_count->left_count > 49 && $right_count->right_count > 49)
+                   <span class="badge bg-success">Eligible</span></td>
+
+
+                   @else
+                  <span class="badge bg-danger">Not Eligible</span></td>
+
+                  @endif</td>
                 <td>
+                  @if($left_count->rank > 0)
+                  <button disabled class="btn btn-success btn-sm" type="button" name="button">Already Claimed</button>
+                  @else
+                   @if($left_count->left_count > 49 && $right_count->right_count > 49)
+                   <form class="hidden" action="{{route('claim-silver')}}" method="post">
+                     @csrf
+                     <input type="hidden" name="id" value="{{Auth::id()}}">
+                     <input type="hidden" name="amount" value="50">
+
+                     <button  class="btn btn-success btn-sm">Claim</button>
+                   </form>
+                   @else
                     <button disabled class="btn btn-warning btn-sm" type="button" name="button">Claim</button>
+                    @endif
+                    @endif
                 </td>
 
               </tr>
@@ -81,9 +116,40 @@
                    <td><span class="badge bg-secondary">Bronze</span></td>
                    <td>$200</td>
 
-                <td><span class="badge bg-danger">Not Eligible</span></td>
                 <td>
-                    <button disabled class="btn btn-warning btn-sm" type="button" name="button">Claim</button>
+
+                  <?php
+                    $left_count = App\Models\User::where('id',Auth::id())->first();
+                    $right_count = App\Models\User::where('id',Auth::id())->first();
+                  //  dd($left_count->left_count);
+
+                   ?>
+
+                   @if($left_count->left_count > 299 && $right_count->right_count > 299)
+                   <span class="badge bg-success">Eligible</span></td>
+
+
+                   @else
+                  <span class="badge bg-danger">Not Eligible</span></td>
+
+                  @endif
+
+                <td>
+                  @if($left_count->rank > 1)
+                    <button disabled class="btn btn-success btn-sm" type="button" name="button">Already Claimed</button>
+                  @else
+                  @if($left_count->left_count > 299 && $right_count->right_count > 299)
+                  <form class="hidden" action="{{route('claim-bronze')}}" method="post">
+                    @csrf
+                    <input type="hidden" name="id" value="{{Auth::id()}}">
+                    <input type="hidden" name="amount" value="200">
+
+                    <button  class="btn btn-success btn-sm">Claim</button>
+                  </form>
+                  @else
+                   <button disabled class="btn btn-warning btn-sm" type="button" name="button">Claim</button>
+                   @endif
+                   @endif
                 </td>
 
               </tr>
@@ -96,9 +162,36 @@
                    <td><span class="badge bg-success">Gold</span></td>
                    <td>$500</td>
 
-                <td><span class="badge bg-danger">Not Eligible</span></td>
+                <td>  <?php
+                    $left_count = App\Models\User::where('id',Auth::id())->first();
+                    $right_count = App\Models\User::where('id',Auth::id())->first();
+                  //  dd($left_count->left_count);
+
+                   ?>
+                   @if($left_count->left_count > 999 && $right_count->right_count > 999)
+                   <span class="badge bg-success">Eligible</span></td>
+
+
+                   @else
+                  <span class="badge bg-danger">Not Eligible</span></td>
+
+                  @endif</td>
                 <td>
-                    <button disabled class="btn btn-warning btn-sm" type="button" name="button">Claim</button>
+                  @if($left_count->rank > 2)
+                    <button disabled class="btn btn-success btn-sm" type="button" name="button">Already Claimed</button>
+                  @else
+                  @if($left_count->left_count > 999 && $right_count->right_count > 999)
+                  <form class="hidden" action="{{route('claim-gold')}}" method="post">
+                    @csrf
+                    <input type="hidden" name="id" value="{{Auth::id()}}">
+                    <input type="hidden" name="amount" value="500">
+
+                    <button  class="btn btn-success btn-sm">Claim</button>
+                  </form>
+                  @else
+                   <button disabled class="btn btn-warning btn-sm" type="button" name="button">Claim</button>
+                   @endif
+                   @endif
                 </td>
 
               </tr>
@@ -111,9 +204,26 @@
                    <td><span class="badge bg-danger">Platinum</span></td>
                    <td>$2,000</td>
 
-                <td><span class="badge bg-danger">Not Eligible</span></td>
+                <td> <?php
+                    $left_count = App\Models\User::where('id',Auth::id())->first();
+                    $right_count = App\Models\User::where('id',Auth::id())->first();
+                  //  dd($left_count->left_count);
+
+                   ?>
+                   @if($left_count->left_count > 3999 && $right_count->right_count > 3999)
+                   <span class="badge bg-success">Eligible</span></td>
+
+
+                   @else
+                  <span class="badge bg-danger">Not Eligible</span></td>
+
+                  @endif</td>
                 <td>
-                    <button disabled class="btn btn-warning btn-sm" type="button" name="button">Claim</button>
+                  @if($left_count->left_count > 3999 && $right_count->right_count > 3999)
+                  <a href="#" class="btn btn-success btn-sm" >Claim</a>
+                  @else
+                   <button disabled class="btn btn-warning btn-sm" type="button" name="button">Claim</button>
+                   @endif
                 </td>
 
               </tr>
@@ -126,9 +236,26 @@
                    <td><span class="badge bg-warning">Diamond</span></td>
                    <td>$10,000</td>
 
-                <td><span class="badge bg-danger">Not Eligible</span></td>
+                <td><?php
+                    $left_count = App\Models\User::where('id',Auth::id())->first();
+                    $right_count = App\Models\User::where('id',Auth::id())->first();
+                  //  dd($left_count->left_count);
+
+                   ?>
+                   @if($left_count->left_count > 19999 && $right_count->right_count > 19999)
+                   <span class="badge bg-success">Eligible</span></td>
+
+
+                   @else
+                  <span class="badge bg-danger">Not Eligible</span></td>
+
+                  @endif</td>
                 <td>
-                    <button disabled class="btn btn-warning btn-sm" type="button" name="button">Claim</button>
+                  @if($left_count->left_count > 19999 && $right_count->right_count > 19999)
+                  <a href="#" class="btn btn-success btn-sm" >Claim</a>
+                  @else
+                   <button disabled class="btn btn-warning btn-sm" type="button" name="button">Claim</button>
+                   @endif
                 </td>
 
               </tr>
@@ -141,9 +268,26 @@
                    <td><span class="badge bg-info">Ambassador</span></td>
                    <td>$20,000</td>
 
-                <td><span class="badge bg-danger">Not Eligible</span></td>
+                <td><?php
+                    $left_count = App\Models\User::where('id',Auth::id())->first();
+                    $right_count = App\Models\User::where('id',Auth::id())->first();
+                  //  dd($left_count->left_count);
+
+                   ?>
+                   @if($left_count->left_count > 99999 && $right_count->right_count > 99999)
+                   <span class="badge bg-success">Eligible</span></td>
+
+
+                   @else
+                  <span class="badge bg-danger">Not Eligible</span></td>
+
+                  @endif</td>
                 <td>
-                    <button disabled class="btn btn-warning btn-sm" type="button" name="button">Claim</button>
+                  @if($left_count->left_count > 99999 && $right_count->right_count > 99999)
+                  <a href="#" class="btn btn-success btn-sm" >Claim</a>
+                  @else
+                   <button disabled class="btn btn-warning btn-sm" type="button" name="button">Claim</button>
+                   @endif
                 </td>
 
               </tr>
