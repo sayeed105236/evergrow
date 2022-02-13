@@ -98,11 +98,15 @@ class CreateNewUser implements CreatesNewUsers
  */
 protected function registered(Request $request, $user)
 {
-    if ($user->referrer !== null) {
-        Notification::send($user->referrer, new ReferrerBonus($user));
+    if ($user->sponsor !== null) {
+        Notification::send($user->sponsor, new ReferrerBonus($user));
     }
 
     return redirect($this->redirectPath());
+}
+public function addrefferer()
+{
+
 }
 
 

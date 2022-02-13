@@ -374,13 +374,25 @@
                                 @endforeach
                             </select>
                         </div>--}} -->
+
+                                      @if(isset($_GET['ref']))
                                         <div class="form-group">
                                             <label class="form-label" for="basic-default-email">Sponsor</label>
-                                            <input type="text" id="sponsor" name="sponsor" class="form-control"
+                                            <input type="text" id="sponsor" value="{{$_GET['ref']}}" name="sponsor" class="form-control"
                                                    placeholder="Enter User Name" required/>
 
                                             <div id="suggestUser"></div>
                                         </div>
+                                        @else
+                                        <div class="form-group">
+                                            <label class="form-label" for="basic-default-email">Sponsor</label>
+                                            <input type="text" id="sponsor"  name="sponsor" class="form-control"
+                                                   placeholder="Enter User Name" required/>
+
+                                            <div id="suggestUser"></div>
+                                        </div>
+                                        @endif
+
 
 
                                         <div class="form-group">
