@@ -393,7 +393,28 @@
                                         </div>
                                         @endif
 
+                                        @if(isset($_GET['ref']))
+                                        <div class="form-group">
+                                            <label for="basicSelect">Select Position</label>
+                                            <select  class="single-select form-control" name="position"
+                                                    id="position">
+                                                <option label="Choose position"></option>
+                                                <option selected>Select Position</option>
+                                                <option value="2">Right</option>
+                                                <option value="1">Left</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
 
+                                            <input type="text" id="placement_id" name="placement_id"
+                                                   class="form-control"
+                                                   required readonly/>
+
+                                        </div>
+
+
+
+                                          @else
 
                                         <div class="form-group">
                                             <label for="basicSelect">Select Position</label>
@@ -412,6 +433,7 @@
                                                    required readonly/>
 
                                         </div>
+                                        @endif
 
 
                                         @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
@@ -546,6 +568,7 @@
     });
 
     $("body").on("keyup", "#sponsor", function () {
+    //alert('success');
         let searchData = $("#sponsor").val();
         if (searchData.length > 0) {
             $.ajax({
