@@ -43,9 +43,26 @@ class User extends Authenticatable
       'left_side',
       'right_side',
       'status',
+      'referral_token',
 
 
     ];
+    /**
+ * The accessors to append to the model's array form.
+ *
+ * @var array
+ */
+
+
+/**
+ * Get the user's referral link.
+ *
+ * @return string
+ */
+public function getReferralLinkAttribute()
+{
+    return $this->referral_link = route('register', ['ref' => $this->user_name]);
+}
 
     /**
      * The attributes that should be hidden for serialization.
@@ -74,7 +91,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $appends = [
-        'profile_photo_url',
+        'profile_photo_url','referral_link',
     ];
     public function sponsors()
     {
@@ -101,5 +118,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(UserPayment::class,'user_id');
     }
+    public function referrals()
+{
+    return $this->hasMany(User::class, 'sponsor', 'id');
+}
 
 }

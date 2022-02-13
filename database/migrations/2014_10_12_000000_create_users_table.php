@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
           $table->id();
           $table->string('name');
           $table->string('user_name')->unique();
+          $table->string('referral_token')->unique();
 
           $table->string('email');
           $table->string('number')->nullable();

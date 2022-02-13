@@ -81,7 +81,29 @@ class CreateNewUser implements CreatesNewUsers
         }
 
 
+        public function showRegistrationForm(Request $request)
+{
+    if ($request->has('ref')) {
+        session(['referrer' => $request->query('ref')]);
+    }
 
+    return view('auth.register');
+}
+/**
+ * The user has been registered.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @param  mixed  $user
+ * @return mixed
+ */
+protected function registered(Request $request, $user)
+{
+    if ($user->referrer !== null) {
+        Notification::send($user->referrer, new ReferrerBonus($user));
+    }
+
+    return redirect($this->redirectPath());
+}
 
 
 

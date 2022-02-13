@@ -19,6 +19,8 @@
     <!--end breadcrumb-->
     <h6 class="mb-0 text-uppercase" style="color:#08157A;"><strong>"Welcome Mr. {{Auth::user()->name}} to
             Evergrow"</strong></h6>
+            <hr>
+            <h6 style="color:green; font-weight:700;">Referral link: {{ Auth::user()->referral_link }}</h6>
     <br>
     <?php
     $activation = App\Models\User::where('id', Auth::id())->first();
