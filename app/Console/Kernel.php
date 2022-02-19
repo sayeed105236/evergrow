@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Console\Scheduling\Schedule;
+
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
@@ -14,7 +15,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-      
+
         Commands\PairBonus::class,
     ];
 
@@ -28,8 +29,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
 
-        $schedule->command('pairbonus:daily')->weekdays()
-            ->dailyAt('13.00');
+        $schedule->command('pairbonus:daily')
+            ->dailyAt('18:01');
     }
 
     /**

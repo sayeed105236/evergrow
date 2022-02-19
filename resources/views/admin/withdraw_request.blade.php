@@ -35,7 +35,7 @@
                   <th>Wallet Id</th>
                   <th>Status</th>
 
-                  <th>Actions</th>
+                  
 
 
               </tr>
@@ -56,17 +56,19 @@
                 <td>{{$row->payment_method->wallet_id}}</td>
 
                 <td>
+                  @if($row->status == 'approve' )
                   <span class="badge bg-success">{{ $row->status }}</span>
+                  @else
+                  <span class="badge bg-danger">{{ $row->status }}</span>
+                  @endif
                   @if($row->status=='pending')
                   <a href="{{ url('/admin/withdraw-money-approve/'.$row->id) }}" class="btn btn-sm btn-primary">Approve Now</a>
+                  <a href="{{ url('/admin/add-money-reject/'.$row->id . '/' .$row->user->id . '/' .$row->amount) }}" class="btn btn-sm btn-danger">Reject</a>
                   @endif
                 </td>
 
 
-                <td>
 
-                    <a href="/admin/withdraw-money-delete/{{$row->id}}"><i class='bx bx-trash'></i></a>
-                </td>
 
 
 

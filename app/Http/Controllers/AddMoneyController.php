@@ -118,6 +118,7 @@ class AddMoneyController extends Controller
         $withdraw = new Withdraw();
         $withdraw->user_id = $user_id;
         $withdraw->amount = $amount;
+        
         $withdraw->payment_method_id = $payment_method_id;
 
 
@@ -133,6 +134,7 @@ class AddMoneyController extends Controller
 
         return back()->with('withdraw_added', 'Your request is Accepted. Wait for Confirmation!!');
     }
+
 
 
 }

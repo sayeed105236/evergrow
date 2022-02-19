@@ -6,20 +6,34 @@
 
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-      <div class="breadcrumb-title pe-3">Deposit Requests</div>
+      <div class="breadcrumb-title pe-3">History</div>
       <div class="ps-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb mb-0 p-0">
             <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">Deposit Requests</li>
+
+              <li class="breadcrumb-item active" aria-current="page">Transfer History</li>
+
+
+
+
+
           </ol>
+
         </nav>
       </div>
 
     </div>
     <!--end breadcrumb-->
-    <h6 class="mb-0 text-uppercase">Requests</h6>
+    <div class="row">
+      <div class="col">
+      <h6 class="mb-0 text-uppercase">Transfer History</h6>
+      </div>
+
+    </div>
+
+
     <hr/>
     <div class="card">
       <div class="card-body">
@@ -27,42 +41,34 @@
           <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
               <tr>
-                <th>#</th>
-                <th>User Name</th>
-                <th>Requested Amount</th>
-                <th>Method</th>
-                <th>Transaction Id</th>
-                <th>Status</th>
-                <th>Action</th>
+                <th>SL</th>
+                <th>Date</th>
+                <th>Receiver User Name</th>
+                <th>Sender User Name</th>
+                <th>Amount</th>
+                <th>Type</th>
+
+
 
               </tr>
             </thead>
             <tbody>
-                @foreach($deposit as $row)
+                @foreach($transfers as $transfer)
               <tr>
 
                 <td>{{$loop->index+1}}</td>
-                <td>{{$row->user->user_name}}</td>
-                <td>{{$row->amount}}$</td>
-                <td>{{$row->method}}</td>
-                <td>{{$row->txn_id}}</td>
-                <td>
-                  <span class="badge bg-success">{{ $row->status }}</span>
-                  @if($row->status=='pending')
-                  <a href="{{ url('/admin/add-money-approve/'.$row->id) }}" class="btn btn-sm btn-primary">Approve Now</a>
-                  
-                  @endif
-                </td>
+                <td>{{$transfer->created_at}}</td>
 
+                  <td>{{$transfer->receiver->user_name ?? ''}}</td>
+                  <td>{{$transfer->sender->user_name ?? ''}}</td>
+                <td>{{$transfer->amount ?? ''}}</td>
 
-                <td>
-
-                    <a href="/admin/add-money-delete/{{$row->id}}"><i class='bx bx-trash'></i></a>
-                </td>
+                <td>{{$transfer->type ?? ''}}</td>
 
 
               </tr>
-  @endforeach
+
+              @endforeach
 
 
 

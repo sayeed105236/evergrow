@@ -61,23 +61,16 @@
                 <div class="menu-title">History</div>
             </a>
             <ul>
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Registration History</a>
+
+
+                <li> <a href="/home/withdraw-report/{{Auth::user()->id}}"><i class="bx bx-right-arrow-alt"></i>Withdraw History</a>
                 </li>
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Upgrade History</a>
-                </li>
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Withdraw History</a>
+                <li> <a href="/home/transfer-report/{{Auth::user()->id}}"><i class="bx bx-right-arrow-alt"></i>Transfer History</a>
                 </li>
 
             </ul>
         </li>
-        <li>
-            <a class="" href="/home/transfer-report/{{Auth::user()->id}}">
-                <div class="parent-icon"><i class="bx bx-transfer"></i>
-                </div>
-                <div class="menu-title">Transfer History</div>
-            </a>
 
-        </li>
         <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"> <i class="bx bx-book"></i>

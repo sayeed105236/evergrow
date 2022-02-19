@@ -134,7 +134,7 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <?php
-                            $withdraw = App\Models\AddMoney::where('user_id', Auth::id())->where('method', 'Withdraw')->where('status', 'approve')->get()->sum('amount');
+                            $withdraw = App\Models\Withdraw::where('user_id', Auth::id())->where('status', 'approve')->get()->sum('amount');
                             //dd($transferData);
 
                             ?>

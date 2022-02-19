@@ -84,6 +84,14 @@
                 </li>
                 <li> <a href="{{route('manage-rank-history')}}"><i class="bx bx-right-arrow-alt"></i>Rank Bonus History</a>
                 </li>
+                <li> <a href="{{route('manage-club-history')}}"><i class="bx bx-right-arrow-alt"></i>Club Bonus History</a>
+                </li>
+                  <li> <a href="{{route('manage-sponsor-history')}}"><i class="bx bx-right-arrow-alt"></i>Sponsor Bonus History</a>
+                  </li>
+                  <li> <a href="{{route('manage-profit-history')}}"><i class="bx bx-right-arrow-alt"></i>Profit Bonus History</a>
+                  </li>
+                  <li> <a href="{{route('manage-transfer-history')}}"><i class="bx bx-right-arrow-alt"></i>Transfer History</a>
+                  </li>
 
 
             </ul>

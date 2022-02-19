@@ -9,7 +9,7 @@ use App\Models\Withdraw;
 
 class AdminShowPaymentController extends Controller
 {
-  
+
     public function Manage()
     {
       $deposit= AddMoney::where('method','Deposit')->get();
@@ -19,6 +19,7 @@ class AdminShowPaymentController extends Controller
     }
     public function approve($id)
     {
+
         AddMoney::findOrFail($id)->update([
             'status'=>'approve'
         ]);
@@ -28,6 +29,7 @@ class AdminShowPaymentController extends Controller
         );
         return Redirect()->back()->with($notification);
     }
+
     public function destroy($id)
     {
         AddMoney::findOrFail($id)->delete();
@@ -57,6 +59,26 @@ class AdminShowPaymentController extends Controller
         );
 
 
+        return Redirect()->back()->with($notification);
+    }
+    public function rejected($id,$user_id,$amount)
+    {
+        //dd($id,$user_id,$amount);
+        Withdraw::findOrFail($id)->update([
+            'status'=>'rejected'
+        ]);
+        $refund = new AddMoney;
+        $refund->user_id = $user_id;
+        $refund->amount = +(($amount) + ($amount * 10 / 100));
+        $refund->method = 'Withdraw';
+
+        $refund->status = 'approve';
+        $refund->save();
+
+        $notification=array(
+            'message'=>'Rejected!!!',
+            'alert-type'=>'danger'
+        );
         return Redirect()->back()->with($notification);
     }
     public function Withdrawdestroy($id)

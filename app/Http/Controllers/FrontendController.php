@@ -7,6 +7,7 @@ use App\Models\User;
 use Auth;
 
 use App\Models\AddMoney;
+use App\Models\Withdraw;
 
 class FrontendController extends Controller
 {
@@ -54,6 +55,11 @@ class FrontendController extends Controller
     {
         $transferData = AddMoney::where('user_id',Auth::id())->where('method','Transfer')->get();
         return view('user.transfer_history',compact(['transferData']));
+    }
+    public function withdrawReport()
+    {
+        $transferData = Withdraw::where('user_id',Auth::id())->get();
+        return view('user.withdraw_history',compact(['transferData']));
     }
     public function MyTeam(User $query,$id)
     {

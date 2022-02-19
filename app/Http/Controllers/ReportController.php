@@ -19,4 +19,28 @@ class ReportController extends Controller
 
     return view('admin.reports.rank_bonus_history',compact('rank_bonus'));
   }
+  public function ManageClub()
+  {
+    $club_bonus= AddMoney::where('method','Club Bonus')->get();
+
+    return view('admin.reports.club_bonus_history',compact('club_bonus'));
+  }
+  public function ManageSponsor()
+  {
+    $sponsor_bonus= AddMoney::where('method','Sponsor Bonus')->get();
+
+    return view('admin.reports.sponsor_bonus_history',compact('sponsor_bonus'));
+  }
+  public function ManageProfit()
+  {
+    $profit_bonus= AddMoney::where('method','Profit Bonus')->get();
+
+    return view('admin.reports.profit_bonus_history',compact('profit_bonus'));
+  }
+  public function ManageTransfer()
+  {
+    $transfers= AddMoney::where('method','Transfer')->get();
+
+    return view('admin.reports.transfer_history',compact('transfers'));
+  }
 }

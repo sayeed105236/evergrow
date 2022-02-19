@@ -40,6 +40,7 @@ Route::get('/home/rank_bonus_history/{id}', [FrontendController::class,'rank_bon
 Route::get('/home/club_bonus_history/{id}', [FrontendController::class,'club_bonus'])->name('club-bonus-history')->middleware('auth');
 Route::post('/user/dashboard/transfer-money', [AddMoneyController::class,'moneyTransfer'])->name('money-transfer')->middleware('auth');
 Route::get('/home/transfer-report/{id}', [FrontendController::class,'transferReport'])->name('transfer-report')->middleware('auth');
+Route::get('/home/withdraw-report/{id}', [FrontendController::class,'withdrawReport'])->name('withdraw-report')->middleware('auth');
 Route::get('/home/my-team/{id}', [FrontendController::class,'MyTeam'])->name('my-team')->middleware('auth');
 Route::get('/home/user-profile/{id}', [FrontendController::class,'Profile'])->name('my-profile')->middleware('auth');
 Route::post('/home/user_profile_update/update', [ReferralController::class,'UpdateUser'])->name('user-profile-update')->middleware('auth');
@@ -75,6 +76,7 @@ Route::get('/admin/payment-method/delete/{id}', [PaymentMethodController::class,
 Route::post('/admin/payment-method/update', [PaymentMethodController::class,'Update'])->name('payment-method-update')->middleware('authadmin');
 Route::get('/admin/add-money/requests', [AdminShowPaymentController::class,'Manage'])->name('deposit-manage')->middleware('authadmin');
 Route::get('/admin/add-money-approve/{id}', [AdminShowPaymentController::class,'approve'])->middleware('authadmin');
+Route::get('/admin/add-money-reject/{id}/{user_id}/{amount}', [AdminShowPaymentController::class,'rejected'])->middleware('authadmin');
 Route::get('/admin/add-money-delete/{id}', [AdminShowPaymentController::class,'destroy'])->middleware('authadmin');
 //admin withdraw request
 Route::get('/admin/withdraw-money/requests', [AdminShowPaymentController::class,'WithdrawManage'])->name('withdraw-manage')->middleware('authadmin');
@@ -94,3 +96,7 @@ Route::post('/admin/profit-share/store', [ClubController::class,'ProfitShare'])-
 
 Route::get('/admin/manage/pair-bonus-history', [ReportController::class,'Manage'])->name('manage-pair-history')->middleware('authadmin');
 Route::get('/admin/manage/rank-bonus-history', [ReportController::class,'ManageRank'])->name('manage-rank-history')->middleware('authadmin');
+Route::get('/admin/manage/club-bonus-history', [ReportController::class,'ManageClub'])->name('manage-club-history')->middleware('authadmin');
+Route::get('/admin/manage/sponsor-bonus-history', [ReportController::class,'ManageSponsor'])->name('manage-sponsor-history')->middleware('authadmin');
+Route::get('/admin/manage/profit-bonus-history', [ReportController::class,'ManageProfit'])->name('manage-profit-history')->middleware('authadmin');
+Route::get('/admin/manage/transfer-history', [ReportController::class,'ManageTransfer'])->name('manage-transfer-history')->middleware('authadmin');
