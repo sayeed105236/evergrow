@@ -43,7 +43,8 @@
               <tr>
                 <th>SL</th>
                 <th>Date</th>
-                <th>User Name</th>
+                <th>Receiver User Name</th>
+                <th>Sender User Name</th>
                 <th>Amount</th>
                 <th>Type</th>
 
@@ -59,6 +60,7 @@
                 <td>{{$transfer->created_at}}</td>
 
                   <td>{{$transfer->receiver->user_name ?? ''}}</td>
+                  <td>{{$transfer->sender->user_name ?? ''}}</td>
                 <td>{{$transfer->amount ?? ''}}</td>
 
                 <td>{{$transfer->type ?? ''}}</td>

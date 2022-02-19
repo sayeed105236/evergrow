@@ -41,43 +41,48 @@ class AddMoneyController extends Controller
 
     public function moneyTransfer(Request $request)
     {
-        $request->validate([
+        if (!$request->user_id) {
+          $request->validate([
 
-            'user_id' => 'required',
-            'amount' => 'required',
+              'user_id' => 'required',
+              'amount' => 'required',
 
-        ]);
+          ]);
 
-        $req_user_id = User::where('user_name', $request->user_id)->pluck('id')->first();
+          $req_user_id = User::where('user_name', $request->user_id)->pluck('id')->first();
 
-        $sum_deposit = AddMoney::where('user_id', Auth::id())->where('status', 'approve')->sum('amount');
-        $calculated_amount = $request->amount;
-        //dd($sum_deposit < $calculated_amount,$sum_deposit,$calculated_amount);
+          $sum_deposit = AddMoney::where('user_id', Auth::id())->where('status', 'approve')->sum('amount');
+          $calculated_amount = $request->amount;
+          //dd($sum_deposit < $calculated_amount,$sum_deposit,$calculated_amount);
 
-        if ($sum_deposit < $calculated_amount) {
+          if ($sum_deposit < $calculated_amount) {
 
-            return back()->with('error', 'Insufficient Balance');
+              return back()->with('error', 'Insufficient Balance');
 
-        };
-        $deduct = new AddMoney;
-        $deduct->user_id = Auth::id();
-        $deduct->receiver_id = $req_user_id;
-        $deduct->amount = -($request->amount);
-        $deduct->method = 'Transfer';
-        $deduct->type = 'Debit';
-        $deduct->status = 'approve';
-        $deduct->save();
+          };
+          $deduct = new AddMoney;
+          $deduct->user_id = Auth::id();
+          $deduct->receiver_id = $req_user_id;
+          $deduct->amount = -($request->amount);
+          $deduct->method = 'Transfer';
+          $deduct->type = 'Debit';
+          $deduct->status = 'approve';
+          $deduct->save();
 
-        $deposit = new AddMoney;
-        $deposit->user_id = $req_user_id;
-        //  $deposit->receiver_id=$request->user_id;
-        $deposit->amount = $request->amount;
-        $deposit->method = 'Transfer';
-        $deposit->type = 'Credit';
-        $deposit->status = 'approve';
-        $deposit->save();
+          $deposit = new AddMoney;
+          $deposit->user_id = $req_user_id;
+          $deposit->received_from= Auth::id();
+          $deposit->amount = $request->amount;
+          $deposit->method = 'Transfer';
+          $deposit->type = 'Credit';
+          $deposit->status = 'approve';
+          $deposit->save();
 
-        return back()->with('Money_Transfered', 'Money Transfer Successfully!!');
+          return back()->with('Money_Transfered', 'Money Transfer Successfully!!');
+        }else
+        {
+            return back()->with('Money_not_Transfered', 'Please Enter the Correct Username!!');
+        }
     }
 
     public function walletWithdraw(Request $request)

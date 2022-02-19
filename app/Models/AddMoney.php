@@ -21,6 +21,10 @@ class AddMoney extends Model
     {
         return $this->belongsTo(User::class,'receiver_id');
     }
+    public function sender()
+    {
+        return $this->belongsTo(User::class,'received_from');
+    }
 
 
 }

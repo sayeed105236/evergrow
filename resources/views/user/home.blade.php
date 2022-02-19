@@ -53,6 +53,13 @@
                 {{Session::get('Money_Transfered')}}
             </div>
         </div>
+        @elseif(Session::has('Money_not_Transfered'))
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">Failed</h4>
+                <div class="alert-body">
+                    {{Session::get('Money_not_Transfered')}}
+                </div>
+            </div>
     @elseif(Session::has('withdraw_added'))
         <div class="alert alert-success" role="alert">
             <h4 class="alert-heading">Success</h4>
