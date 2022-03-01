@@ -114,9 +114,10 @@
                             $total_pair_bonus = App\Models\AddMoney::where('user_id', Auth::id())->where('method', 'Pair Bonus')->get()->sum('amount');
                             $total_profit_bonus = App\Models\AddMoney::where('user_id', Auth::id())->where('method', 'Profit Bonus')->get()->sum('amount');
                             $total_club_bonus = App\Models\AddMoney::where('user_id', Auth::id())->where('method', 'Club Bonus')->get()->sum('amount');
+                            $total_unit_bonus = App\Models\AddMoney::where('user_id', Auth::id())->where('method', 'Unit Bonus')->get()->sum('amount');
                             //dd($transferData);
                             //dd($transferData);
-                            $bonus = $earnings + $total_pair_bonus + $total_profit_bonus + $total_club_bonus;
+                            $bonus = $earnings + $total_pair_bonus + $total_profit_bonus + $total_club_bonus+$total_unit_bonus;
 
                             ?>
                             <p class="mb-0 text-white">Total Bonus</p>
@@ -287,9 +288,14 @@
             <div class="card radius-10 bg-warning bg-gradient">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
+                      <?php
+                      $total_units = App\Models\Unit::where('user_id', Auth::id())->count('id');
+                      //dd($total_level_bonus);
+
+                      ?>
                         <div>
-                            <p class="mb-0 text-dark">Total Unit</p>
-                            <h4 class="text-dark my-1">0</h4>
+                            <p class="mb-0 text-dark">Total Unit Purchased</p>
+                            <h4 class="text-dark my-1">{{$total_units}}</h4>
                         </div>
                         <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
                         </div>
@@ -301,9 +307,14 @@
             <div class="card radius-10 bg-success bg-gradient">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
+                      <?php
+                      $unit_bonus = App\Models\AddMoney::where('user_id', Auth::id())->where('method', 'Unit Bonus')->get()->sum('amount');
+                      //dd($total_level_bonus);
+
+                      ?>
                         <div>
                             <p class="mb-0 text-white">Unit Bonus</p>
-                            <h4 class="my-1 text-white">$0.00</h4>
+                            <h4 class="my-1 text-white">${{$unit_bonus }}</h4>
                         </div>
                         <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
                         </div>

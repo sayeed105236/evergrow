@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AddMoney;
+use App\Models\Unit;
 
 class ReportController extends Controller
 {
@@ -42,5 +43,17 @@ class ReportController extends Controller
     $transfers= AddMoney::where('method','Transfer')->get();
 
     return view('admin.reports.transfer_history',compact('transfers'));
+  }
+  public function ManageUnit()
+  {
+    $unit_bonus= AddMoney::where('method','Unit Bonus')->get();
+
+    return view('admin.reports.unit_bonus_history',compact('unit_bonus'));
+  }
+  public function ManageUnitPurchase()
+  {
+    $units= Unit::all();
+
+    return view('admin.reports.unit_purchase_history',compact('units'));
   }
 }

@@ -50,9 +50,11 @@ Route::get('/home/binary_bonus_history/{id}', [FrontendController::class,'pair_b
 Route::get('/home/profit_bonus_history/{id}', [FrontendController::class,'profit_bonus'])->name('profit-bonus-history')->middleware('auth');
 Route::get('/home/rank_bonus_history/{id}', [FrontendController::class,'rank_bonus'])->name('rank-bonus-history')->middleware('auth');
 Route::get('/home/club_bonus_history/{id}', [FrontendController::class,'club_bonus'])->name('club-bonus-history')->middleware('auth');
+Route::get('/home/unit_bonus_history/{id}', [FrontendController::class,'unit_bonus'])->name('unit-bonus-history')->middleware('auth');
 Route::post('/user/dashboard/transfer-money', [AddMoneyController::class,'moneyTransfer'])->name('money-transfer')->middleware('auth');
 Route::get('/home/transfer-report/{id}', [FrontendController::class,'transferReport'])->name('transfer-report')->middleware('auth');
 Route::get('/home/withdraw-report/{id}', [FrontendController::class,'withdrawReport'])->name('withdraw-report')->middleware('auth');
+Route::get('/home/unit-buy-report/{id}', [FrontendController::class,'UnitBuyReport'])->name('unit-buy-report')->middleware('auth');
 
 
 //user team
@@ -122,3 +124,5 @@ Route::get('/admin/manage/club-bonus-history', [ReportController::class,'ManageC
 Route::get('/admin/manage/sponsor-bonus-history', [ReportController::class,'ManageSponsor'])->name('manage-sponsor-history')->middleware('authadmin');
 Route::get('/admin/manage/profit-bonus-history', [ReportController::class,'ManageProfit'])->name('manage-profit-history')->middleware('authadmin');
 Route::get('/admin/manage/transfer-history', [ReportController::class,'ManageTransfer'])->name('manage-transfer-history')->middleware('authadmin');
+Route::get('/admin/manage/unit-bonus-history', [ReportController::class,'ManageUnit'])->name('manage-unit-history')->middleware('authadmin');
+Route::get('/admin/manage/unit-purchase-history', [ReportController::class,'ManageUnitPurchase'])->name('manage-unit-purchase-history')->middleware('authadmin');

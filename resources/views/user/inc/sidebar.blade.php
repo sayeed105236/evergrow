@@ -67,6 +67,8 @@
                 </li>
                 <li> <a href="/home/transfer-report/{{Auth::user()->id}}"><i class="bx bx-right-arrow-alt"></i>Transfer History</a>
                 </li>
+                <li> <a href="/home/unit-buy-report/{{Auth::user()->id}}"><i class="bx bx-right-arrow-alt"></i>Unit Buy History</a>
+                </li>
 
             </ul>
         </li>
@@ -87,7 +89,7 @@
                 </li>
                 <li> <a href="/home/rank_bonus_history/{{Auth::user()->id}}"><i class="bx bx-right-arrow-alt"></i>Rank Bonus History</a>
                 </li>
-                <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Team Bonus History</a>
+                <li> <a href="/home/unit_bonus_history/{{Auth::user()->id}}"><i class="bx bx-right-arrow-alt"></i>Unit Bonus History</a>
                 </li>
                 <li> <a href="/home/club_bonus_history/{{Auth::user()->id}}"><i class="bx bx-right-arrow-alt"></i>Club Bonus History</a>
                 </li>

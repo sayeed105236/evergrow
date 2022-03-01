@@ -8,6 +8,7 @@ use Auth;
 
 use App\Models\AddMoney;
 use App\Models\Withdraw;
+use App\Models\Unit;
 
 class FrontendController extends Controller
 {
@@ -51,10 +52,20 @@ class FrontendController extends Controller
       $incomeData = AddMoney::where('user_id',Auth::id())->where('method','Club Bonus')->get();
       return view('user.club_bonus',compact('incomeData'));
     }
+    public function unit_bonus($id)
+    {
+      $incomeData = AddMoney::where('user_id',Auth::id())->where('method','Unit Bonus')->get();
+      return view('user.unit_bonus',compact('incomeData'));
+    }
     public function transferReport()
     {
         $transferData = AddMoney::where('user_id',Auth::id())->where('method','Transfer')->get();
         return view('user.transfer_history',compact(['transferData']));
+    }
+    public function UnitBuyReport($id)
+    {
+        $transferData = Unit::where('user_id',Auth::id())->get();
+        return view('user.unit_buy_history',compact(['transferData']));
     }
     public function withdrawReport()
     {
