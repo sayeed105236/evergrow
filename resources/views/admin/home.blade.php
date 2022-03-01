@@ -39,7 +39,7 @@
               <div class="d-flex align-items-center">
                   <div>
                       <?php
-                      $deposit = App\Models\Addmoney::where('status', 'approve')->get()->sum('amount');
+                      $deposit = App\Models\AddMoney::where('status', 'approve')->get()->sum('amount');
                       //dd($transferData);
 
                       ?>

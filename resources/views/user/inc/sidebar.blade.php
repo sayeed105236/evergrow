@@ -19,7 +19,7 @@
         </li>
 
         <li>
-            <a href="#">
+            <a href="/home/user-buy-unit/{{Auth::user()->id}}">
                 <div class="parent-icon"><i class="bx bx-check-circle"></i>
                 </div>
                 <div class="menu-title">Buy Unit</div>

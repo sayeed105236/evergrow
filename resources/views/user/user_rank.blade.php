@@ -219,10 +219,20 @@
 
                   @endif</td>
                 <td>
+                  @if($left_count->rank > 3)
+                    <button disabled class="btn btn-success btn-sm" type="button" name="button">Already Claimed</button>
+                  @else
                   @if($left_count->left_count > 3999 && $right_count->right_count > 3999)
-                  <a href="#" class="btn btn-success btn-sm" >Claim</a>
+                  <form class="hidden" action="{{route('claim-platinum')}}" method="post">
+                    @csrf
+                    <input type="hidden" name="id" value="{{Auth::id()}}">
+                    <input type="hidden" name="amount" value="2000">
+
+                    <button  class="btn btn-success btn-sm">Claim</button>
+                  </form>
                   @else
                    <button disabled class="btn btn-warning btn-sm" type="button" name="button">Claim</button>
+                   @endif
                    @endif
                 </td>
 

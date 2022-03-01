@@ -12,6 +12,7 @@ use App\Http\Controllers\UserPaymentMethodController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\BuyUnitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,8 +32,19 @@ Route::get('/', function () {
 Route::get('/home/dashboard/{id}', [FrontendController::class,'index'])->name('user-dashboard')->middleware('auth');
 Route::post('/user/dashboard/add-money', [AddMoneyController::class,'Store'])->name('money-store')->middleware('auth');
 Route::get('/home/referrals/{id}', [ReferralController::class,'index'])->name('referrals')->middleware('auth');
+
+//package activation
 Route::get('/home/activation-package/{id}', [HomeController::class,'Activate'])->name('activation')->middleware('auth');
 Route::post('/home/activate-package/', [HomeController::class,'ActivatePackage'])->name('activate-package')->middleware('auth');
+
+
+
+//unit buy
+Route::post('/home/user-buy-unit/', [BuyUnitController::class,'buy_unit'])->name('buy-unit')->middleware('auth');
+Route::get('/home/user-buy-unit/{id}', [BuyUnitController::class,'index'])->name('user-unit-buy')->middleware('auth');
+
+
+//user history
 Route::get('/home/sponsor_bonus_history/{id}', [FrontendController::class,'sponsor_bonus'])->name('sponsor-bonus-history')->middleware('auth');
 Route::get('/home/binary_bonus_history/{id}', [FrontendController::class,'pair_bonus'])->name('pair-bonus-history')->middleware('auth');
 Route::get('/home/profit_bonus_history/{id}', [FrontendController::class,'profit_bonus'])->name('profit-bonus-history')->middleware('auth');
@@ -41,16 +53,24 @@ Route::get('/home/club_bonus_history/{id}', [FrontendController::class,'club_bon
 Route::post('/user/dashboard/transfer-money', [AddMoneyController::class,'moneyTransfer'])->name('money-transfer')->middleware('auth');
 Route::get('/home/transfer-report/{id}', [FrontendController::class,'transferReport'])->name('transfer-report')->middleware('auth');
 Route::get('/home/withdraw-report/{id}', [FrontendController::class,'withdrawReport'])->name('withdraw-report')->middleware('auth');
+
+
+//user team
 Route::get('/home/my-team/{id}', [FrontendController::class,'MyTeam'])->name('my-team')->middleware('auth');
+
+//user_profile
 Route::get('/home/user-profile/{id}', [FrontendController::class,'Profile'])->name('my-profile')->middleware('auth');
 Route::post('/home/user_profile_update/update', [ReferralController::class,'UpdateUser'])->name('user-profile-update')->middleware('auth');
 Route::post('/home/user-password/change-password-store',[ReferralController::class,'changePassStore'])->name('change-password-store')->middleware('auth');
 Route::get('/home/user-rank/{id}', [FrontendController::class,'UserRank'])->name('user-rank')->middleware('auth');
 
+
+
 //rank
-Route::post('/home/activate-package/silver', [HomeController::class,'SilverRank'])->name('claim-silver')->middleware('auth');
-Route::post('/home/activate-package/bronze', [HomeController::class,'BronzeRank'])->name('claim-bronze')->middleware('auth');
-Route::post('/home/activate-package/gold', [HomeController::class,'GoldRank'])->name('claim-gold')->middleware('auth');
+Route::post('/home/claim-rank/silver', [HomeController::class,'SilverRank'])->name('claim-silver')->middleware('auth');
+Route::post('/home/claim-rank/bronze', [HomeController::class,'BronzeRank'])->name('claim-bronze')->middleware('auth');
+Route::post('/home/claim-rank/gold', [HomeController::class,'GoldRank'])->name('claim-gold')->middleware('auth');
+Route::post('/home/claim-rank/platinum', [HomeController::class,'PlatinumRank'])->name('claim-platinum')->middleware('auth');
 // User Payment Method
 Route::get('/home/payment-method/{id}', [UserPaymentMethodController::class,'index'])->name('user-payment-method')->middleware('auth');
 Route::post('/home/payment-method/store', [UserPaymentMethodController::class,'Store'])->name('user-payment-method-store')->middleware('auth');
@@ -69,7 +89,7 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->get('/admin/dashboa
 })->name('admin.pages.dashboard');
 //admin routes
 Route::get('/admin/user_lists', [UserListController::class,'Manage'])->name('user-list')->middleware('authadmin');
-//Payment method Routes
+//Admin Payment method Routes
 Route::get('/admin/payment-method', [PaymentMethodController::class,'index'])->name('payment-method')->middleware('authadmin');
 Route::post('/admin/payment-method/store', [PaymentMethodController::class,'Store'])->name('payment-method-store')->middleware('authadmin');
 Route::get('/admin/payment-method/delete/{id}', [PaymentMethodController::class,'Delete'])->middleware('authadmin');
@@ -86,13 +106,15 @@ Route::get('/admin/withdraw-money-delete/{id}', [AdminShowPaymentController::cla
 Route::get('/admin/club_member/manage', [ClubController::class,'index'])->name('club-member-manage')->middleware('authadmin');
 Route::get('/admin/profit_share/manage', [ClubController::class,'Profit'])->name('profit-share-manage')->middleware('authadmin');
 
-
+// admin manage settings
 Route::get('/admin/manage-settings', [SettingsController::class,'Manage'])->name('settings-manage')->middleware('authadmin');
 Route::post('/admin/manage-settings/store', [SettingsController::class,'StoreSettings'])->name('store-system-settings')->middleware('authadmin');
 Route::post('/admin/manage-settings/update', [SettingsController::class,'UpdateSettings'])->name('system-update')->middleware('authadmin');
 
 Route::post('/admin/club-bonus/store', [ClubController::class,'ClubBonus'])->name('club-bonus-store')->middleware('authadmin');
 Route::post('/admin/profit-share/store', [ClubController::class,'ProfitShare'])->name('profit-share-store')->middleware('authadmin');
+
+//admin transaction history
 
 Route::get('/admin/manage/pair-bonus-history', [ReportController::class,'Manage'])->name('manage-pair-history')->middleware('authadmin');
 Route::get('/admin/manage/rank-bonus-history', [ReportController::class,'ManageRank'])->name('manage-rank-history')->middleware('authadmin');

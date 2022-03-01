@@ -212,6 +212,29 @@ class HomeController extends Controller
 
 
 
+
+    return back()->with('silver_claimed','Congratulations!! Your Rank Bonus has been Claimed');
+    }
+    public function PlatinumRank(Request $request)
+    {
+      
+      $rank_amount = new AddMoney();
+      $rank_amount->user_id = Auth::id();
+      $rank_amount->amount = $request['amount'];
+      $rank_amount->method = 'Rank Bonus';
+      $rank_amount->status = 'approve';
+      $rank_amount->created_at = Carbon::now();
+
+      $rank_amount->save();
+
+      $rank = User::find(Auth::user()->id);
+      $rank->rank= '4';
+
+      $rank->save();
+
+
+
+
     return back()->with('silver_claimed','Congratulations!! Your Rank Bonus has been Claimed');
     }
 
