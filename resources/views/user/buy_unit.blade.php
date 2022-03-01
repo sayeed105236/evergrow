@@ -42,6 +42,13 @@
                 {{Session::get('unit_buy')}}
             </div>
         </div>
+        @elseif(Session::has('unit_limit'))
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">Failed</h4>
+                <div class="alert-body">
+                    {{Session::get('unit_limit')}}
+                </div>
+            </div>
         @endif
     <div class="card">
       <div class="card-body">
