@@ -126,3 +126,4 @@ Route::get('/admin/manage/profit-bonus-history', [ReportController::class,'Manag
 Route::get('/admin/manage/transfer-history', [ReportController::class,'ManageTransfer'])->name('manage-transfer-history')->middleware('authadmin');
 Route::get('/admin/manage/unit-bonus-history', [ReportController::class,'ManageUnit'])->name('manage-unit-history')->middleware('authadmin');
 Route::get('/admin/manage/unit-purchase-history', [ReportController::class,'ManageUnitPurchase'])->name('manage-unit-purchase-history')->middleware('authadmin');
+Route::get('/admin/manage/unit', [ReportController::class,'ManageUnitLevel'])->name('manage-unit')->middleware('authadmin');

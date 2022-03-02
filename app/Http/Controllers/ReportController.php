@@ -56,4 +56,10 @@ class ReportController extends Controller
 
     return view('admin.reports.unit_purchase_history',compact('units'));
   }
+  public function ManageUnitLevel()
+  {
+    $units= Unit::all();
+
+    return view('admin.reports.unit_level',compact('units'));
+  }
 }

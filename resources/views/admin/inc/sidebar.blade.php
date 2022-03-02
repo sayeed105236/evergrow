@@ -26,6 +26,14 @@
 
         </li>
         <li>
+            <a href="{{route('manage-unit')}}" >
+                <div class="parent-icon"><i class='bx bx-check-circle'></i>
+                </div>
+                <div class="menu-title">Units</div>
+            </a>
+
+        </li>
+        <li>
             <a href="{{route('payment-method')}}" >
                 <div class="parent-icon"><i class='bx bx-wallet'></i>
                 </div>
