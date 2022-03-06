@@ -37,7 +37,7 @@ class BuyUnitController extends Controller
 
 
     $current_date_data= Unit::where('user_id',Auth::id())->select("*")->whereDate('created_at',Carbon::today())->count('id');
-    if ($current_date_data>=500) {
+    if ($current_date_data>=10) {
         return back()->with('unit_limit','Sorry!! Your daily limit to buy unit Exceeded!!');
     }else {
 
