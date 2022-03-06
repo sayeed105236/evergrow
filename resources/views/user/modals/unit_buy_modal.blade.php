@@ -16,6 +16,7 @@
               @csrf
               <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
               <input type="hidden" name="unit_amount" value="1">
+              <input type="hidden" name="placement_id" value="{{$lastid->id}}">
 
 
 

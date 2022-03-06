@@ -16,6 +16,7 @@
         </div>
 
     </div>
+     <marquee style="color:red; font-size:20px;" behavior="scroll" direction="left">Important Notice: Do not purchase any unit from Unit Buy Section. It is under maintenance. If anyone try to purchase unit somehow the amount will not be refundable. And No Bonus amount will be added.</marquee>
     <!--end breadcrumb-->
     <h6 class="mb-0 text-uppercase" style="color:#08157A;"><strong>"Welcome Mr. {{Auth::user()->name}} to
             Evergrow"</strong></h6>
