@@ -49,6 +49,13 @@
                     {{Session::get('unit_limit')}}
                 </div>
             </div>
+            @elseif(Session::has('balance_limit'))
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading">Failed</h4>
+                    <div class="alert-body">
+                        {{Session::get('balance_limit')}}
+                    </div>
+                </div>
         @endif
     <div class="card">
       <div class="card-body">

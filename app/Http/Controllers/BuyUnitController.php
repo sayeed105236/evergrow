@@ -37,9 +37,14 @@ class BuyUnitController extends Controller
 
 
     $current_date_data= Unit::where('user_id',Auth::id())->select("*")->whereDate('created_at',Carbon::today())->count('id');
+    $data['sum_deposit']=AddMoney::where('user_id',Auth::id())->where('status','approve')->sum('amount');
     if ($current_date_data>=10) {
         return back()->with('unit_limit','Sorry!! Your daily limit to buy unit Exceeded!!');
-    }else {
+    }elseif ($data['sum_deposit']<1) {
+        return back()->with('balance_limit','Sorry!! You do not have enough balance!!');
+    }
+
+    else {
 
       //$unit_get= Unit::orderBy('id','ASC')->get()->toArray();
         $unit_get= Unit::where('first_pos', '=', null)
@@ -79,7 +84,7 @@ class BuyUnitController extends Controller
     $unit->unit_code= $unitId;
     $unit->user_id= Auth::id();
     $unit->date= Carbon::today();
-    $unit->placement_id=$request->placement_id;
+
     $unit->save();
     $unit_get= Unit::orderBy('id','ASC')->get();
 
@@ -115,16 +120,44 @@ class BuyUnitController extends Controller
           $unit_level_update = Unit::where('unit_code',$value['unit_code'])->first();
           //dd($unit_level_update);
           $unit_level_update->unit_level= $placement_id;
+
           //$unit_level_update= $placement_id;
           $unit_level_update->save();
         }
 
     }
   }
-
-
-
-
+//dd($unit_level_update,$unit_level_update->unit_level);
+  // if ($unit_level_update->unit_level == 2) {
+  //   $unit_bonus = new Addmoney;
+  //   $unit_bonus->user_id =  $unit_level_update->user_id;
+  //   $unit_bonus->amount = 1.6;
+  //   $unit_bonus->method = 'Unit Bonus';
+  //   $unit_bonus->status = 'approve';
+  //   $unit_bonus->save();
+  // }elseif ($unit_level_update->unit_level == 3) {
+  //   $unit_bonus = new Addmoney;
+  //   $unit_bonus->user_id =  $unit_level_update->user_id;
+  //   $unit_bonus->amount = 6.4;
+  //   $unit_bonus->method = 'Unit Bonus';
+  //   $unit_bonus->status = 'approve';
+  //   $unit_bonus->save();
+  // }elseif ($unit_level_update->unit_level == 4) {
+  //   $unit_bonus = new Addmoney;
+  //   $unit_bonus->user_id =  $unit_level_update->user_id;
+  //   $unit_bonus->amount =  25.6;
+  //   $unit_bonus->method = 'Unit Bonus';
+  //   $unit_bonus->status = 'approve';
+  //   $unit_bonus->save();
+  // }elseif ($unit_level_update->unit_level == 5) {
+  //   $unit_bonus = new Addmoney;
+  //   $unit_bonus->user_id =  $unit_level_update->user_id;
+  //   $unit_bonus->amount = 307.2;
+  //   $unit_bonus->method = 'Unit Bonus';
+  //   $unit_bonus->status = 'approve';
+  //   $unit_bonus->save();
+  //
+  // }
 
 
     }
@@ -137,39 +170,19 @@ class BuyUnitController extends Controller
 
       $unit_id = Unit::where('unit_code',$placement_id)->first();
 
-      $unit_bonus_id= Unit::where('unit_code',$placement_id)->first();
-      //dd($unit_bonus_id->user_id);
+
+
       if ($unit_id->unit_level == 1) {
-        $unit_bonus = new Addmoney;
-        $unit_bonus->user_id =  $unit_bonus_id->user_id;
-        $unit_bonus->amount = 1.6;
-        $unit_bonus->method = 'Unit Bonus';
-        $unit_bonus->status = 'approve';
-        $unit_bonus->save();
+
         return 2;
       }elseif ($unit_id->unit_level == 2) {
-        $unit_bonus = new Addmoney;
-        $unit_bonus->user_id =  $unit_bonus_id->user_id;
-        $unit_bonus->amount = 6.4;
-        $unit_bonus->method = 'Unit Bonus';
-        $unit_bonus->status = 'approve';
-        $unit_bonus->save();
+
         return 3;
       }elseif ($unit_id->unit_level == 3) {
-        $unit_bonus = new Addmoney;
-        $unit_bonus->user_id =  $unit_bonus_id->user_id;
-        $unit_bonus->amount =  25.6;
-        $unit_bonus->method = 'Unit Bonus';
-        $unit_bonus->status = 'approve';
-        $unit_bonus->save();
+
         return 4;
       }elseif ($unit_id->unit_level == 4) {
-        $unit_bonus = new Addmoney;
-        $unit_bonus->user_id =  $unit_bonus_id->user_id;
-        $unit_bonus->amount = 307.2;
-        $unit_bonus->method = 'Unit Bonus';
-        $unit_bonus->status = 'approve';
-        $unit_bonus->save();
+
         return 5;
 
       }else {
