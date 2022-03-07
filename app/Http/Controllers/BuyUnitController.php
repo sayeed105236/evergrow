@@ -136,10 +136,12 @@ class BuyUnitController extends Controller
     //dd($placement_id);
 
       $unit_id = Unit::where('unit_code',$placement_id)->first();
-      //dd($unit_id,$placement_id);
+
+      $unit_bonus_id= Unit::where('unit_code',$placement_id)->first();
+      //dd($unit_bonus_id->user_id);
       if ($unit_id->unit_level == 1) {
         $unit_bonus = new Addmoney;
-        $unit_bonus->user_id =  $unit_id->user_id;
+        $unit_bonus->user_id =  $unit_bonus_id->user_id;
         $unit_bonus->amount = 1.6;
         $unit_bonus->method = 'Unit Bonus';
         $unit_bonus->status = 'approve';
@@ -147,7 +149,7 @@ class BuyUnitController extends Controller
         return 2;
       }elseif ($unit_id->unit_level == 2) {
         $unit_bonus = new Addmoney;
-        $unit_bonus->user_id =  $unit_id->user_id;
+        $unit_bonus->user_id =  $unit_bonus_id->user_id;
         $unit_bonus->amount = 6.4;
         $unit_bonus->method = 'Unit Bonus';
         $unit_bonus->status = 'approve';
@@ -155,7 +157,7 @@ class BuyUnitController extends Controller
         return 3;
       }elseif ($unit_id->unit_level == 3) {
         $unit_bonus = new Addmoney;
-        $unit_bonus->user_id =  $unit_id->user_id;
+        $unit_bonus->user_id =  $unit_bonus_id->user_id;
         $unit_bonus->amount =  25.6;
         $unit_bonus->method = 'Unit Bonus';
         $unit_bonus->status = 'approve';
@@ -163,8 +165,8 @@ class BuyUnitController extends Controller
         return 4;
       }elseif ($unit_id->unit_level == 4) {
         $unit_bonus = new Addmoney;
-        $unit_bonus->user_id =  $unit_id->user_id;
-        $unit_bonus->amount = 409.6;
+        $unit_bonus->user_id =  $unit_bonus_id->user_id;
+        $unit_bonus->amount = 307.2;
         $unit_bonus->method = 'Unit Bonus';
         $unit_bonus->status = 'approve';
         $unit_bonus->save();
