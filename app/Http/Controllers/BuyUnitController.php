@@ -128,37 +128,6 @@ class BuyUnitController extends Controller
     }
   }
 //dd($unit_level_update,$unit_level_update->unit_level);
-  // if ($unit_level_update->unit_level == 2) {
-  //   $unit_bonus = new Addmoney;
-  //   $unit_bonus->user_id =  $unit_level_update->user_id;
-  //   $unit_bonus->amount = 1.6;
-  //   $unit_bonus->method = 'Unit Bonus';
-  //   $unit_bonus->status = 'approve';
-  //   $unit_bonus->save();
-  // }elseif ($unit_level_update->unit_level == 3) {
-  //   $unit_bonus = new Addmoney;
-  //   $unit_bonus->user_id =  $unit_level_update->user_id;
-  //   $unit_bonus->amount = 6.4;
-  //   $unit_bonus->method = 'Unit Bonus';
-  //   $unit_bonus->status = 'approve';
-  //   $unit_bonus->save();
-  // }elseif ($unit_level_update->unit_level == 4) {
-  //   $unit_bonus = new Addmoney;
-  //   $unit_bonus->user_id =  $unit_level_update->user_id;
-  //   $unit_bonus->amount =  25.6;
-  //   $unit_bonus->method = 'Unit Bonus';
-  //   $unit_bonus->status = 'approve';
-  //   $unit_bonus->save();
-  // }elseif ($unit_level_update->unit_level == 5) {
-  //   $unit_bonus = new Addmoney;
-  //   $unit_bonus->user_id =  $unit_level_update->user_id;
-  //   $unit_bonus->amount = 307.2;
-  //   $unit_bonus->method = 'Unit Bonus';
-  //   $unit_bonus->status = 'approve';
-  //   $unit_bonus->save();
-  //
-  // }
-
 
     }
     return back()->with('unit_buy','Congratulations!! Your have successfully buy an Unit for 1 Usd!!');
@@ -170,18 +139,43 @@ class BuyUnitController extends Controller
 
       $unit_id = Unit::where('unit_code',$placement_id)->first();
 
+      $users_bonus_id= Unit::where('forth_pos',$unit_id->unit_code)->first();
+      //dd($users_bonus_id);
 
 
       if ($unit_id->unit_level == 1) {
 
+          $unit_bonus = new Addmoney;
+          $unit_bonus->user_id =  $users_bonus_id->user_id;
+          $unit_bonus->amount = 0.1;
+          $unit_bonus->method = 'Unit Bonus';
+          $unit_bonus->status = 'approve';
+          $unit_bonus->save();
+
         return 2;
       }elseif ($unit_id->unit_level == 2) {
-
+          $unit_bonus = new Addmoney;
+          $unit_bonus->user_id =  $users_bonus_id->user_id;
+          $unit_bonus->amount = 0.1;
+          $unit_bonus->method = 'Unit Bonus';
+          $unit_bonus->status = 'approve';
+          $unit_bonus->save();
         return 3;
       }elseif ($unit_id->unit_level == 3) {
-
+          $unit_bonus = new Addmoney;
+          $unit_bonus->user_id =  $users_bonus_id->user_id;
+          $unit_bonus->amount =  0.1;
+          $unit_bonus->method = 'Unit Bonus';
+          $unit_bonus->status = 'approve';
+          $unit_bonus->save();
         return 4;
       }elseif ($unit_id->unit_level == 4) {
+          $unit_bonus = new Addmoney;
+          $unit_bonus->user_id =  $users_bonus_id->user_id;
+          $unit_bonus->amount = 0.3;
+          $unit_bonus->method = 'Unit Bonus';
+          $unit_bonus->status = 'approve';
+          $unit_bonus->save();
 
         return 5;
 

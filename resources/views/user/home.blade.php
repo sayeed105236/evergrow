@@ -76,6 +76,12 @@
         </h3>
 
     @endif
+    <?php
+
+    $cal= App\Models\AddMoney::where('user_id',Auth::id())->where('method','Unit Bonus')->get()->sum('amount');
+    dd($cal);
+
+     ?>
 
     <div class="row match-height row-cols-1 row-cols-md-2 row-cols-xl-4 ">
 
