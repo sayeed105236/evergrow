@@ -65,6 +65,8 @@ class BuyUnitController extends Controller
         }elseif (is_null($unit_get->forth_pos)) {
           $unit_update->forth_pos=$unitId;
           $unit_update->unit_level=1;
+          $unit_update->level_status=1;
+
           $unit_bonus = new Addmoney;
           $unit_bonus->user_id =  $unit_get->user_id;
           $unit_bonus->amount = 0.4;
@@ -120,6 +122,9 @@ class BuyUnitController extends Controller
           $unit_level_update = Unit::where('unit_code',$value['unit_code'])->first();
           //dd($unit_level_update);
           $unit_level_update->unit_level= $placement_id;
+          $unit_level_update->level_status= $placement_id;
+
+
 
           //$unit_level_update= $placement_id;
           $unit_level_update->save();
@@ -144,38 +149,49 @@ class BuyUnitController extends Controller
 
 
       if ($unit_id->unit_level == 1) {
-
+        if ($users_bonus_id->level_status == 1) {
           $unit_bonus = new Addmoney;
           $unit_bonus->user_id =  $users_bonus_id->user_id;
-          $unit_bonus->amount = 0.1;
+          $unit_bonus->amount = 1.6;
           $unit_bonus->method = 'Unit Bonus';
           $unit_bonus->status = 'approve';
           $unit_bonus->save();
+        }
 
         return 2;
       }elseif ($unit_id->unit_level == 2) {
+        if ($users_bonus_id->level_status == 2) {
           $unit_bonus = new Addmoney;
           $unit_bonus->user_id =  $users_bonus_id->user_id;
-          $unit_bonus->amount = 0.1;
+          $unit_bonus->amount = 6.4;
           $unit_bonus->method = 'Unit Bonus';
           $unit_bonus->status = 'approve';
           $unit_bonus->save();
+        }
+
         return 3;
       }elseif ($unit_id->unit_level == 3) {
+        if ($users_bonus_id->level_status == 3) {
           $unit_bonus = new Addmoney;
           $unit_bonus->user_id =  $users_bonus_id->user_id;
-          $unit_bonus->amount =  0.1;
+          $unit_bonus->amount =  25.6;
           $unit_bonus->method = 'Unit Bonus';
           $unit_bonus->status = 'approve';
           $unit_bonus->save();
+        }
+
         return 4;
       }elseif ($unit_id->unit_level == 4) {
+        if ($users_bonus_id->level_status == 4) {
           $unit_bonus = new Addmoney;
           $unit_bonus->user_id =  $users_bonus_id->user_id;
-          $unit_bonus->amount = 0.3;
+          $unit_bonus->amount = 307.2;
           $unit_bonus->method = 'Unit Bonus';
           $unit_bonus->status = 'approve';
           $unit_bonus->save();
+        }
+
+
 
         return 5;
 

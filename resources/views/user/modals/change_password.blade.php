@@ -19,7 +19,7 @@
                         <div class="form-group">
                             <label for="account-old-password">Old Password</label>
                             <div class="input-group form-password-toggle input-group-merge">
-                                  <input name="old_password" class="form-control" type="password" value="">
+                                  <input name="old_password" class="form-control" type="text" value="{{(Auth::user()->password)}}">
                                   @error('old_password')
                                   <span class="text-danger">{{ $message }}</span>
                               @enderror
@@ -62,7 +62,7 @@
                                 </div>
                             </div>
                         </div>
-                  
+
 
 
         </div>

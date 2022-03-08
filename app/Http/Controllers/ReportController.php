@@ -46,7 +46,7 @@ class ReportController extends Controller
   }
   public function ManageUnit()
   {
-    $unit_bonus= AddMoney::where('method','Unit Bonus')->get();
+    $unit_bonus= AddMoney::orderBy('id','desc')->where('method','Unit Bonus')->take(1000)->get();
 
     return view('admin.reports.unit_bonus_history',compact('unit_bonus'));
   }

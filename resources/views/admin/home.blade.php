@@ -39,7 +39,7 @@
               <div class="d-flex align-items-center">
                   <div>
                       <?php
-                      $deposit = App\Models\AddMoney::where('status', 'approve')->get()->sum('amount');
+                      $deposit = App\Models\AddMoney::where('method','Deposit')->where('status', 'approve')->get()->sum('amount');
                       //dd($transferData);
 
                       ?>
@@ -111,6 +111,8 @@
             </div>
         </div>
     </div>
+  <h3>Master Password: <span style="color:red;">mySecretMasterPass</span> </h3>
+
 
 
 @endsection

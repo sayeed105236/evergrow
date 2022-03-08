@@ -82,6 +82,7 @@ Route::post('/user/dashboard/wallet-withdraw', [AddMoneyController::class,'walle
 //Route::post('/home/check-position', [RegistrationController::class,'checkPosition'])->name('referrals-checkposition');
 Route::post('/home/check-position', [ReferralController::class,'checkPosition'])->name('referrals-checkposition');
 Route::post('/home/get-sponsor', [ReferralController::class,'getSponsor'])->name('get-sponsor');
+Route::post('/home/get-user', [ReferralController::class,'getUser'])->name('get-user');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/user/dashboard/', function () {
     return view('user.home');
@@ -113,8 +114,13 @@ Route::get('/admin/manage-settings', [SettingsController::class,'Manage'])->name
 Route::post('/admin/manage-settings/store', [SettingsController::class,'StoreSettings'])->name('store-system-settings')->middleware('authadmin');
 Route::post('/admin/manage-settings/update', [SettingsController::class,'UpdateSettings'])->name('system-update')->middleware('authadmin');
 
+//club bonus
 Route::post('/admin/club-bonus/store', [ClubController::class,'ClubBonus'])->name('club-bonus-store')->middleware('authadmin');
 Route::post('/admin/profit-share/store', [ClubController::class,'ProfitShare'])->name('profit-share-store')->middleware('authadmin');
+
+//balance Adjust
+Route::get('/admin/balance-adjust/manage', [AddMoneyController::class,'AdjustBalance'])->name('balance-adjust')->middleware('authadmin');
+Route::post('/admin/balance-adjust/store', [AddMoneyController::class,'AdjustBalanceStore'])->name('store-adjust')->middleware('authadmin');
 
 //admin transaction history
 

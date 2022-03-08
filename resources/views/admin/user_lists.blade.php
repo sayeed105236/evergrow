@@ -39,7 +39,9 @@
                 <th>Total LC</th>
                 <th>Total RC</th>
 
+
                 <th>Created</th>
+                <th>Action</th>
 
               </tr>
             </thead>
@@ -76,6 +78,7 @@
                     <td>{{$row->right_active}}</td>
 
                 <td>{{$row->created_at}}</td>
+                <td><a class="btn btn-primary" href="#"><i class="bx bx-show-alt"></i></a></td>
 
               </tr>
   @endforeach

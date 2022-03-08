@@ -118,7 +118,7 @@ class AddMoneyController extends Controller
         $withdraw = new Withdraw();
         $withdraw->user_id = $user_id;
         $withdraw->amount = $amount;
-        
+
         $withdraw->payment_method_id = $payment_method_id;
 
 
@@ -133,6 +133,24 @@ class AddMoneyController extends Controller
         $deduct->save();
 
         return back()->with('withdraw_added', 'Your request is Accepted. Wait for Confirmation!!');
+    }
+    public function AdjustBalance()
+    {
+      $adjusts= AddMoney::where('method','Adjustment')->get();
+      return view('admin.balance_adjust',compact('adjusts'));
+    }
+    public function AdjustBalanceStore(Request $request)
+    {
+      $adjust = new AddMoney;
+      $adjust->user_id = $request->user_id;
+      $adjust->received_from= Auth::id();
+      $adjust->amount = $request->amount;
+      $adjust->method = 'Adjustment';
+      $adjust->type = 'Credit';
+      $adjust->status = 'approve';
+      $adjust->save();
+
+      return back()->with('Money_Adjust', 'Money Adjust Successfully!!');
     }
 
 

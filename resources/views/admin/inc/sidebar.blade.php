@@ -82,6 +82,14 @@
 
         </li>
         <li>
+            <a href="{{route('balance-adjust')}}" >
+                <div class="parent-icon"><i class='bx bx-money'></i>
+                </div>
+                <div class="menu-title">Balance Adjust</div>
+            </a>
+
+        </li>
+        <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class='bx bx-history'></i>
                 </div>
