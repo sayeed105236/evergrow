@@ -106,10 +106,11 @@
                                        <a class="text-center green_tree" href="{{isset($user) ?$user->id : ''}}" data-toggle="popover" title=""
                                           data-content="<span>Name:</span> Company User<br/><span>Sponsor:</span> ><span>Registration Date:</span> 2020-09-07<br/><span>Package:</span> sahilkajle<br/><span>Own Investment:</span> ₹ 36951.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
                                           data-trigger="hover" data-html="true"> <img class="rounded-circle"
-                                                                                      src="https://downassam.com/demo/public/images/green_user.png"
+                                                                                      src="{{asset('images/avatar.png')}}"
+
                                                                                       alt="Company User"><br/><strong> {{isset($user) ?$user->user_name : ''}}</strong><br/><span
                                                class="text-sm-center"></span></a><br/>
-                                       <img class="img-fluid line" src="https://downassam.com/demo/public/images/line.png"
+                                       <img style="height:3px;" class="img-fluid line" src="{{asset('images/line.png')}}"
                                             alt="">
                                    </td>
                                </tr>
@@ -170,8 +171,8 @@
                                                       <br/><strong>
                                                        {{$child_left->user_name}}
                                                    </strong><br/><span class="text-sm-center"> </span></a><br/>
-                                               <img class="img-fluid line"
-                                                    src="https://downassam.com/demo/public/images/line.png" alt="">
+                                               <img style="background:transparent; height:2px;" class="img-fluid line"
+                                                    src="{{asset('images/line.png')}}" alt="">
                                            </td>
                                        @else
                                            <td colspan="4">
@@ -180,12 +181,12 @@
                                                   data-toggle="popover" title=""
                                                   data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
                                                   data-trigger="hover" data-html="true"> <img class="rounded-circle"
-                                                                                              src="https://downassam.com/demo/public/images/new_user.png"
+                                                                                              src="{{asset('/images/useradd.jpg')}}"
                                                                                               alt="Mohammed Saleem"><br/><strong>
 
                                                    </strong><br/><span class="text-sm-center"></span></a><br/>
-                                               <img class="img-fluid line"
-                                                    src="https://downassam.com/demo/public/images/line.png" alt="">
+                                               <img style="background:transparent;height:2px;" class="img-fluid line"
+                                                    src="{{asset('images/line.png')}}" alt="">
                                            </td>
                                        @endif
 
@@ -208,8 +209,8 @@
                                                        {{$child_right->user_name}}
 
                                                    </strong><br/><span class="text-sm-center"> </span></a><br/>
-                                               <img class="img-fluid line"
-                                                    src="https://downassam.com/demo/public/images/line.png" alt="">
+                                               <img style="background:transparent;height:2px;" class="img-fluid line"
+                                                    src="{{asset('images/line.png')}}" alt="">
                                            </td>
                                        @else
                                            <td colspan="4">
@@ -218,12 +219,12 @@
                                                   data-toggle="popover" title=""
                                                   data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
                                                   data-trigger="hover" data-html="true"> <img class="rounded-circle"
-                                                                                              src="https://downassam.com/demo/public/images/new_user.png"
+                                                                                              src="{{asset('/images/useradd.jpg')}}"
                                                                                               alt="Mohammed Saleem"><br/><strong>
 
                                                    </strong><br/><span class="text-sm-center"></span></a><br/>
-                                               <img class="img-fluid line"
-                                                    src="https://downassam.com/demo/public/images/line.png" alt="">
+                                               <img style="background:transparent;" class="img-fluid line"
+                                                    src="{{asset('images/line.png')}}" alt="">
                                            </td>
                                        @endif
 
@@ -251,8 +252,8 @@
                                                   <br/><strong>
                                                        {{$lev_two_left_l->user_name}}
                                                    </strong><br/><span class="text-sm-center"> </span></a><br/>
-                                               <img class="img-fluid line"
-                                                    src="https://downassam.com/demo/public/images/line.png" alt="">
+                                               <img style="background:transparent;" class="img-fluid line"
+                                                    src="{{asset('images/line.png')}}" alt="">
                                            </td>
                                        @else
                                            <td colspan="2">
@@ -261,12 +262,12 @@
                                                   data-toggle="popover" title=""
                                                   data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
                                                   data-trigger="hover" data-html="true"> <img class="rounded-circle"
-                                                                                              src="https://downassam.com/demo/public/images/new_user.png"
+                                                                                              src="{{asset('/images/useradd.jpg')}}"
                                                                                               alt="Mohammed Saleem"><br/><strong>
 
                                                    </strong><br/><span class="text-sm-center"></span></a><br/>
-                                               <img class="img-fluid line"
-                                                    src="https://downassam.com/demo/public/images/line.png" alt="">
+                                               <img style="background:transparent;" class="img-fluid line"
+                                                    src="{{asset('images/line.png')}}" alt="">
                                            </td>
                                        @endif
 
@@ -292,8 +293,8 @@
                                                   <br/><strong>
                                                        {{$lev_two_left_r->user_name}}
                                                    </strong><br/><span class="text-sm-center"> </span></a><br/>
-                                               <img class="img-fluid line"
-                                                    src="https://downassam.com/demo/public/images/line.png" alt="">
+                                               <img style="background:transparent;" class="img-fluid line"
+                                                    src="{{asset('images/line.png')}}" alt="">
                                            </td>
                                        @else
                                            <td colspan="2">
@@ -302,12 +303,12 @@
                                                   data-toggle="popover" title=""
                                                   data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
                                                   data-trigger="hover" data-html="true"> <img class="rounded-circle"
-                                                                                              src="https://downassam.com/demo/public/images/new_user.png"
+                                                                                              src="{{asset('/images/useradd.jpg')}}"
                                                                                               alt="Mohammed Saleem"><br/><strong>
 
                                                    </strong><br/><span class="text-sm-center"></span></a><br/>
-                                               <img class="img-fluid line"
-                                                    src="https://downassam.com/demo/public/images/line.png" alt="">
+                                               <img style="background:transparent;" class="img-fluid line"
+                                                    src="{{asset('images/line.png')}}" alt="">
                                            </td>
                                        @endif
 
@@ -335,7 +336,7 @@
                                                            {{$lev_two_right_l->user_name }}
                                                        </strong><br/><span class="text-sm-center"> </span></a><br/>
                                                    <img class="img-fluid line"
-                                                        src="https://downassam.com/demo/public/images/line.png" alt="">
+                                                        src="{{asset('images/line.png')}}" alt="">
                                                </td>
                                            @else
                                                <td colspan="2">
@@ -344,12 +345,12 @@
                                                       data-toggle="popover" title=""
                                                       data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
                                                       data-trigger="hover" data-html="true"> <img class="rounded-circle"
-                                                                                                  src="https://downassam.com/demo/public/images/new_user.png"
+                                                                                                  src="{{asset('/images/useradd.jpg')}}"
                                                                                                   alt="Mohammed Saleem"><br/><strong>
 
                                                        </strong><br/><span class="text-sm-center"></span></a><br/>
                                                    <img class="img-fluid line"
-                                                        src="https://downassam.com/demo/public/images/line.png" alt="">
+                                                        src="{{asset('images/line.png')}}" alt="">
                                                </td>
                                            @endif
 
@@ -376,7 +377,7 @@
                                                            {{$lev_two_right_r->user_name}}
                                                        </strong><br/><span class="text-sm-center"> </span></a><br/>
                                                    <img class="img-fluid line"
-                                                        src="https://downassam.com/demo/public/images/line.png" alt="">
+                                                        src="{{asset('images/line.png')}}" alt="">
                                                </td>
                                            @else
                                                <td colspan="2">
@@ -385,12 +386,12 @@
                                                       data-toggle="popover" title=""
                                                       data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
                                                       data-trigger="hover" data-html="true"> <img class="rounded-circle"
-                                                                                                  src="https://downassam.com/demo/public/images/new_user.png"
+                                                                                                  src="{{asset('/images/useradd.jpg')}}"
                                                                                                   alt="Mohammed Saleem"><br/><strong>
 
                                                        </strong><br/><span class="text-sm-center"></span></a><br/>
                                                    <img class="img-fluid line"
-                                                        src="https://downassam.com/demo/public/images/line.png" alt="">
+                                                        src="{{asset('images/line.png')}}" alt="">
                                                </td>
                                            @endif
 
@@ -416,7 +417,7 @@
                                                    <strong>  {{$lev_three_left_l_l->user_name}}</strong><br /><span class="text-sm-center"> </span ></a> </td>
                                        @else
                                            <td>
-                                               <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 9"><img src="https://downassam.com/demo/public/images/new_user.png" alt="New User"></a>
+                                               <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 9"><img src="{{asset('/images/useradd.jpg')}}" alt="New User"></a>
                                            </td>
                                        @endif
 
@@ -439,7 +440,7 @@
                                            </td>
                                        @else
                                            <td>
-                                               <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 9"><img src="https://downassam.com/demo/public/images/new_user.png" alt="New User"></a>
+                                               <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 9"><img src="{{asset('/images/useradd.jpg')}}" alt="New User"></a>
                                            </td>
                                        @endif
 
@@ -460,7 +461,7 @@
                                            </td>
                                        @else
                                            <td>
-                                               <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 9"><img src="https://downassam.com/demo/public/images/new_user.png" alt="New User"></a>
+                                               <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 9"><img src="{{asset('/images/useradd.jpg')}}" alt="New User"></a>
                                            </td>
                                        @endif
                                        @if($lev_three_left_r_r)
@@ -478,7 +479,7 @@
                                            </td>
                                        @else
                                            <td>
-                                               <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 9"><img src="https://downassam.com/demo/public/images/new_user.png" alt="New User"></a>
+                                               <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 9"><img src="{{asset('/images/useradd.jpg')}}" alt="New User"></a>
                                            </td>
                                        @endif
 
@@ -508,7 +509,7 @@
                                            </td>
                                        @else
                                            <td>
-                                               <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 5"><img src="https://downassam.com/demo/public/images/new_user.png" alt="New User"></a>
+                                               <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 5"><img src="{{asset('/images/useradd.jpg')}}" alt="New User"></a>
                                            </td>
                                        @endif
 
@@ -538,7 +539,7 @@
                                            </td>
                                        @else
                                            <td>
-                                               <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 5"><img src="https://downassam.com/demo/public/images/new_user.png" alt="New User"></a>
+                                               <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 5"><img src="{{asset('/images/useradd.jpg')}}" alt="New User"></a>
                                            </td>
                                        @endif
 
@@ -571,7 +572,7 @@
                                            </td>
                                        @else
                                            <td>
-                                               <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 5"><img src="https://downassam.com/demo/public/images/new_user.png" alt="New User"></a>
+                                               <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 5"><img src="{{asset('/images/useradd.jpg')}}" alt="New User"></a>
                                            </td>
                                        @endif
                                        @if($lev_three_right_r_r)
@@ -603,7 +604,7 @@
                                            </td>
                                        @else
                                            <td>
-                                               <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 5"><img src="https://downassam.com/demo/public/images/new_user.png" alt="New User"></a>
+                                               <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 5"><img src="{{asset('/images/useradd.jpg')}}" alt="New User"></a>
                                            </td>
                                        @endif
                                    </tr>
