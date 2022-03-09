@@ -3,7 +3,6 @@
 @section('content')
 
 
-
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
       <div class="breadcrumb-title pe-3">Adjust Balance</div>
@@ -18,6 +17,14 @@
       </div>
 
     </div>
+    @if(Session::has('Money_Adjust'))
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Success</h4>
+            <div class="alert-body">
+                {{Session::get('Money_Adjust')}}
+            </div>
+        </div>
+        @endif
     <!--end breadcrumb-->
     <h6 class="mb-0 text-uppercase">Adjust Balance Lists</h6>
     <hr/>
@@ -72,50 +79,31 @@
         </div>
       </div>
     </div>
-    @push('scripts')
-    <script>
-        $("body").on("keyup", "#username", function () {
-            let searchData = $("#username").val();
-            if (searchData.length > 0) {
-                $.ajax({
-                    type: 'POST',
-                    url: '{{route("get-user")}}',
-                    data: {search: searchData},
-                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                    success: function (result) {
-                        $('#suggestUser').html(result.success)
-                        console.log(result.data)
-                        if (result.data) {
-                            $("#position").val("");
-                        } else {
-                            $("#position").val("");
-                        }
-                    }
-                });
-            }
-            if (searchData.length < 1) $('#suggestUser').html("")
-        })
-    </script>
-@endpush
-
-    <script>
-  		$(document).ready(function() {
-  			$('#example').DataTable();
-  		  } );
-  	</script>
-  	<script>
-  		$(document).ready(function() {
-  			var table = $('#example2').DataTable( {
-  				lengthChange: false,
-  				buttons: [ 'copy', 'excel', 'pdf', 'print']
-  			} );
-
-  			table.buttons().container()
-  				.appendTo( '#example2_wrapper .col-md-6:eq(0)' );
-  		} );
-  	</script>
 
 
 
 
 @endsection
+@push('scripts')
+<script >
+$("body").on("keyup", "#sponsor", function () {
+//alert('success');
+  let searchData = $("#sponsor").val();
+  if (searchData.length > 0) {
+      $.ajax({
+          type: 'POST',
+          url: '{{route("get-user")}}',
+          data: {search: searchData},
+          headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+
+          success: function (result) {
+              $('#suggestUser').html(result.success)
+              console.log(result.data)
+
+          }
+      });
+  }
+  if (searchData.length < 1) $('#suggestUser').html("")
+})
+</script>
+@endpush

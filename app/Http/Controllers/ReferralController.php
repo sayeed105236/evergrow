@@ -111,32 +111,8 @@ class ReferralController extends Controller
         }
 
     }
-    // public function getUser(Request $request)
-    // {
-    //   dd($request);
-    //     $userName = User::where('user_name','like',$request->search)->select('id','user_name')->first();
-    //     if ($userName){
-    //         return response()->json(['success'=>'<span style="color: green;">User found!!</span>','data'=>$userName],200);
-    //     }else{
-    //         return response()->json(['success'=>'<span style="color: red;">User not found!!</span>'],200);
-    //     }
-    //
-    // }
-    public function getUser(Request $request)
-    {
-   // dd($request->all());
-        $userName = User::where('user_name','like',$request->search)->first();
-        //dd($userName);
+    
 
-        if ($userName){
-          //dd($userName['user_name']);
-            return response()->json(['success'=>'<span style="color: green;">User found!!</span>','data'=>$userName['user_name']],200);
-        }else{
-         // dd('userName');
-            return response()->json(['success'=>'<span style="color: red;">User not found!!</span>'],200);
-        }
-
-    }
 
     public function UpdateUser(Request $request)
     {

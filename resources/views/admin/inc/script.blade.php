@@ -41,6 +41,7 @@
   } );
 </script>
 
+
 <script>
   $('.single-select').select2({
     theme: 'bootstrap4',
@@ -63,3 +64,4 @@
 <script src="{{ asset('backend') }}/assets/js/index.js"></script>
 <!--app JS-->
 <script src="{{ asset('backend') }}/assets/js/app.js"></script>
+@stack('scripts')

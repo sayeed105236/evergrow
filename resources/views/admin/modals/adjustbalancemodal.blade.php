@@ -12,15 +12,16 @@
         <div class="modal-body">
           <div class="card-body">
 
-            <form id="jquery-val-form" action="{{route('store-adjust')}}" method="post">
+            <form  action="{{route('store-adjust')}}" method="post">
               @csrf
               <div class="form-group">
                   <label class="form-label" for="basic-default-email">Enter User Name</label>
-                  <input type="text" id="username" name="user_id" class="form-control"
+                  <input type="text" id="sponsor" name="user_id" class="form-control"
                          placeholder="Enter User Name" required/>
 
                   <div id="suggestUser"></div>
               </div>
+
 
                 <div class="form-group">
                     <label class="form-label" for="basic-default-name">Enter Amount</label>

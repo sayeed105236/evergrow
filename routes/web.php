@@ -82,7 +82,7 @@ Route::post('/user/dashboard/wallet-withdraw', [AddMoneyController::class,'walle
 //Route::post('/home/check-position', [RegistrationController::class,'checkPosition'])->name('referrals-checkposition');
 Route::post('/home/check-position', [ReferralController::class,'checkPosition'])->name('referrals-checkposition');
 Route::post('/home/get-sponsor', [ReferralController::class,'getSponsor'])->name('get-sponsor');
-Route::post('/home/get-user', [ReferralController::class,'getUser'])->name('get-user');
+Route::post('/home/get-user', [AddMoneyController::class,'getUser'])->name('get-user');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/user/dashboard/', function () {
     return view('user.home');

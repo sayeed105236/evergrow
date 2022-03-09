@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\AddMoney;
 use App\Models\Withdraw;
 use Illuminate\Support\Facades\Auth;
-
+use Carbon\Carbon;
 
 class AddMoneyController extends Controller
 {
@@ -139,15 +139,32 @@ class AddMoneyController extends Controller
       $adjusts= AddMoney::where('method','Adjustment')->get();
       return view('admin.balance_adjust',compact('adjusts'));
     }
+    public function getUser(Request $request)
+    {
+
+        $userName = User::where('user_name','like',$request->search)->first();
+        //dd($userName);
+
+        if ($userName){
+          //dd($userName['user_name']);
+            return response()->json(['success'=>'<span style="color: green;">User found!!</span>','data'=>$userName['user_name']],200);
+        }else{
+         // dd('userName');
+            return response()->json(['success'=>'<span style="color: red;">User not found!!</span>'],200);
+        }
+
+    }
     public function AdjustBalanceStore(Request $request)
     {
+      $user_adjust_id = User::where('user_name', $request->user_id)->pluck('id')->first();
       $adjust = new AddMoney;
-      $adjust->user_id = $request->user_id;
+      $adjust->user_id = $user_adjust_id;
       $adjust->received_from= Auth::id();
       $adjust->amount = $request->amount;
       $adjust->method = 'Adjustment';
       $adjust->type = 'Credit';
       $adjust->status = 'approve';
+      $adjust->created_at = Carbon::now();
       $adjust->save();
 
       return back()->with('Money_Adjust', 'Money Adjust Successfully!!');
