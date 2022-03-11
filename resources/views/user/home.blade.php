@@ -16,7 +16,7 @@
         </div>
 
     </div>
-     <marquee style="color:red; font-size:20px;" behavior="scroll" direction="left">Important Notice: Do not purchase any unit from Unit Buy Section. It is under maintenance. If anyone try to purchase unit somehow the amount will not be refundable. And No Bonus amount will be added.</marquee>
+     <marquee style="color:green; font-size:20px;" behavior="scroll" direction="left">Important Notice: Buy Unit 1$ and earn ismart income</marquee>
     <!--end breadcrumb-->
     <h6 class="mb-0 text-uppercase" style="color:#08157A;"><strong>"Welcome Mr. {{Auth::user()->name}} to
             Evergrow"</strong></h6>
@@ -76,7 +76,7 @@
         </h3>
 
     @endif
-    
+
     <div class="row match-height row-cols-1 row-cols-md-2 row-cols-xl-4 ">
 
 
