@@ -16,7 +16,7 @@
         </div>
 
     </div>
-     <marquee style="color:green; font-size:20px;" behavior="scroll" direction="left">Important Notice: Buy Unit 1$ and earn ismart income</marquee>
+     <marquee style="color:green; font-size:20px;" behavior="scroll" direction="left">Important Notice: Buy Unit 1$ and earn Smart income</marquee>
     <!--end breadcrumb-->
     <h6 class="mb-0 text-uppercase" style="color:#08157A;"><strong>"Welcome Mr. {{Auth::user()->name}} to
             Evergrow"</strong></h6>
