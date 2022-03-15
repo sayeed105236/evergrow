@@ -10,7 +10,7 @@ use Carbon\Carbon;
 use App\Models\Settings;
 //use App\Models\User;
 use DB;
-
+//test data
 class HomeController extends Controller
 {
     /**
@@ -136,7 +136,9 @@ class HomeController extends Controller
     public function find_active_position_id($placement_id){
 
         $user_id = User::where('user_name',$placement_id)->first();
+
         $pos_ac= $user_id->position;
+
         if ($pos_ac == 1){
             $pos_ac = 'left_active';
         }elseif($pos_ac == 2){
@@ -217,7 +219,7 @@ class HomeController extends Controller
     }
     public function PlatinumRank(Request $request)
     {
-      
+
       $rank_amount = new AddMoney();
       $rank_amount->user_id = Auth::id();
       $rank_amount->amount = $request['amount'];
