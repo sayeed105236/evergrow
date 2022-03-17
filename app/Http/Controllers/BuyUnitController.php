@@ -174,26 +174,26 @@ class BuyUnitController extends Controller
         if ($users_bonus_id->level_status == 3) {
           $unit_bonus = new Addmoney;
           $unit_bonus->user_id =  $users_bonus_id->user_id;
-          $unit_bonus->amount =  25.6;
+          $unit_bonus->amount =  102.4;
           $unit_bonus->method = 'Unit Bonus';
           $unit_bonus->status = 'approve';
           $unit_bonus->save();
         }
 
         return 4;
-      }elseif ($unit_id->unit_level == 4) {
-        if ($users_bonus_id->level_status == 4) {
-          $unit_bonus = new Addmoney;
-          $unit_bonus->user_id =  $users_bonus_id->user_id;
-          $unit_bonus->amount = 307.2;
-          $unit_bonus->method = 'Unit Bonus';
-          $unit_bonus->status = 'approve';
-          $unit_bonus->save();
-        }
-
-
-
-        return 5;
+      // }elseif ($unit_id->unit_level == 4) {
+      //   if ($users_bonus_id->level_status == 4) {
+      //     $unit_bonus = new Addmoney;
+      //     $unit_bonus->user_id =  $users_bonus_id->user_id;
+      //     $unit_bonus->amount = 307.2;
+      //     $unit_bonus->method = 'Unit Bonus';
+      //     $unit_bonus->status = 'approve';
+      //     $unit_bonus->save();
+      //   }
+      //
+      //
+      //
+      //   return 5;
 
       }else {
         return 0;
