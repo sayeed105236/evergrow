@@ -111,7 +111,7 @@ class ReferralController extends Controller
         }
 
     }
-    
+
 
 
     public function UpdateUser(Request $request)
@@ -189,6 +189,23 @@ class ReferralController extends Controller
     );
     return Redirect()->back()->with($notification);
    }
+  }
+  public function changePassword(Request $request)
+  {
+    //dd($request->id)
+    $newpass = $request->password;
+    
+    $upuser= User::find($request->id);
+    $upuser->password = Hash::make($newpass);
+    $upuser->save();
+
+
+    $notification=array(
+        'message'=>'User Password Successfully Changed',
+        'alert-type'=>'success'
+    );
+    return Redirect()->back()->with($notification);
+
   }
 
 

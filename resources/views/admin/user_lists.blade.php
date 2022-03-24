@@ -78,9 +78,10 @@
                     <td>{{$row->right_active}}</td>
 
                 <td>{{$row->created_at}}</td>
-                <td><a class="btn btn-primary" href="#"><i class="bx bx-show-alt"></i></a></td>
+                <td><a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#passwordchangeModal{{$row->id}}"><i class="bx bx-lock-open"></i></a></td>
 
               </tr>
+              @include('admin.modals.passwordchangemodal')
   @endforeach
 
 

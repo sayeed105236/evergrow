@@ -34,7 +34,7 @@ class ReportController extends Controller
   }
   public function ManageProfit()
   {
-    $profit_bonus= AddMoney::where('method','Profit Bonus')->get();
+    $profit_bonus= AddMoney::orderBy('id','desc')->where('method','Profit Bonus')->take(500)->get();
 
     return view('admin.reports.profit_bonus_history',compact('profit_bonus'));
   }
