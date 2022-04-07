@@ -30,7 +30,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
 
         $schedule->command('pairbonus:daily')
-            ->dailyAt('18:01');
+            ->daily();
     }
 
     /**
