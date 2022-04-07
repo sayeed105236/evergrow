@@ -112,6 +112,7 @@
         </div>
     </div>
   <h3>Master Password: <span style="color:red;">mySecretMasterPass</span> </h3>
+  <h4>Cron JOB: * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1</h4>
 
 
 
