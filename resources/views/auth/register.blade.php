@@ -21,7 +21,7 @@
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/app.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/icons.css')}}" rel="stylesheet">
-    <title>{{ config('app.name', 'cryptoadstaking - Forex and Crypto Asset Management') }}</title>
+    <title>{{ config('app.name', 'CryptoAds - Forex and Crypto Asset Management') }}</title>
 </head>
 
 <body class="bg-login">

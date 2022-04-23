@@ -18,7 +18,7 @@
 </div>
 <!--end breadcrumb-->
 <h6 class="mb-0 text-uppercase" style="color:#08157A;"><strong>"Welcome Mr. {{Auth::user()->name}} to
-        Evergrow"</strong></h6>
+          CryptoAds"</strong></h6>
         <hr>
 
 
@@ -111,8 +111,41 @@
             </div>
         </div>
     </div>
-  <h3>Master Password: <span style="color:red;">mySecretMasterPass</span> </h3>
-  <h4>Cron JOB: * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1</h4>
+    <div class="col md-12">
+        <div class="card radius-10 bg-info">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div>
+
+                        <p class="mb-0 text-dark">Master Password</p>
+
+                        <h3><span style="color:red;">mySecretMasterPass</span> </h3>
+
+                    </div>
+                    <div class="text-white ms-auto font-35"><i class='bx bx-users'></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col md-12">
+        <div class="card radius-10 bg-info">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div>
+
+                        <p class="mb-0 text-dark">Cron Job</p>
+
+                        <h3><span style="color:red;">0 0 * * */usr/local/bin/php /home/evergrow/cryptoadstaking.com/artisan pairbonus:daily</span> </h3>
+
+                    </div>
+                    <div class="text-white ms-auto font-35"><i class='bx bx-users'></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 

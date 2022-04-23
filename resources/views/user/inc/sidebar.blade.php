@@ -32,7 +32,7 @@
                 <div class="menu-title">Rank</div>
             </a>
         </li>
-        https://cryptoads.work/cads/user/referral_link/3stars
+      
         <li>
             <a href="https://cryptoads.work/cads/user/referral_link/3stars">
                 <div class="parent-icon"><i class='bx bx-category'></i>
