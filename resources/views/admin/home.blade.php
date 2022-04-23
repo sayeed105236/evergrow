@@ -111,8 +111,8 @@
             </div>
         </div>
     </div>
-    <div class="col md-12">
-        <div class="card radius-10 bg-info">
+    <div class="col-md-12">
+        <div class="card radius-10 bg-dager">
             <div class="card-body">
                 <div class="d-flex align-items-center">
                     <div>
@@ -128,8 +128,8 @@
             </div>
         </div>
     </div>
-    <div class="col md-12">
-        <div class="card radius-10 bg-info">
+    <div class="col-md-12">
+        <div class="card radius-10 bg-primary">
             <div class="card-body">
                 <div class="d-flex align-items-center">
                     <div>
