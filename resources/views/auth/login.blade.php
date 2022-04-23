@@ -18,7 +18,7 @@
 	<link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
 	<link href="{{asset('assets/css/app.css')}}" rel="stylesheet">
 	<link href="{{asset('assets/css/icons.css')}}" rel="stylesheet">
-	<title>{{ config('app.name', 'Evergrow - Forex and Crypto Asset Management') }}</title>
+	<title>{{ config('app.name', 'CryptoAds- Forex and Crypto Asset Management') }}</title>
 </head>
 
 <body class="bg-login">
@@ -29,7 +29,7 @@
 				<div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
 					<div class="col mx-auto">
 						<div class="mb-4 text-center">
-							<img src="{{asset('assets/images/logo-img2.jpg')}}" width="180" alt="" />
+							<img src="{{asset('assets/images/logo-img2.png')}}" width="180" alt="" />
 						</div>
 						<div class="card">
 							@if(Session::has('password_updated'))

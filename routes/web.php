@@ -13,6 +13,7 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\BuyUnitController;
+use App\Http\Controllers\NoticeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,6 +94,8 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->get('/admin/dashboa
 //admin routes
 Route::get('/admin/user_lists', [UserListController::class,'Manage'])->name('user-list')->middleware('authadmin');
 Route::post('/home/user-password/reset',[ReferralController::class,'changePassword'])->name('reset-password')->middleware('authadmin');
+// admin add notices
+Route::get('/admin/notices', [NoticeController::class,'Manage'])->name('notices')->middleware('authadmin');
 //Admin Payment method Routes
 Route::get('/admin/payment-method', [PaymentMethodController::class,'index'])->name('payment-method')->middleware('authadmin');
 Route::post('/admin/payment-method/store', [PaymentMethodController::class,'Store'])->name('payment-method-store')->middleware('authadmin');

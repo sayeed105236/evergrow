@@ -10,7 +10,7 @@
 
     @include('admin.inc.style')
 
-    <title>{{ config('app.name', 'Evergrow - Forex and Crypto Asset Management') }}</title>
+    <title>{{ config('app.name', 'CryptoAds - Forex and Crypto Asset Management') }}</title>
 </head>
 
 <body>

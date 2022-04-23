@@ -1,7 +1,7 @@
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
-            	<img src="{{asset('assets/images/logo-img2.jpg')}}" height="40"
+            	<img src="{{asset('assets/images/logo-img2.png')}}" height="40"
               width="150" alt="" />
         </div>
 
@@ -30,6 +30,14 @@
                 <div class="parent-icon"><i class="bx bx-diamond"></i>
                 </div>
                 <div class="menu-title">Rank</div>
+            </a>
+        </li>
+        https://cryptoads.work/cads/user/referral_link/3stars
+        <li>
+            <a href="https://cryptoads.work/cads/user/referral_link/3stars">
+                <div class="parent-icon"><i class='bx bx-category'></i>
+                </div>
+                <div class="menu-title">Staking</div>
             </a>
         </li>
         <li>

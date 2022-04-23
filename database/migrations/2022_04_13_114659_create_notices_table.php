@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAddMoneyTable extends Migration
+class CreateNoticesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateAddMoneyTable extends Migration
      */
     public function up()
     {
-        Schema::create('add_money', function (Blueprint $table) {
+        Schema::create('notices', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('amount');
-            $table->string('method');
-            $table->string('txn_id')->nullable();
-            $table->enum('status',['pending','approve'])->default('pending');
+            $table->string('notice_title')->nullable();
+            $table->string('notice_details')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateAddMoneyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('add_money');
+        Schema::dropIfExists('notices');
     }
 }

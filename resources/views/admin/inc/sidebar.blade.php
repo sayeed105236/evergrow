@@ -1,7 +1,7 @@
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
       <div>
-            <img src="{{asset('assets/images/logo-img2.jpg')}}" height="40"
+            <img src="{{asset('assets/images/logo-img2.png')}}" height="40"
             width="150" alt="" />
       </div>
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
