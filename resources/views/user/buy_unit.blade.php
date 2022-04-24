@@ -88,9 +88,9 @@
               <li class="list-group-item bg-transparent text-white"><i class='bx bx-check me-2 font-18'></i>4/Units To Upgrade Next Level</li>
               <li class="list-group-item bg-transparent text-white"><i class='bx bx-check me-2 font-18'></i>0.40$ Bonus For Level 1</li>
               <li class="list-group-item bg-transparent text-white"><i class='bx bx-check me-2 font-18'></i>1.60$ Bonus For Level 2</li>
-              <li class="list-group-item bg-transparent text-white"><i class='bx bx-check me-2 font-18'></i>6.40$ Bonus For Level 3</li>
-              <li class="list-group-item bg-transparent text-white"><i class='bx bx-check me-2 font-18'></i>25.60$ Bonus For Level 4</li>
-              <li class="list-group-item bg-transparent text-white"><i class='bx bx-check me-2 font-18'></i>409.60$ Bonus For Level 5</li>
+              <li class="list-group-item bg-transparent text-white"><i class='bx bx-check me-2 font-18'></i>32.00$ Bonus For Level 3</li>
+              <!-- <li class="list-group-item bg-transparent text-white"><i class='bx bx-check me-2 font-18'></i>25.60$ Bonus For Level 4</li>
+              <li class="list-group-item bg-transparent text-white"><i class='bx bx-check me-2 font-18'></i>409.60$ Bonus For Level 5</li> -->
               <li class="list-group-item bg-transparent text-white"><i class='bx bx-check me-2 font-18'></i>Buy 10 Units Per Day</li>
 
             </ul>

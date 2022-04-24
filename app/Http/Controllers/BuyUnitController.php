@@ -163,7 +163,7 @@ class BuyUnitController extends Controller
         if ($users_bonus_id->level_status == 2) {
           $unit_bonus = new Addmoney;
           $unit_bonus->user_id =  $users_bonus_id->user_id;
-          $unit_bonus->amount = 6.4;
+          $unit_bonus->amount = 32;
           $unit_bonus->method = 'Unit Bonus';
           $unit_bonus->status = 'approve';
           $unit_bonus->save();
