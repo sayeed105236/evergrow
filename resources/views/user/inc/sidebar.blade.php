@@ -32,9 +32,9 @@
                 <div class="menu-title">Rank</div>
             </a>
         </li>
-      
+
         <li>
-            <a href="https://cryptoads.work/cads/user/referral_link/3stars">
+            <a href="https://cryptoads.work/cads/user/">
                 <div class="parent-icon"><i class='bx bx-category'></i>
                 </div>
                 <div class="menu-title">Staking</div>
