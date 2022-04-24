@@ -66,29 +66,29 @@
 
               <form class="row g-3">
                 <div class="col-md-6">
-                  <label for="inputFirstName" class="form-label">Minimum Deposit</label>
+                  <label for="inputFirstName" class="form-label">Minimum Deposit ($)</label>
                   <input type="text" value="{{($settings->min_deposit)}}" disabled name="min_deposit" class="form-control" id="inputFirstName">
                 </div>
                 <div class="col-md-6">
-                  <label for="inputLastName" class="form-label">Minimum Transfer</label>
+                  <label for="inputLastName" class="form-label">Minimum Transfer ($)</label>
                   <input type="text"  value="{{($settings->min_deposit)}}" disabled class="form-control" id="inputLastName">
                 </div>
                 <div class="col-md-6">
-                  <label for="inputFirstName" class="form-label">Minimum Withdraw</label>
+                  <label for="inputFirstName" class="form-label">Minimum Withdraw ($)</label>
                   <input type="text"  value="{{($settings->min_withdraw)}}" disabled class="form-control" id="inputFirstName">
                 </div>
                 <div class="col-md-6">
-                  <label for="inputLastName" class="form-label">Sponsor Bonus</label>
+                  <label for="inputLastName" class="form-label">Sponsor Bonus ($)</label>
                   <input type="text"  value="{{($settings->sponsor_bonus)}}" disabled class="form-control" id="inputLastName">
                 </div>
                 <div class="col-md-6">
-                  <label for="inputFirstName" class="form-label">Pair Bonus</label>
+                  <label for="inputFirstName" class="form-label">Pair Bonus ($)</label>
                   <input type="text"  value="{{($settings->pair_bonus)}}" disabled class="form-control" id="inputFirstName">
                 </div>
-                
+
                 <div class="col-md-6">
-                  <label for="inputLastName" class="form-label">Unit Bonus</label>
-                  <input type="text"  value="{{($settings->unit_bonus)}}" disabled class="form-control" id="inputLastName">
+                  <label for="inputLastName" class="form-label">Withdraw Charge ($)</label>
+                  <input type="text"  value="{{($settings->withdraw_charge)}}" disabled class="form-control" id="inputLastName">
                 </div>
 
 

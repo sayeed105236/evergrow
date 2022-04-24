@@ -8,6 +8,7 @@ use App\Models\AddMoney;
 use App\Models\Withdraw;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\Models\Settings;
 
 class AddMoneyController extends Controller
 {
@@ -101,7 +102,8 @@ class AddMoneyController extends Controller
 
         ]);
 
-
+        $settings=Settings::first();
+        //dd($settings->withdraw_charge);
         $sum_deposit = AddMoney::where('user_id', Auth::id())->sum('amount');
         $calculated_amount = $request->amount;
         //dd($sum_deposit < $calculated_amount,$sum_deposit,$calculated_amount);
@@ -126,7 +128,7 @@ class AddMoneyController extends Controller
 
         $deduct = new AddMoney;
         $deduct->user_id = Auth::id();
-        $deduct->amount = -(($request->amount) + ($request->amount * 10 / 100));
+        $deduct->amount = -(($request->amount) + (($request->amount) * ($settings->withdraw_charge) / 100));
         $deduct->method = 'Withdraw';
 
         $deduct->status = 'approve';

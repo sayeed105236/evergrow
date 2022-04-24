@@ -46,12 +46,12 @@
                 <input type="text" name="pair_bonus" class="form-control">
               </div>
             </div>
-              
+
 
               <div class="col-md-12">
                 <div class="form-group">
-                <label for="inputLastName" class="form-label">Unit Bonus</label>
-                <input type="text" name="unit_bonus" class="form-control">
+                <label for="inputLastName" class="form-label">Withdraw Charge</label>
+                <input type="text" name="withdraw_charge" class="form-control">
               </div>
               </div>
               <br>

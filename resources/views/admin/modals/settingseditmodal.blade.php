@@ -55,8 +55,8 @@
 
               <div class="col-md-12">
                 <div class="form-group">
-                <label for="inputLastName" class="form-label">Unit Bonus</label>
-                <input type="text" value="{{($settings->unit_bonus)}}" name="unit_bonus" class="form-control">
+                <label for="inputLastName" class="form-label">Withdraw Charge</label>
+                <input type="text" value="{{($settings->withdraw_charge)}}" name="withdraw_charge" class="form-control">
               </div>
               </div>
               <br>
