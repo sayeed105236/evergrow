@@ -81,7 +81,7 @@
 
 
         <div class="col">
-            <div class="card radius-10 bg-primary bg-gradient" style="height:130px;">
+            <div class="card radius-10 bg-dark bg-gradient" style="height:130px;">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
@@ -106,7 +106,7 @@
             </div>
         </div>
         <div class="col">
-            <div class="card radius-10 bg-danger bg-gradient" style="height:130px;">
+            <div class="card radius-10 bg-warning bg-gradient" style="height:130px;">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
@@ -121,8 +121,27 @@
                             $bonus = $earnings + $total_pair_bonus + $total_profit_bonus + $total_club_bonus+$total_unit_bonus;
 
                             ?>
-                            <p class="mb-0 text-white">Total Bonus</p>
-                            <h4 class="my-1 text-white">{{isset($bonus) ? '$'.number_format((float)$bonus, 2, '.', '') : '$00.00'}}</h4>
+                            <p class="mb-0 text-dark">Total Bonus</p>
+                            <h4 class="my-1 text-dark">{{isset($bonus) ? '$'.number_format((float)$bonus, 2, '.', '') : '$00.00'}}</h4>
+                        </div>
+                        <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card radius-10 bg-dark bg-gradient" style="height:130px;">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <?php
+                            $withdraw = App\Models\Withdraw::where('user_id', Auth::id())->where('status', 'approve')->get()->sum('amount');
+                            //dd($transferData);
+
+                            ?>
+                            <p class="mb-0 text-white">Total Withdraw</p>
+                            <h4 class="text-white my-1">${{abs($withdraw)}}</h4>
                         </div>
                         <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
                         </div>
@@ -136,31 +155,12 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <?php
-                            $withdraw = App\Models\Withdraw::where('user_id', Auth::id())->where('status', 'approve')->get()->sum('amount');
-                            //dd($transferData);
-
-                            ?>
-                            <p class="mb-0 text-dark">Total Withdraw</p>
-                            <h4 class="text-dark my-1">${{abs($withdraw)}}</h4>
-                        </div>
-                        <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card radius-10 bg-success bg-gradient" style="height:130px;">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <?php
                             $transferData = App\Models\AddMoney::where('user_id', Auth::id())->where('type', 'Debit')->get()->sum('amount');
                             //dd($transferData);
 
                             ?>
-                            <p class="mb-0 text-white">Total Transfer</p>
-                            <h4 class="my-1 text-white">${{abs($transferData)}}</h4>
+                            <p class="mb-0 text-dark">Total Transfer</p>
+                            <h4 class="my-1 text-dark">${{abs($transferData)}}</h4>
                         </div>
                         <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
                         </div>
@@ -169,7 +169,7 @@
             </div>
         </div>
         <div class="col">
-            <div class="card radius-10 bg-success">
+            <div class="card radius-10 bg-dark">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
@@ -189,7 +189,7 @@
             </div>
         </div>
         <div class="col">
-            <div class="card radius-10 bg-info">
+            <div class="card radius-10 bg-warning">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
@@ -209,7 +209,7 @@
             </div>
         </div>
         <div class="col">
-            <div class="card radius-10 bg-danger">
+            <div class="card radius-10 bg-dark">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <?php
@@ -248,7 +248,7 @@
             </div>
         </div>
         <div class="col">
-            <div class="card radius-10 bg-primary bg-gradient">
+            <div class="card radius-10 bg-dark bg-gradient">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <?php
@@ -267,7 +267,7 @@
             </div>
         </div>
         <div class="col">
-            <div class="card radius-10 bg-danger bg-gradient">
+            <div class="card radius-10 bg-warning bg-gradient">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                       <?php
@@ -276,8 +276,27 @@
 
                       ?>
                         <div>
-                            <p class="mb-0 text-white">Rank Bonus</p>
-                            <h4 class="my-1 text-white">${{$rank_bonus }}</h4>
+                            <p class="mb-0 text-dark">Rank Bonus</p>
+                            <h4 class="my-1 text-dark">${{$rank_bonus }}</h4>
+                        </div>
+                        <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card radius-10 bg-dark bg-gradient">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                      <?php
+                      $total_units = App\Models\Unit::where('user_id', Auth::id())->count('id');
+                      //dd($total_level_bonus);
+
+                      ?>
+                        <div>
+                            <p class="mb-0 text-white">Total Unit Purchased</p>
+                            <h4 class="text-white my-1">{{$total_units}}</h4>
                         </div>
                         <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
                         </div>
@@ -290,32 +309,13 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                       <?php
-                      $total_units = App\Models\Unit::where('user_id', Auth::id())->count('id');
-                      //dd($total_level_bonus);
-
-                      ?>
-                        <div>
-                            <p class="mb-0 text-dark">Total Unit Purchased</p>
-                            <h4 class="text-dark my-1">{{$total_units}}</h4>
-                        </div>
-                        <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card radius-10 bg-success bg-gradient">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                      <?php
                       $unit_bonus = App\Models\AddMoney::where('user_id', Auth::id())->where('method', 'Unit Bonus')->get()->sum('amount');
                       //dd($total_level_bonus);
 
                       ?>
                         <div>
-                            <p class="mb-0 text-white">Unit Bonus</p>
-                            <h4 class="my-1 text-white">${{$unit_bonus }}</h4>
+                            <p class="mb-0 text-dark">Unit Bonus</p>
+                            <h4 class="my-1 text-dark">${{$unit_bonus }}</h4>
                         </div>
                         <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
                         </div>
@@ -324,7 +324,7 @@
             </div>
         </div>
         <div class="col">
-            <div class="card radius-10 bg-info">
+            <div class="card radius-10 bg-dark">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
@@ -333,8 +333,8 @@
                             //dd($total_level_bonus);
 
                             ?>
-                            <p class="mb-0 text-dark">Left Count</p>
-                            <h4 class="my-1 text-dark">{{$left_count->left_count}}</h4>
+                            <p class="mb-0 text-white">Left Count</p>
+                            <h4 class="my-1 text-white">{{$left_count->left_count}}</h4>
 
                         </div>
                         <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
@@ -364,7 +364,7 @@
             </div>
         </div>
         <div class="col">
-            <div class="card radius-10 bg-primary bg-gradient">
+            <div class="card radius-10 bg-dark bg-gradient">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <?php
@@ -383,7 +383,7 @@
             </div>
         </div>
         <div class="col">
-            <div class="card radius-10 bg-danger bg-gradient">
+            <div class="card radius-10 bg-warning bg-gradient">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <?php
@@ -392,8 +392,8 @@
                         ?>
 
                         <div>
-                            <p class="mb-0 text-white">Right Carry</p>
-                            <h4 class="my-1 text-white">{{$total_right_carry->right_active}}</h4>
+                            <p class="mb-0 text-dark">Right Carry</p>
+                            <h4 class="my-1 text-dark">{{$total_right_carry->right_active}}</h4>
                         </div>
                         <div class="text-white ms-auto font-35"><i class='bx bx-dollar'></i>
                         </div>
